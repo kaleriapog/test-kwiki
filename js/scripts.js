@@ -53,7 +53,7 @@ window.addEventListener(`resize`, event => {
 
 let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#section-about-text", duration: '400', triggerHook: 0.9})
     .setTween("#section-about", { marginTop: '-200px'})
-    .addIndicators({name: "block-about"})
+    // .addIndicators({name: "block-about"})
     .addTo(controller)
     .on("start", () => {
         document.body.classList.remove('no-scroll')
