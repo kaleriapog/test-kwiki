@@ -58,6 +58,7 @@ let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#sectio
     .on("start", () => {
         document.body.classList.remove('no-scroll')
         heroVideo.removeAttribute('autoplay')
+        heroVideo.setAttribute('poster', './images/hero/image-for-hero-video.jpg')
     })
     .reverse(true)
 
@@ -68,7 +69,7 @@ let sliderAboutChangeSize = new ScrollMagic.Scene({triggerElement: "#slider-abou
     .addTo(controller)
     .reverse(true)
 
-let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-about-pin", duration: '600', triggerHook: 0.02})
+let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-about-pin", duration: '600', triggerHook: window.screen.width <= 1024 ? 0 : 0.02})
     .setTween("#about-slider-list", { marginLeft: '-800px'})
     // .addIndicators({name: "block-slider-position"})
     .addTo(controller)
