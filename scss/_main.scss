@@ -1,0 +1,19 @@
+//main style
+body {
+  @extend %font-main-text;
+}
+  //style for main size wrapper
+.size-wrapp {
+  max-width: 1230px;
+  padding: 0 15px;
+  width: 100%;
+  margin: auto;
+}
+
+//style for button-normal
+.button-normal {
+  background-color: $button-normal-color;
+  padding: 12px 24px;
+  border-radius: 32px;
+  @extend %font-button-normal;
+}

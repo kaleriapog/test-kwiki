@@ -1,0 +1,138 @@
+//style for header
+.header {
+
+  &__inner {
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    max-width: 88px;
+    width: 100%;
+
+    @include media-tablet {
+      position: relative;
+      z-index: 20;
+    }
+  }
+
+  &__navigation {
+    padding: 0 15px;
+
+    &.open-menu-mobile {
+      @include media-tablet {
+        transform: translateX(0);
+      }
+    }
+
+    @include media-tablet {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-width: 100vw;
+      width: 100%;
+      height: 100vh;
+      background-color: $color-white;
+      padding: 100px 15px 30px;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in-out;
+    }
+
+    ul, .header-navigation-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      @extend %font-nav-header;
+
+      @include media-tablet {
+        flex-direction: column;
+      }
+
+      li {
+        &:not(:last-child) {
+           margin-right: 72px;
+
+          @include media-tablet {
+            margin: 0 0 25px 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__button {
+    .button-normal {
+      padding: 10px 30px;
+      font-size: 14px;
+    }
+    @include media-tablet {
+      position: relative;
+      z-index: 20;
+      margin: 0 20px 0 auto;
+    }
+  }
+}
+
+//style for icon open navigation
+.nav-icon-open {
+  border-bottom: solid 1px $color-main;
+  border-top: solid 1px $color-main;
+  width: 30px;
+  height: 25px;
+  align-items: center;
+  display: none;
+
+  @include media-tablet {
+    display: flex;
+  }
+
+  &__item {
+    border-top: solid 1px $color-main;
+    display: block;
+    width: 100%;
+  }
+}
+
+//style for icon close navigation
+.nav-icon-close {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  width: 30px;
+  height: 30px;
+  display: none;
+
+  @include media-tablet {
+    display: block;
+  }
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 38px;
+    height: 1px;
+    top: 15px;
+    background: $color-main;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+//style fot not scrolling page
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}

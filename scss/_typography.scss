@@ -1,0 +1,19 @@
+%font-main-text {
+  font-family: 'Montserrat';
+  font-size: 15px;
+  line-height: 1.6;
+}
+%font-button-normal {
+  color: $color-white;
+  text-align: center;
+  font-weight: 600;
+}
+
+%font-nav-header {
+  font-weight: 500;
+  color: $color-main;
+
+  @include media-tablet {
+    font-size: 24px;
+  }
+}

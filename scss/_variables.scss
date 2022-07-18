@@ -1,0 +1,54 @@
+$mediaWidthMobileSmall: 350px;
+$mediaWidthMobile: 767px;
+$mediaWidthTablet: 991px;
+$mediaWidthTabletHorizontal: 1024px;
+$mediaWidthLaptop: 1024px;
+$mediaWidthMobileHorizontalSmall: 560px;
+$mediaWidthMobileHorizontal: 700px;
+
+@mixin media-tablet {
+  @media (max-width: $mediaWidthTablet) {
+    @content;
+  }
+}
+
+//@mixin media-tablet-horizontal {
+//  @media (max-height: $mediaWidthTabletHorizontal) {
+//    @content;
+//  }
+//}
+
+//@mixin media-mobile-horizontal-small {
+//  @media (max-height: $mediaWidthMobileHorizontalSmall) and (max-width: $mediaWidthTablet){
+//    @content;
+//  }
+//}
+
+@mixin media-mobile-horizontal {
+  @media (max-height: $mediaWidthMobileHorizontal) and (max-width: $mediaWidthMobile) {
+    @content;
+  }
+}
+
+@mixin media-laptop {
+  @media (max-width: $mediaWidthLaptop) {
+    @content;
+  }
+}
+
+@mixin media-mobile {
+  @media (max-width: $mediaWidthMobile) {
+    @content;
+  }
+}
+
+@mixin media-mobile-small {
+  @media (max-width: $mediaWidthMobileSmall) {
+    @content;
+  }
+}
+
+//color
+$color-white: #fff;
+$color-main: #1D1D1F;
+$button-normal-color: #1D1D1F;
