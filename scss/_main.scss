@@ -1,6 +1,7 @@
 //main style
 body {
   @extend %font-main-text;
+  background-color: $color-background-main;
 }
   //style for main size wrapper
 .size-wrapp {
@@ -10,10 +11,26 @@ body {
   margin: auto;
 }
 
+.size-wrapp-small {
+  max-width: 620px;
+  padding: 0 15px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+
+  .button-normal {
+    margin-top: 48px;
+  }
+}
+
 //style for button-normal
 .button-normal {
   background-color: $button-normal-color;
   padding: 12px 24px;
   border-radius: 32px;
   @extend %font-button-normal;
+}
+//style for title regular
+.title-regular {
+  @extend %title-regular;
 }

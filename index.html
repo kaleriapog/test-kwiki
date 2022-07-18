@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Kwiki</title>
 </head>
-<body>
+<body class="no-scroll">
 <header class="header">
     <div class="size-wrapp">
         <div class="header__inner">
@@ -39,8 +39,48 @@
     </div>
 </header>
 <main>
+    <section id="section-hero" class="section-hero">
+        <video class="hero-video" id="hero-video" autoplay="autoplay" muted>
+            <source src="./video/hero-5s.mp4">
+        </video>
+    </section>
+    <section id="section-about" class="section-about">
+        <div class="size-wrapp-small">
+            <div id="section-about-text" class="section-about__text">
+                <h1 class="title-regular">Kwiki is the ultimate monetization tool for Creators of all types</h1>
+                <p>Independent of their trade, profession, race, ethnic or social origin, gender, or sexual identity.</p>
+                <a href="#" class="button-normal">
+                    <span>Sign in</span>
+                </a>
+            </div>
+        </div>
+        <div id="slider-about" class="section-about__slider slider-about">
+            <div id="slider-about-pin" class="slider-about-pin"></div>
+            <div id="slider-about-track" class="section-about__slider-track">
+                <ul id="about-slider-list" class="about-slider-list">
+                    <li class="about-slider-item">
+                        <img src="./images/about-slider/photo-1.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item">
+                        <img src="./images/about-slider/photo-2.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item">
+                        <img src="./images/about-slider/photo-3.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item">
+                        <img src="./images/about-slider/photo-4.jpg" alt="photo">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <section style="background: pink; width: 100vw; height: 300vh;"></section>
 </main>
+<script src="js/gsap.min.js"></script>
+<script src="./js/ScrollMagic.js"></script>
+<script src="./js/debug.addIndicators.min.js"></script>
+<!--<script src="./js/TweenLite.min.js"></script>-->
+<script src="./js/animation.gsap.js"></script>
 <script src="./js/scripts.js"></script>
 </body>
 </html>

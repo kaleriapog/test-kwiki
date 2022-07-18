@@ -1,5 +1,11 @@
 //style for header
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  background-color: $color-background-main;
 
   &__inner {
     padding: 16px 0;
@@ -28,7 +34,7 @@
     }
 
     @include media-tablet {
-      position: absolute;
+      position: fixed;
       z-index: 10;
       top: 0;
       left: 0;
@@ -71,7 +77,13 @@
     .button-normal {
       padding: 10px 30px;
       font-size: 14px;
+
+      @include media-mobile {
+        padding: 8px 20px;
+        font-size: 12px;
+      }
     }
+
     @include media-tablet {
       position: relative;
       z-index: 20;

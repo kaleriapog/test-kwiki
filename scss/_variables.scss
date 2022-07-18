@@ -5,6 +5,7 @@ $mediaWidthTabletHorizontal: 1024px;
 $mediaWidthLaptop: 1024px;
 $mediaWidthMobileHorizontalSmall: 560px;
 $mediaWidthMobileHorizontal: 700px;
+$heroVideoHeight: 770px;
 
 @mixin media-tablet {
   @media (max-width: $mediaWidthTablet) {
@@ -48,7 +49,16 @@ $mediaWidthMobileHorizontal: 700px;
   }
 }
 
+@mixin media-custom-for-hero-video {
+  @media (max-height: $heroVideoHeight) {
+    @content;
+  }
+}
+
 //color
+$color-background-main: rgb(253,252,253);
 $color-white: #fff;
+$color-black: #000;
 $color-main: #1D1D1F;
+$color-text: #717171;
 $button-normal-color: #1D1D1F;

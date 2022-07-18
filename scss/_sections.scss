@@ -1,0 +1,57 @@
+//hero
+.section-hero {
+  position: relative;
+  margin: 75px auto 0;
+  transform: scale(1);
+
+  .hero-video {
+    height: calc(100vh - 75px);
+    object-fit: cover;
+  }
+}
+
+.section-about {
+  padding-bottom: 60px;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 65px;
+  }
+
+  &__slider-track {
+    margin-left: -800px;
+
+    @include media-mobile {
+      margin-left: -1400px;
+    }
+
+    .about-slider-list {
+      display: flex;
+    }
+
+    .about-slider-item {
+      margin: 0 10px;
+
+      img {
+        width: 995px;
+      }
+    }
+  }
+}
+
+.slider-about-pin {
+  transform: translateY(50px);
+
+  @include media-mobile {
+    transform: translateY(20px);
+  }
+}
