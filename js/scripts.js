@@ -75,27 +75,39 @@ let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-
     .addTo(controller)
     .reverse(true)
 
-// let heroLottie = LottieInteractivity.create({
-//     player:'#video-logo',
-//     mode:"chain",
-//     actions: [
-//         {
-//             state: 'autoplay'
-//         }
-//     ]
-// })
+let heroLottie = LottieInteractivity.create({
+    player:'#video-logo',
+    mode:"chain",
+    actions: [
+        {
+            state: 'autoplay'
+        }
+    ]
+})
 
-let heroLottie = lottie.loadAnimation({
-    container: document.getElementById('hero-video'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: true,
-    path: '../video/hero-5s60f-24c-46s.json'
-});
+// let heroLottie = bodymovin.loadAnimation({
+//     container: document.getElementById('hero-video'),
+//     renderer: 'svg',
+//     loop: false,
+//     autoplay: true,
+//     path: '../video/hero-5s60f-24c-46s.json'
+// });
+//
+// heroLottie.addEventListener("complete", function() {
+//     document.body.classList.remove('no-scroll')
+//     })
 
-heroLottie.addEventListener("complete", function() {
-    document.body.classList.remove('no-scroll')
-    })
+// let heroLottie = lottie.loadAnimation({
+//     container: document.getElementById('hero-video'),
+//     renderer: 'svg',
+//     loop: false,
+//     autoplay: true,
+//     path: '../video/hero-5s60f-24c-46s.json'
+// });
+//
+// heroLottie.addEventListener("complete", function() {
+//     document.body.classList.remove('no-scroll')
+//     })
 
 
 
