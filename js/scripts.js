@@ -40,7 +40,8 @@ if (window.matchMedia("(max-width: 1024px)")) {
 // })
 
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '200', triggerHook: 0.07})
-    .setTween("#hero-video", { transform: 'scale(0.41)'})
+    // .setTween("#hero-video", { transform: 'scale(0.41)'})
+    .setTween("#hero-video", { height: '340px'})
     // .addIndicators({name: "block-hero"})
     .addTo(controller)
     .reverse(true)
@@ -51,9 +52,9 @@ window.addEventListener(`resize`, event => {
     sectionHero.style.width = `${screenWidth}px`
 }, false);
 
-let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#section-about-text", duration: '400', triggerHook: 0.9})
-    .setTween("#section-about", { marginTop: '-200px'})
-    // .addIndicators({name: "block-about"})
+let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#section-about-text", duration: '100', triggerHook: 1})
+    // .setTween("#section-about", { transform: 'translateY(-200px)'})
+    .addIndicators({name: "block-about"})
     .addTo(controller)
     // .on("start", () => {
     //     document.body.classList.remove('no-scroll')

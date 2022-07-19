@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Kwiki</title>
 </head>
-<body class="">
+<body class="no-scroll">
 <header class="header">
     <div class="size-wrapp">
         <div class="header__inner">
@@ -93,15 +93,15 @@
         renderer: 'svg',
         loop: false,
         autoplay: true,
-        path: './video/hero-5s60f-24c-46s.json'
+        path: './video/2.json'
     });
 
     heroLottie.addEventListener("data_ready", function() {
-        document.body.classList.remove('no-scroll')
-        document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","xMaxYMax slice");
+        // document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","");
     })
 
     heroLottie.addEventListener("complete", function() {
+        document.querySelector('.hero-video').style.transform = 'scale(1)'
         document.body.classList.remove('no-scroll')
     })
 

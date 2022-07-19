@@ -2,11 +2,16 @@
 .section-hero {
   position: relative;
   margin: 75px auto 0;
-  transform: scale(1);
 
   .hero-video {
     height: calc(100vh - 75px);
     object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+
+    @include media-custom-for-hero-video {
+      transform: scale(2.2);
+    }
   }
 }
 
