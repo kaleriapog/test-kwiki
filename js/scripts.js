@@ -85,22 +85,22 @@ let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-
 //     ]
 // })
 
-let heroLottie = lottie.loadAnimation({
-    container: document.getElementById('hero-video'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: true,
-    path: '../video/hero-5s60f-24c-46s.json'
-});
+// let heroLottie = lottie.loadAnimation({
+//     container: document.getElementById('hero-video'),
+//     renderer: 'svg',
+//     loop: false,
+//     autoplay: true,
+//     path: '../video/hero-5s60f-24c-46s.json'
+// });
 
-heroLottie.addEventListener("data_ready", function() {
-    document.body.classList.remove('no-scroll')
-    document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","xMaxYMax slice");
-})
-
-heroLottie.addEventListener("complete", function() {
-    document.body.classList.remove('no-scroll')
-})
+// heroLottie.addEventListener("data_ready", function() {
+//     document.body.classList.remove('no-scroll')
+//     document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","xMaxYMax slice");
+// })
+//
+// heroLottie.addEventListener("complete", function() {
+//     document.body.classList.remove('no-scroll')
+// })
 
 
 
