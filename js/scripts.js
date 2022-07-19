@@ -54,7 +54,7 @@ window.addEventListener(`resize`, event => {
 
 let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#section-about-text", duration: '100', triggerHook: 1})
     // .setTween("#section-about", { transform: 'translateY(-200px)'})
-    .addIndicators({name: "block-about"})
+    // .addIndicators({name: "block-about"})
     .addTo(controller)
     // .on("start", () => {
     //     document.body.classList.remove('no-scroll')
@@ -71,7 +71,7 @@ let sliderAboutChangeSize = new ScrollMagic.Scene({triggerElement: "#slider-abou
     .reverse(true)
 
 let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-about-pin", duration: '600', triggerHook: window.screen.width <= 1024 ? 0 : 0.02})
-    .setTween("#about-slider-list", { marginLeft: '-800px'})
+    .setTween("#about-slider-list", { transform: 'translateX(-800px)'})
     // .addIndicators({name: "block-slider-position"})
     .addTo(controller)
     .reverse(true)
