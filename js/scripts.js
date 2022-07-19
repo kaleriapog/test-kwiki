@@ -35,9 +35,9 @@ if (window.matchMedia("(max-width: 1024px)")) {
 
 // for hero
     //not scroll when video play
-heroVideo.addEventListener('ended', (event) => {
-    document.body.classList.remove('no-scroll')
-})
+// heroVideo.addEventListener('ended', (event) => {
+//     document.body.classList.remove('no-scroll')
+// })
 
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '200', triggerHook: 0.07})
     .setTween("#hero-video", { transform: 'scale(0.41)'})
@@ -55,11 +55,11 @@ let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#sectio
     .setTween("#section-about", { marginTop: '-200px'})
     // .addIndicators({name: "block-about"})
     .addTo(controller)
-    .on("start", () => {
-        document.body.classList.remove('no-scroll')
-        heroVideo.removeAttribute('autoplay')
-        heroVideo.setAttribute('poster', './images/hero/image-for-hero-video.jpg')
-    })
+    // .on("start", () => {
+    //     document.body.classList.remove('no-scroll')
+    //     heroVideo.removeAttribute('autoplay')
+    //     heroVideo.setAttribute('poster', './images/hero/image-for-hero-video.jpg')
+    // })
     .reverse(true)
 
 let sliderAboutChangeSize = new ScrollMagic.Scene({triggerElement: "#slider-about", duration: '400', triggerHook: 'onLeave'})
@@ -75,6 +75,27 @@ let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-
     .addTo(controller)
     .reverse(true)
 
+// let heroLottie = LottieInteractivity.create({
+//     player:'#video-logo',
+//     mode:"chain",
+//     actions: [
+//         {
+//             state: 'autoplay'
+//         }
+//     ]
+// })
+
+let heroLottie = lottie.loadAnimation({
+    container: document.getElementById('hero-video'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: '../video/hero-5s60f-24c-46s.json'
+});
+
+heroLottie.addEventListener("complete", function() {
+    document.body.classList.remove('no-scroll')
+    })
 
 
 
