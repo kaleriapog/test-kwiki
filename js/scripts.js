@@ -44,7 +44,7 @@ heroVideo.addEventListener('ended', (event) => {
 
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '100', triggerHook: 0.07})
     .setTween("#hero-video", { transform: 'scale(0.41)'})
-    .addIndicators({name: "block-hero"})
+    // .addIndicators({name: "block-hero"})
     .addTo(controller)
     .reverse(true)
 
@@ -89,9 +89,9 @@ let pauseVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-pict
     .addTo(controller)
     .reverse(true);
 
-let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '100', triggerHook: 'onLeave'})
-    .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '835px'}) // the tween durtion can be omitted and defaults to 1
-    .addIndicators({name: "video stop and small"})
+let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '50', triggerHook: 'onLeave'})
+    .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '630px'}) // the tween durtion can be omitted and defaults to 1
+    // .addIndicators({name: "video stop and small"})
     .setPin("#video-in-picture-interactive")
     .addTo(controller)
     .reverse(true)
