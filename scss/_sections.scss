@@ -131,7 +131,7 @@
   }
 
   &__items {
-    padding: 200px 0;
+    padding: 0 0 200px;
     position: relative;
     z-index: 1;
   }
@@ -141,6 +141,7 @@
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    transform: translateY(50vh);
 
     .items-icon-dark {
       background-color: $background-icon-dark;

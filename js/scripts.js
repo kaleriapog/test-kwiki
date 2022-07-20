@@ -102,8 +102,19 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
         } else {
             sectionVideoInPicture.classList.add('background-dark')
             backgroundVideoPicture.classList.add('visible')
+        } if(e.progress === 1) {
+            let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '150', triggerHook: 1})
+                .setTween("#items-list-dark-interactive", { transform: 'translateY(-70px)'})
+                // .addIndicators({name: "items-dark-interactive"})
+                .addTo(controller)
+                .reverse(true)
         }
     });
+
+
+
+
+
 
 // let heroLottie = LottieInteractivity.create({
 //     player:'#video-logo',
