@@ -9,6 +9,7 @@ const arrSliderAboutItems = document.querySelectorAll('.about-slider-item')
 const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-interactive')
 const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
 const backgroundVideoPicture = document.querySelector('.background-video-picture')
+const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -110,11 +111,31 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
                 .reverse(true)
         }
     });
+console.log(checkingAccountDescription)
+
+let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-checking-account", duration: '500', triggerHook: 'onLeave'})
+    .setTween("#checking-account-title-interactive", { opacity: '1', transform: 'translateY(0)'})
+    // .addIndicators({name: "section-checking-account"})
+    .setPin("#section-checking-account")
+    .addTo(controller)
+    .on("progress", function (e) {
+        if(e.progress >= 0.8) {
+            checkingAccountDescription.classList.remove('checking-account-description-hide')
+        } else if(e.progress <= 0.8) {
+            checkingAccountDescription.classList.add('checking-account-description-hide')
+        }
+    })
+    .reverse(true)
+
+// let sectionCheckingDescription = new ScrollMagic.Scene({triggerElement: "#checking-account-description-trigger", duration: '50', triggerHook: 0.45})
+//     .setTween("#checking-account-description-interactive", { opacity: '1', transform: 'translateY(0)'})
+//     .addIndicators({name: "checking-account-description-trigger"})
+//     .addTo(controller)
+//     .reverse(true)
 
 
 
-
-
+// checking-account-description-interactive
 
 // let heroLottie = LottieInteractivity.create({
 //     player:'#video-logo',

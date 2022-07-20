@@ -76,7 +76,7 @@
     max-width: 590px;
     padding-bottom: 100px;
 
-    p {
+    &__subtitle {
       max-width: 385px;
       margin: auto;
     }
@@ -179,6 +179,38 @@
 
   &__text {
 
+  }
+}
+
+.section-checking-account {
+  &__inner {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .content-text {
+
+    .title-regular {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+
+    &__description {
+      transition: all 0.4s ease-in-out;
+    }
+
+    .checking-account-description-hide {
+     opacity: 0;
+     transform: translateY(100px);
+   }
+
+    &__subtitle {
+      max-width: 590px;
+      margin: 0 auto;
+    }
   }
 }
 
