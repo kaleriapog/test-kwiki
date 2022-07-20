@@ -84,6 +84,10 @@
 
   &__video-block {
 
+    .video-in-picture {
+      object-fit: cover;
+    }
+
     .background-video-picture {
       position: absolute;
       width: 230%;

@@ -93,7 +93,6 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
     .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '835px'}) // the tween durtion can be omitted and defaults to 1
     .addIndicators({name: "video stop and small"})
     .setPin("#video-in-picture-interactive")
-    .setClassToggle(".section-about", "section-about-animation")
     .addTo(controller)
     .reverse(true)
     .on("progress", function (e) {
