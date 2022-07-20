@@ -24,6 +24,15 @@
 }
 
 %title-regular {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  color: $color-black;
+}
+
+%title-small {
   font-size: 32px;
   font-weight: 700;
   line-height: 1.37;
@@ -36,3 +45,20 @@
     font-size: 24px;
   }
 }
+
+%text-big {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.333;
+  letter-spacing: -1px;
+  color: $color-main;
+}
+
+%icon-title-small {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.44;
+  text-align: center;
+}
+
+

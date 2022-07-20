@@ -2,16 +2,11 @@
 .section-hero {
   position: relative;
   margin: 75px auto 0;
+  transform: scale(1);
 
   .hero-video {
     height: calc(100vh - 75px);
     object-fit: cover;
-    transform: scale(1);
-    transition: transform 0.2s ease-in-out;
-
-    @include media-custom-for-hero-video {
-      transform: scale(2.2);
-    }
   }
 }
 
@@ -51,7 +46,140 @@
       }
     }
   }
+
+  &__text-narrow {
+    max-width: 490px;
+    width: 100%;
+    transform: translateY(-100px);
+    transition: transform 0.4s ease-in-out,
+                opacity 0.4s linear;
+    opacity: 1;
+  }
+
+  .about-text-narrow-hide {
+    transform: translateY(400px);
+    opacity: 0;
+
+    @include media-tablet-horizontal {
+      transform: translateY(100px);
+    }
+  }
 }
+
+.section-video-in-picture {
+  padding-top: 10vh;
+  overflow: hidden;
+  max-width: 100vw;
+  width: 100%;
+
+  .content-text {
+    max-width: 590px;
+    padding-bottom: 100px;
+
+    p {
+      max-width: 385px;
+      margin: auto;
+    }
+  }
+
+  &__video-block {
+
+    .background-video-picture {
+      position: absolute;
+      width: 230%;
+      height: 100%;
+      top: 5%;
+      left: -65%;
+      //width: 297%;
+      //height: 100%;
+      //top: 8%;
+      //left: -89%;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+
+      &.visible {
+        visibility: visible;
+      }
+
+      .background-video-picture-inner {
+        width: 100%;
+      }
+
+      img {
+        object-fit: contain;
+      }
+
+    }
+  }
+
+  &__video-block-inner {
+    width: 100vw;
+    min-height: 100vh;
+    padding-top: $height-header;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s linear;
+  }
+
+  &__items {
+    padding: 200px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+    .items-icon-dark {
+      background-color: $background-icon-dark;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 -20px 26px;
+
+      .icon-img {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  &__item-title {
+    @extend %icon-title-small;
+  }
+
+  &__text {
+
+  }
+}
+
+
+
+
 
 .slider-about-pin {
   transform: translateY(50px);

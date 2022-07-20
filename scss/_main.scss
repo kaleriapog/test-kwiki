@@ -3,7 +3,14 @@ body {
   @extend %font-main-text;
   background-color: $color-background-main;
 }
-  //style for main size wrapper
+
+//main
+main {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+//style for main size wrapper
 .size-wrapp {
   max-width: 1230px;
   padding: 0 15px;
@@ -31,8 +38,28 @@ body {
   @extend %font-button-normal;
 }
 
-//style for title regular
+//background
+.background-dark {
+  background-color: $color-black;
+  color: $color-white;
+}
+
+//style for title
+.title-small {
+  @extend %title-small;
+}
+
+.text-big {
+  @extend %text-big;
+}
+
 .title-regular {
   @extend %title-regular;
 }
 
+.content-text {
+  max-width: 790px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}

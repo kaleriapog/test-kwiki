@@ -13,11 +13,11 @@ $heroVideoHeight: 770px;
   }
 }
 
-//@mixin media-tablet-horizontal {
-//  @media (max-height: $mediaWidthTabletHorizontal) {
-//    @content;
-//  }
-//}
+@mixin media-tablet-horizontal {
+  @media (max-height: $mediaWidthTabletHorizontal) {
+    @content;
+  }
+}
 
 //@mixin media-mobile-horizontal-small {
 //  @media (max-height: $mediaWidthMobileHorizontalSmall) and (max-width: $mediaWidthTablet){
@@ -62,3 +62,7 @@ $color-black: #000;
 $color-main: #1D1D1F;
 $color-text: #717171;
 $button-normal-color: #1D1D1F;
+$background-icon-dark: #262626;
+
+// size
+$height-header: 75px;

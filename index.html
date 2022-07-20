@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Kwiki</title>
 </head>
-<body class="no-scroll">
+<body class="no-scrol">
 <header class="header">
     <div class="size-wrapp">
         <div class="header__inner">
@@ -40,17 +40,17 @@
 </header>
 <main>
     <section id="section-hero" class="section-hero">
-<!--        <video class="hero-video" id="hero-video" autoplay="autoplay" muted>-->
-<!--            <source src="./video/hero-5s.mp4">-->
-<!--        </video>-->
-        <div id="hero-video" class="hero-video">
-<!--            <lottie-player id="video-logo" class="video-logo" src="./video/hero-5s60f-24c-46s.json"></lottie-player>-->
-        </div>
+        <video class="hero-video" id="hero-video" autoplay="autoplay" muted>
+            <source src="./video/hero-5s.mp4">
+        </video>
+<!--        <div id="hero-video" class="hero-video">-->
+<!--&lt;!&ndash;            <lottie-player id="video-logo" class="video-logo" src="./video/hero-5s60f-24c-46s.json"></lottie-player>&ndash;&gt;-->
+<!--        </div>-->
     </section>
     <section id="section-about" class="section-about">
         <div class="size-wrapp-small">
             <div id="section-about-text" class="section-about__text">
-                <h1 class="title-regular">Kwiki is the ultimate monetization tool for Creators of all types</h1>
+                <h1 class="title-small">Kwiki is the ultimate monetization tool for Creators of all types</h1>
                 <p>Independent of their trade, profession, race, ethnic or social origin, gender, or sexual identity.</p>
                 <a href="#" class="button-normal">
                     <span>Sign in</span>
@@ -76,6 +76,58 @@
                 </ul>
             </div>
         </div>
+        <div class="size-wrapp">
+            <div class="section-about__text-narrow about-text-narrow-interactive about-text-narrow-hide">
+                <p class="text-big">An advanced platform built around industry-first features, designed to disrupt your expectations of what’s possible.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section-video-in-picture">
+        <div class="size-wrapp">
+            <div class="content-text">
+                <h2 class="title-regular">Accelerated earnings for all creators</h2>
+                <p>Price content freely and enjoy blazing fast access to all your earnings from Subs, Digital Content, Tips, and more</p>
+            </div>
+        </div>
+        <div id="video-in-picture-interactive" class="section-video-in-picture__video-block video-in-picture-interactive">
+            <div id="video-in-picture-inner-interactive" class="section-video-in-picture__video-block-inner">
+                <video id="video-in-picture" class="video-in-picture" muted>
+                    <source src="./video/video-in-picture.mp4">
+                </video>
+                <div class="background-video-picture">
+                    <div class="background-video-picture-inner">
+                        <img src="./images/video-in-picture/picture-phone.PNG" alt="picture-phone">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="size-wrapp">
+            <div class="section-video-in-picture__items">
+                <ul class="section-video-in-picture__list">
+                    <li class="section-video-in-picture__item">
+                        <div class="items-icon-dark">
+                            <img class="icon-img" src="images/video-in-picture/dollar.svg" alt="icon">
+                        </div>
+                        <span class="section-video-in-picture__item-title">Flexible pricing</span>
+                        <span class="section-video-in-picture__item-text">Sell content from $4.99 to $500</span>
+                    </li>
+                    <li class="section-video-in-picture__item">
+                        <div class="items-icon-dark">
+                            <img class="icon-img" src="images/video-in-picture/fastest-payout.svg" alt="icon">
+                        </div>
+                        <span class="section-video-in-picture__item-title">Fastest payout anywhere</span>
+                        <span class="section-video-in-picture__item-text">In your account in just 72hrss</span>
+                    </li>
+                    <li class="section-video-in-picture__item">
+                        <div class="items-icon-dark">
+                            <img class="icon-img" src="images/video-in-picture/freedom.svg" alt="icon">
+                        </div>
+                        <span class="section-video-in-picture__item-title">Flexible pricing</span>
+                        <span class="section-video-in-picture__item-text">On-demand anytime, no minimum to сear</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </section>
     <section style="background: pink; width: 100vw; height: 300vh;"></section>
 </main>
@@ -87,25 +139,25 @@
 <script src="./js/lottie.min.js"></script>
 <script src="./js/lottie-interactivity.min.js"></script>
 <script src="./js/lottie-player.js"></script>
-<script>
-    let heroLottie = lottie.loadAnimation({
-        container: document.getElementById('hero-video'),
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        path: './video/2.json'
-    });
+<!--<script>-->
+<!--    let heroLottie = lottie.loadAnimation({-->
+<!--        container: document.getElementById('hero-video'),-->
+<!--        renderer: 'svg',-->
+<!--        loop: false,-->
+<!--        autoplay: true,-->
+<!--        path: './video/2.json'-->
+<!--    });-->
 
-    heroLottie.addEventListener("data_ready", function() {
-        // document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","");
-    })
+<!--    heroLottie.addEventListener("data_ready", function() {-->
+<!--        document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","xMaxyMax");-->
+<!--    })-->
 
-    heroLottie.addEventListener("complete", function() {
-        document.querySelector('.hero-video').style.transform = 'scale(1)'
-        document.body.classList.remove('no-scroll')
-    })
+<!--    heroLottie.addEventListener("complete", function() {-->
+<!--        document.querySelector('.hero-video').style.transform = 'scale(1)'-->
+<!--        document.body.classList.remove('no-scroll')-->
+<!--    })-->
 
-</script>
+<!--</script>-->
 <script src="./js/scripts.js"></script>
 </body>
 </html>

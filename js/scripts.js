@@ -6,6 +6,9 @@ let controller = new ScrollMagic.Controller()
 const heroVideo = document.getElementById('hero-video')
 const sectionHero = document.querySelector('.section-hero')
 const arrSliderAboutItems = document.querySelectorAll('.about-slider-item')
+const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-interactive')
+const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
+const backgroundVideoPicture = document.querySelector('.background-video-picture')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -35,14 +38,13 @@ if (window.matchMedia("(max-width: 1024px)")) {
 
 // for hero
     //not scroll when video play
-// heroVideo.addEventListener('ended', (event) => {
-//     document.body.classList.remove('no-scroll')
-// })
+heroVideo.addEventListener('ended', (event) => {
+    document.body.classList.remove('no-scroll')
+})
 
-let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '200', triggerHook: 0.07})
-    // .setTween("#hero-video", { transform: 'scale(0.41)'})
-    .setTween("#hero-video", { height: '340px'})
-    // .addIndicators({name: "block-hero"})
+let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '100', triggerHook: 0.07})
+    .setTween("#hero-video", { transform: 'scale(0.41)'})
+    .addIndicators({name: "block-hero"})
     .addTo(controller)
     .reverse(true)
 
@@ -52,16 +54,6 @@ window.addEventListener(`resize`, event => {
     sectionHero.style.width = `${screenWidth}px`
 }, false);
 
-let sectionAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#section-about-text", duration: '100', triggerHook: 1})
-    // .setTween("#section-about", { transform: 'translateY(-200px)'})
-    // .addIndicators({name: "block-about"})
-    .addTo(controller)
-    // .on("start", () => {
-    //     document.body.classList.remove('no-scroll')
-    //     heroVideo.removeAttribute('autoplay')
-    //     heroVideo.setAttribute('poster', './images/hero/image-for-hero-video.jpg')
-    // })
-    .reverse(true)
 
 let sliderAboutChangeSize = new ScrollMagic.Scene({triggerElement: "#slider-about", duration: '400', triggerHook: 'onLeave'})
     .setTween("#slider-about-track", { transform: 'scale(0.593)'})
@@ -73,8 +65,46 @@ let sliderAboutChangeSize = new ScrollMagic.Scene({triggerElement: "#slider-abou
 let sliderAboutChangePosition = new ScrollMagic.Scene({triggerElement: "#slider-about-pin", duration: '600', triggerHook: window.screen.width <= 1024 ? 0 : 0.02})
     .setTween("#about-slider-list", { transform: 'translateX(-800px)'})
     // .addIndicators({name: "block-slider-position"})
+    .on("progress", function (e) {
+        if(e.progress > window.screen.height < 1366 ? 0.2 : 0.1) {
+            aboutTextNarrowInteractive.classList.remove('about-text-narrow-hide')
+        }
+    })
     .addTo(controller)
     .reverse(true)
+
+let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
+    .on("enter", () => {
+        document.getElementById('video-in-picture').play()
+    })
+    // .addIndicators({name: "video start"})
+    .addTo(controller)
+    .reverse(true);
+
+let pauseVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 0})
+    .on("enter", () => {
+        document.getElementById('video-in-picture').pause()
+    })
+    // .addIndicators({name: "video start"})
+    .addTo(controller)
+    .reverse(true);
+
+let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '100', triggerHook: 'onLeave'})
+    .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '835px'}) // the tween durtion can be omitted and defaults to 1
+    .addIndicators({name: "video stop and small"})
+    .setPin("#video-in-picture-interactive")
+    .setClassToggle(".section-about", "section-about-animation")
+    .addTo(controller)
+    .reverse(true)
+    .on("progress", function (e) {
+        if(e.progress <= 0) {
+            sectionVideoInPicture.classList.remove('background-dark')
+            backgroundVideoPicture.classList.remove('visible')
+        } else {
+            sectionVideoInPicture.classList.add('background-dark')
+            backgroundVideoPicture.classList.add('visible')
+        }
+    });
 
 // let heroLottie = LottieInteractivity.create({
 //     player:'#video-logo',
