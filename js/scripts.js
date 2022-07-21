@@ -10,6 +10,8 @@ const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-in
 const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
 const backgroundVideoPicture = document.querySelector('.background-video-picture')
 const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
+const arrGalleryTrigger = document.querySelectorAll('.gallery-trigger')
+const arrGalleryItemsTrigger = document.querySelectorAll('.block-items')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -111,8 +113,8 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
                 .reverse(true)
         }
     });
-console.log(checkingAccountDescription)
 
+//gallery
 let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-checking-account", duration: '500', triggerHook: 'onLeave'})
     .setTween("#checking-account-title-interactive", { opacity: '1', transform: 'translateY(0)'})
     // .addIndicators({name: "section-checking-account"})
@@ -127,13 +129,34 @@ let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-ch
     })
     .reverse(true)
 
+const arrGalleryItems = document.querySelectorAll('.gallery__items .block-items');
+let wipeAnimation = new TimelineMax();
+
+for (let i = arrGalleryTrigger.length - 1; i >= 0; i--) {
+    wipeAnimation
+        .fromTo(`#gallery-trigger-${i}`, 1, {y: 0}, {y: i === 0 ? '0' : '-100vh', ease: Linear.easeNone})
+        .call(function (idx) {
+            const nextTextEl = document.getElementById(`gallery-items-trigger-${idx}`);
+            arrGalleryItems.forEach(function (item) {
+                item.removeAttribute('style')
+            });
+            nextTextEl.setAttribute('style', 'opacity: 1;');
+        }, [i], '<')
+        .to(`#gallery-items-trigger-${i} .block-items__list`, 1, {y: '-20px', ease: Linear.easeNone,})
+}
+
+// create scene to pin and link animation
+new ScrollMagic.Scene({ triggerElement: "#section-gallery",  triggerHook: "onLeave", duration: "100%" })
+    .setPin("#section-gallery")
+    .setTween(wipeAnimation)
+    .addIndicators({name: `gallery-items`})
+    .addTo(controller);
+
 // let sectionCheckingDescription = new ScrollMagic.Scene({triggerElement: "#checking-account-description-trigger", duration: '50', triggerHook: 0.45})
 //     .setTween("#checking-account-description-interactive", { opacity: '1', transform: 'translateY(0)'})
 //     .addIndicators({name: "checking-account-description-trigger"})
 //     .addTo(controller)
 //     .reverse(true)
-
-
 
 // checking-account-description-interactive
 

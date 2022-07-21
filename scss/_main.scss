@@ -67,3 +67,45 @@ main {
     margin-top: 48px;
   }
 }
+
+//icons
+.items-icon {
+  background-color: $background-icon;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 32px 0;
+
+  &.items-icon-dark {
+    background-color: $background-icon-dark;
+    margin: 0 -20px 26px;
+  }
+
+  .icon-img {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+//items component
+.block-items {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  //transition: .5s;
+  opacity: 0;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  &__title {
+    @extend %icon-title;
+  }
+}

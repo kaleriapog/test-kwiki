@@ -143,23 +143,6 @@
     text-align: center;
     transform: translateY(50vh);
 
-    .items-icon-dark {
-      background-color: $background-icon-dark;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin: 0 -20px 26px;
-
-      .icon-img {
-        display: block;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
     span {
       display: block;
     }
@@ -214,9 +197,42 @@
   }
 }
 
+.gallery {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 
+  &-inner {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    width: 100%;
+  }
 
+  &-trigger {
+    max-width: 565px;
+    width: 100%;
+    position: absolute;
+  }
 
+  $index: 5;
+  @while $index >= 0 {
+    &-item-#{$index} {
+      margin-left: 24px * $index;
+      margin-top: -24px * $index;
+    }
+    $index: $index - 1;
+  }
+
+  &__items {
+    max-width: 50%;
+    width: 100%;
+  }
+}
 
 .slider-about-pin {
   transform: translateY(50px);
