@@ -232,8 +232,6 @@ new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "
 // })
 
 
-//11
-
 
 
 
