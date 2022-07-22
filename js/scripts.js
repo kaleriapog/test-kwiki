@@ -45,6 +45,15 @@ heroVideo.addEventListener('ended', (event) => {
     document.body.classList.remove('no-scroll')
 })
 
+// not scroll when the screen refreshes and the video is not fully intersecting with the view port
+    let scrollTop = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+
+    if (scrollTop >= 5) {
+        if (document.body.classList.contains('no-scroll')) {
+            document.body.classList.remove('no-scroll')
+        }
+    }
+
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '100', triggerHook: 0.07})
     .setTween("#hero-video", { transform: 'scale(0.41)'})
     // .addIndicators({name: "block-hero"})
