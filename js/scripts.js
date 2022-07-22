@@ -158,7 +158,7 @@ for (let i = arrGalleryTrigger.length - 1; i >= 0; i--) {
 new ScrollMagic.Scene({ triggerElement: "#section-gallery",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#section-gallery")
     .setTween(wipeAnimation)
-    .addIndicators({name: `gallery-items`})
+    // .addIndicators({name: `gallery-items`})
     .addTo(controller);
 
 // let sectionCheckingDescription = new ScrollMagic.Scene({triggerElement: "#checking-account-description-trigger", duration: '50', triggerHook: 0.45})

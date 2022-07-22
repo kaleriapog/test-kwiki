@@ -217,6 +217,18 @@
     max-width: 565px;
     width: 100%;
     position: absolute;
+
+    @include media-laptop {
+      max-width: 500px;
+    }
+
+    @include media-tablet {
+      max-width: 360px;
+    }
+
+    @include media-mobile {
+      max-width: 170px;
+    }
   }
 
   $index: 5;
