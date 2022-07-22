@@ -246,6 +246,65 @@
   }
 }
 
+.section-phone-scroll {
+  height: 100vh;
+  //padding-top: $height-header;
+
+  .block-phone-scroll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding-top: $height-header;
+
+    .half {
+      width: 100%;
+      max-width: 50%;
+      position: relative;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-image {
+      transform: translateY(35vh);
+    }
+
+    .phone-scroll {
+      &-interactive {
+        position: absolute;
+        opacity: 0;
+      }
+
+      &__text {
+        max-width: 285px;
+
+        .button-normal {
+          margin-top: 48px;
+        }
+      }
+
+      &__items {
+        //margin-top: 10vh;
+
+        .block-items__item {
+          padding: 0 0 55px;
+        }
+      }
+    }
+
+    .phone-scroll-image {
+      max-width: 405px;
+      width: 100%;
+      margin-left: auto;
+    }
+  }
+}
+
+
 .slider-about-pin {
   transform: translateY(50px);
 

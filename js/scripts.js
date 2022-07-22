@@ -11,8 +11,8 @@ const sectionVideoInPicture = document.querySelector('.section-video-in-picture'
 const backgroundVideoPicture = document.querySelector('.background-video-picture')
 const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
 const arrGalleryTrigger = document.querySelectorAll('.gallery-trigger')
-const arrGalleryItemsTrigger = document.querySelectorAll('.block-items')
-
+// const arrGalleryItemsTrigger = document.querySelectorAll('.block-items')
+const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
 // for open menu mobile
 if(navIconOpen) {
     navIconOpen.addEventListener('click', () => {
@@ -46,13 +46,11 @@ heroVideo.addEventListener('ended', (event) => {
 })
 
 // not scroll when the screen refreshes and the video is not fully intersecting with the view port
-    let scrollTop = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
-
-    if (scrollTop >= 5) {
-        if (document.body.classList.contains('no-scroll')) {
-            document.body.classList.remove('no-scroll')
-        }
-    }
+//     let scrollTop = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+//
+//     if (scrollTop <= 5) {
+//         document.body.classList.add('no-scroll')
+//     }
 
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '100', triggerHook: 0.07})
     .setTween("#hero-video", { transform: 'scale(0.41)'})
@@ -160,6 +158,39 @@ new ScrollMagic.Scene({ triggerElement: "#section-gallery",  triggerHook: "onLea
     .setTween(wipeAnimation)
     // .addIndicators({name: `gallery-items`})
     .addTo(controller);
+
+
+// let wipeAnimation1 = new TimelineMax();
+let timelineSectionPhoneScroll = new TimelineMax()
+    .fromTo(['#block-phone-scroll-image'], 1, {}, {y: window.outerHeight >= 890 ?'96px' : '130px', ease: Linear.easeNone})
+    .fromTo(['#phone-scroll-interactive-0'], 1, {}, {y: '-10vh', ease: Linear.easeNone}, '<')
+
+    arrPhoneScrollInteractive.forEach((item, i) => {
+        let lastItem =  arrPhoneScrollInteractive.length - 1
+
+        timelineSectionPhoneScroll
+            .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-interactive-${i}`, 1, {}, {opacity: (i === lastItem ) ? 1 : 0, ease: Linear.easeNone}, (i === lastItem ) ? '<' : '-=0')
+    })
+
+console.log(window.outerHeight)
+
+timelineSectionPhoneScroll
+    .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.65)', ease: Linear.easeNone}, '<')
+
+new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "100%" })
+    .setPin("#section-phone-scroll")
+    .setTween(timelineSectionPhoneScroll)
+    .addIndicators({name: `section-phone-scroll`})
+    .addTo(controller);
+
+
+
+
+
+
+
+
 
 // let sectionCheckingDescription = new ScrollMagic.Scene({triggerElement: "#checking-account-description-trigger", duration: '50', triggerHook: 0.45})
 //     .setTween("#checking-account-description-interactive", { opacity: '1', transform: 'translateY(0)'})
