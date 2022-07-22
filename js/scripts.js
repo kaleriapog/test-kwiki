@@ -46,11 +46,15 @@ heroVideo.addEventListener('ended', (event) => {
 })
 
 // not scroll when the screen refreshes and the video is not fully intersecting with the view port
-    let scrollTop = window.pageYOffset ? window.pageYOffset : (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
-
-    if (scrollTop <= 5) {
-        document.body.classList.add('no-scroll')
-    }
+new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
+    .addIndicators({name: "trigger"})
+    .on("progress", function (e) {
+        if(e.progress < 0.01) {
+            document.body.classList.add('no-scroll')
+        }
+    })
+    .addTo(controller)
+    .reverse(false)
 
 let sectionHeroChangeSize = new ScrollMagic.Scene({triggerElement: "#section-hero", duration: '100', triggerHook: 0.07})
     .setTween("#hero-video", { transform: 'scale(0.41)'})
@@ -181,7 +185,7 @@ timelineSectionPhoneScroll
 new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#section-phone-scroll")
     .setTween(timelineSectionPhoneScroll)
-    .addIndicators({name: `section-phone-scroll`})
+    // .addIndicators({name: `section-phone-scroll`})
     .addTo(controller);
 
 
