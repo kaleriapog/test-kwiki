@@ -10,12 +10,13 @@
     <title>Kwiki</title>
 </head>
 <body class="body">
-<header class="header">
+<header id="header" class="header">
     <div class="size-wrapp">
         <div class="header__inner">
-            <div class="header__logo">
-                <img src="./images/logo.svg" alt="logo">
-            </div>
+            <a href="#" class="header__logo">
+                <img class="logo" src="./images/logo.svg" alt="logo">
+                <img class="logo-white" src="./images/logo-white.svg" alt="logo">
+            </a>
             <div class="header__navigation">
                 <div class="nav-icon-close"></div>
                 <nav>
@@ -28,7 +29,7 @@
                 </nav>
             </div>
             <div class="header__button">
-                <a href="#" class="button-normal">
+                <a href="#" class="button-normal button">
                     <span>Sign in</span>
                 </a>
             </div>
@@ -43,9 +44,6 @@
         <video class="hero-video" id="hero-video" autoplay="autoplay" muted>
             <source src="./video/hero-5s.mp4">
         </video>
-<!--        <div id="hero-video" class="hero-video">-->
-<!--&lt;!&ndash;            <lottie-player id="video-logo" class="video-logo" src="./video/hero-5s60f-24c-46s.json"></lottie-player>&ndash;&gt;-->
-<!--        </div>-->
     </section>
     <section id="section-about" class="section-about">
         <div class="size-wrapp-small">
@@ -57,8 +55,8 @@
                 </a>
             </div>
         </div>
+        <div id="slider-about-pin" class="slider-about-pin"></div>
         <div id="slider-about" class="section-about__slider slider-about">
-            <div id="slider-about-pin" class="slider-about-pin"></div>
             <div id="slider-about-track" class="section-about__slider-track">
                 <ul id="about-slider-list" class="about-slider-list">
                     <li class="about-slider-item">
@@ -77,7 +75,7 @@
             </div>
         </div>
         <div class="size-wrapp">
-            <div class="section-about__text-narrow about-text-narrow-interactive about-text-narrow-hide">
+            <div id="about-text-narrow-interactive" class="section-about__text-narrow about-text-narrow-interactive">
                 <p class="text-big">An advanced platform built around industry-first features, designed to disrupt your expectations of what’s possible.</p>
             </div>
         </div>
@@ -142,85 +140,91 @@
             </div>
         </div>
     </section>
-    <section class="section-main-gallery">
+    <section id="section-gallery-first" class="section-gallery-first main-gallery">
         <div class="size-wrapp">
-            <div id="section-gallery" class="gallery">
-                <ul id="gallery-inner" class="gallery-inner">
-                    <li id="gallery-trigger-0" class="gallery-trigger">
-                        <div id="gallery-item-0" class="gallery-item gallery-item-0">
-                            <img src="./images/gallery/photo-1.jpg" alt="photo">
+            <div id="section-first-sell" class="gallery">
+                <ul class="gallery-list">
+                    <li class="gallery-item gallery-first-item-0">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/photo-1.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <ul class="block-items__list">
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Dedicated financial app</h3>
+                                            <span>Real-time control of your money</span>
+                                        </div>
+                                    </li>
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Free Mastercard Offer</h3>
+                                            <span>Instant access to your earnings</span>
+                                        </div>
+                                    </li>
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">100+ eligible countries</h3>
+                                            <span>US, Canada, UK, EU, Australia and more</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </li>
-                    <li id="gallery-trigger-1" class="gallery-trigger">
-                        <div id="gallery-item-1" class="gallery-item gallery-item-1">
-                            <img src="./images/gallery/photo-2.jpg" alt="photo">
+                    <li class="gallery-item gallery-first-item-1">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/photo-2.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <ul class="block-items__list">
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Fast and easy sign-up</h3>
+                                            <span>Done in under 2 minutes</span>
+                                        </div>
+                                    </li>
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Stress-free onboarding</h3>
+                                            <span>Approval in hours not days  </span>
+                                        </div>
+                                    </li>
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Simplify your income tax</h3>
+                                            <span>All Kwiki payouts in one account</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </li>
                 </ul>
-                <div class="gallery__items">
-                    <div id="gallery-items-trigger-0" class="block-items">
-                        <ul class="block-items__list">
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">Dedicated financial app</h3>
-                                    <span>Real-time control of your money</span>
-                                </div>
-                            </li>
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">Free Mastercard Offer</h3>
-                                    <span>Instant access to your earnings</span>
-                                </div>
-                            </li>
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">100+ eligible countries</h3>
-                                    <span>US, Canada, UK, EU, Australia and more</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="gallery-items-trigger-1" class="block-items">
-                        <ul class="block-items__list">
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">Fast and easy sign-up</h3>
-                                    <span>Done in under 2 minutes.</span>
-                                </div>
-                            </li>
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">Stress-free on boarding</h3>
-                                    <span>Approval in hours not days</span>
-                                </div>
-                            </li>
-                            <li class="block-items__item">
-                                <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                                </div>
-                                <div class="block-items__text">
-                                    <h3 class="block-items__title">Simplify your income tax</h3>
-                                    <span>All Kwiki payouts in one account</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -289,6 +293,177 @@
             </div>
         </div>
     </section>
+    <section id="section-tagline" class="section-tagline">
+        <span id="tagline" class="section-tagline__tagline">Life is short</span>
+        <div id="tagline-video-wrapp" class="section-tagline__video">
+            <video id="tagline-video" class="tagline-video" muted>
+                <source src="./video/tagline-video.mp4">
+            </video>
+        </div>
+    </section>
+    <section id="section-gallery-sell" class="section-gallery-sell main-gallery header-white-trigger">
+        <div class="size-wrapp">
+            <div  class="gallery">
+                <ul class="gallery-list">
+                    <li class="gallery-item gallery-sell-item-0">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/sell-1.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <ul class="block-items__list">
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Advanced inventory managment</h3>
+                                            <span>With real-time stock updates</span>
+                                        </div>
+                                    </li>
+                                    <li class="block-items__item">
+                                        <div class="items-icon">
+                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        </div>
+                                        <div class="block-items__text">
+                                            <h3 class="block-items__title">Dedicated promo tools</h3>
+                                            <span>To improve your conversions</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gallery-item gallery-sell-item-1">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/sell-2.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <ul class="block-items__list block-sell-items-list">
+                                <li class="block-items__item">
+                                    <div class="items-icon">
+                                        <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    </div>
+                                    <div class="block-items__text">
+                                        <h3 class="block-items__title">Superfast payouts</h3>
+                                        <span>To boost your cash flow</span>
+                                    </div>
+                                </li>
+                                <li class="block-items__item">
+                                    <div class="items-icon">
+                                        <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    </div>
+                                    <div class="block-items__text">
+                                        <h3 class="block-items__title">World wide tracking</h3>
+                                        <span>To easily monitor deliveries</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gallery-item gallery-sell-item-2">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/sell-3.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <h2 class="title-regular"><span class="color-purple">Any </span>Merch.</h2>
+                                <div class="phone-scroll__description">
+                                    <p>We offer you flexible options to sell more than just digital content</p>
+                                    <a href="#" class="button-normal button">
+                                        <span>Get Started</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gallery-item gallery-sell-item-3">
+                        <div class="gallery-item__image">
+                            <div class="gallery-item__image-inner">
+                                <img src="./images/gallery/sell-4.jpg" alt="photo">
+                            </div>
+                        </div>
+                        <div class="gallery-item__text">
+                            <div class="gallery-item__text-inner">
+                                <h2 class="title-regular"><span class="orange">Sell </span>Merch.</h2>
+                                <div class="phone-scroll__description">
+                                    <p>We offer you flexible options to sell more than just digital content</p>
+                                    <a href="#" class="button-normal button">
+                                        <span>Get Started</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="section-enabled" class="section-enabled">
+        <div class="size-wrapp-small">
+            <h2 class="title-regular">Enabled for VR and Ultra High - Definition</h2>
+            <p>Technological freedom to explore and create without constraints. Offer your fans a more intense, immersive experience for increased engagement, sales, and retentions</p>
+        </div>
+        <div class="size-wrapp">
+            <div class="section-enabled__images">
+                <div class="section-enabled__image enabled-image-0">
+                    <img src="./images/section-enabled/section-enabled-1.jpg" alt="photo">
+                </div>
+                <div class="section-enabled__image enabled-image-1">
+                    <img src="./images/section-enabled/section-enabled-2.jpg" alt="photo">
+                </div>
+                <div class="section-enabled__image enabled-image-2">
+                    <img src="./images/section-enabled/section-enabled-3.jpg" alt="photo">
+                </div>
+            </div>
+        </div>
+        <div id="section-enabled-mask" class="section-enabled__mask">
+            <div class="mask-inner">
+                <img src="./images/section-enabled/mask.png" alt="mask">
+            </div>
+            <div class="section-enabled__links">
+                <div id="enabled-link-left-top" class="enabled-link bg-orange">
+                    <a href="#">
+                        <span>4K UHD</span>
+                    </a>
+                </div>
+                <div id="enabled-link-top" class="enabled-link bg-yellow">
+                    <a href="#">
+                        <span>3D SBS</span>
+                    </a>
+                </div>
+                <div id="enabled-link-right-top" class="enabled-link bg-pink">
+                    <a href="#">
+                        <span>3D SBS</span>
+                    </a>
+                </div>
+                <div id="enabled-link-left-bottom" class="enabled-link bg-fuchsia">
+                    <a href="#">
+                        <span>3D SBS</span>
+                    </a>
+                </div>
+                <div id="enabled-link-bottom" class="enabled-link bg-purple">
+                    <a href="#">
+                        <span>3D SBS</span>
+                    </a>
+                </div>
+                <div id="enabled-link-right-bottom" class="enabled-link bg-blue">
+                    <a href="#">
+                        <span>3D SBS</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" style="background-color: pink; height: 200vh;"></section>
 </main>
 <script src="./js/gsap.min.js"></script>
 <script src="./js/ScrollMagic.js"></script>

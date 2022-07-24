@@ -83,6 +83,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   border-radius: 50%;
   margin: 0 32px 0 0;
 
@@ -114,5 +115,87 @@ main {
 
   &__title {
     @extend %icon-title;
+  }
+}
+
+//colors
+.orange {
+  color: $color-orange;
+}
+
+.color-purple {
+  color: $color-purple;
+}
+
+.bg-orange {
+  background-color: $color-orange;
+}
+
+.bg-blue {
+  background-color: $color-blue;
+}
+
+.bg-pink {
+  background-color: $color-pink;
+}
+
+.bg-fuchsia {
+  background-color: $color-fuchsia;
+}
+
+.bg-yellow {
+  background-color: $color-yellow;
+}
+
+.bg-purple {
+  background-color: $color-purple;
+}
+
+//gallery
+.main-gallery {
+  .gallery {
+    height: 100vh;
+  }
+
+  .gallery-list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .gallery-item {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &__image {
+      max-width: 50%;
+      width: 100%;
+    }
+
+    &__image-inner {
+      max-width: 525px;
+      width: 100%;
+    }
+
+    &__text {
+      max-width: 48%;
+      width: 100%;
+      padding-left: 40px;
+
+      .button {
+        margin-top: 48px;
+      }
+    }
+
+    &__text-inner {
+      max-width: 400px;
+      width: 100%;
+      margin-left: auto;
+    }
   }
 }

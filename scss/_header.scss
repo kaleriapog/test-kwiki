@@ -6,6 +6,8 @@
   right: 0;
   z-index: 30;
   background-color: $color-background-main;
+  transition: background-color 0.5s linear;
+  backdrop-filter: saturate(180%) blur(20px);
 
   &__inner {
     padding: 16px 0;
@@ -17,6 +19,20 @@
   &__logo {
     max-width: 88px;
     width: 100%;
+    position: relative;
+
+    img {
+      display: block;
+    }
+
+    .logo-white {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+    }
 
     @include media-tablet {
       position: relative;
@@ -89,6 +105,11 @@
       z-index: 20;
       margin: 0 20px 0 auto;
     }
+  }
+
+  &.header-dark {
+    background-color: rgba(0, 0, 0, 0.72);
+
   }
 }
 
