@@ -315,7 +315,7 @@ timelineEnabledMask
     .fromTo(`.mask-inner`, 1, {}, {maxWidth: '1100px', opacity: '0', ease: Linear.easeNone})
     .fromTo(`#enabled-link-left-top`, 1, {x: '-100vh', y: '-100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut})
     .fromTo(`#enabled-link-left-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-    .fromTo(`#enabled-link-top`, 1, {y: '-70vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
+    .fromTo(`#enabled-link-top`, 1, {y: '-100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
     .fromTo(`#enabled-link-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
     .fromTo(`#enabled-link-right-top`, 1, {x: '100vh', y: '-100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut}, '<')
     .fromTo(`#enabled-link-right-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
