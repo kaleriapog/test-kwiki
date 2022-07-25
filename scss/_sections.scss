@@ -160,6 +160,11 @@
 }
 
 .section-checking-account {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &__inner {
     height: 100vh;
     display: flex;
@@ -169,20 +174,6 @@
   }
 
   .content-text {
-
-    .title-regular {
-      opacity: 0;
-      transform: translateY(100px);
-    }
-
-    &__description {
-      transition: all 0.4s ease-in-out;
-    }
-
-    .checking-account-description-hide {
-     opacity: 0;
-     transform: translateY(100px);
-   }
 
     &__subtitle {
       max-width: 590px;

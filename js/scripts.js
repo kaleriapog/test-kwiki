@@ -57,7 +57,7 @@ new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
     .addTo(controller)
     .reverse(false)
 
-//for change size video in hero
+// for change size video in hero
 let timelineSectionHero = new TimelineMax()
     .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
 
@@ -67,13 +67,13 @@ new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave"
     .addIndicators({name: `section hero`})
     .addTo(controller);
 
-//fixed width video in hero when resize
+// fixed width video in hero when resize
 window.addEventListener(`resize`, event => {
     const screenWidth = document.body.offsetWidth
     sectionHero.style.width = `${screenWidth}px`
 }, false);
 
-//for section about
+// start section about
 let timelineSectionAbout = new TimelineMax()
     .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
     .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
@@ -86,7 +86,7 @@ new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave"
     .addIndicators({name: `section about`})
     .addTo(controller);
 
-//for slide
+    // for slide
 let splideAboutSlider = new Splide( '.slider-about', {
     type   : 'loop',
     focus  : 'center',
@@ -99,7 +99,9 @@ let splideAboutSlider = new Splide( '.slider-about', {
 } );
 
 splideAboutSlider.mount();
+// end section about
 
+// start
 let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
     .on("enter", () => {
         document.getElementById('video-in-picture').play()
@@ -138,20 +140,38 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
         }
     });
 
-let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-checking-account", duration: '100%', triggerHook: 'onLeave'})
-    .setTween("#checking-account-title-interactive", { opacity: '1', transform: 'translateY(0)'})
-    // .addIndicators({name: "section-checking-account"})
+// start section checking account
+let timelineCheckingAccount = new TimelineMax()
+    .fromTo(['#checking-account-title-interactive'], 1, {opacity: 0.3}, {opacity: 1, ease: Linear.easeNone})
+    .fromTo(['#checking-account-title-interactive'], 1, {y: '50px'}, {y: '0', ease: Linear.easeNone})
+    .fromTo(['.checking-account-description-interactive'], 1, {opacity: 1, transform: 'translateY(100vh)'}, {opacity: 1, transform: 'translateY(0)', ease: Linear.easeNone}, '<')
+
+new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "100%" })
     .setPin("#section-checking-account")
-    .addTo(controller)
-    .on("progress", function (e) {
-        if(e.progress >= 0.8) {
-            checkingAccountDescription.classList.remove('checking-account-description-hide')
-        } else if(e.progress <= 0.8) {
-            checkingAccountDescription.classList.add('checking-account-description-hide')
-        }
-    })
-    // .addIndicators({name: "Checking Account"})
-    .reverse(true)
+    .setTween(timelineCheckingAccount)
+    .addIndicators({name: `section-checking-account`})
+    .addTo(controller);
+
+// new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "onLeave", duration: "25%" })
+//     .setPin("#section-checking-account")
+//     .addTo(controller);
+
+// let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-checking-account", duration: '100%', triggerHook: 'onLeave'})
+    // .setTween("#checking-account-title-interactive", { opacity: '1', transform: 'translateY(0)'})
+    // // .addIndicators({name: "section-checking-account"})
+    // .setPin("#section-checking-account")
+    // .addTo(controller)
+    // .on("progress", function (e) {
+    //     if(e.progress >= 0.8) {
+    //         checkingAccountDescription.classList.remove('checking-account-description-hide')
+    //     } else if(e.progress <= 0.8) {
+    //         checkingAccountDescription.classList.add('checking-account-description-hide')
+    //     }
+    // })
+    // // .addIndicators({name: "Checking Account"})
+    // .reverse(true)
+
+// end section checking account
 
 //gallery first
 const arrGalleryItemsFirst = document.querySelectorAll('.section-gallery-first .gallery-item');
