@@ -264,7 +264,6 @@ timelineHeaderWhite
 new ScrollMagic.Scene({ triggerElement: ".header-white-trigger", triggerHook: "onLeave", duration: "20" })
     .setTween(timelineHeaderWhite)
     .on("enter leave", function (e) {
-        console.log(e.type)
     })
     // .addIndicators({name: `header`})
     .addTo(controller);
@@ -339,7 +338,18 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
     .addTo(controller);
 // end section-enabled
 
-console.log(window.outerHeight)
+//play video
+document.body.addEventListener('click touchstart', () => {
+    const videoElement = document.getElementById('hero-video');
+    if (videoElement.playing) {
+        // video is already playing so do nothing
+    }
+    else {
+        // video is not playing
+        // so play video now
+        videoElement.play();
+    }
+})
 
 // const arrGallerySellItems = document.querySelectorAll('.section-gallery-sell .gallery-sell__items .block-items');
 // let wipeAnimationSell = new TimelineMax();
