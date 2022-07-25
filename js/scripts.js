@@ -58,7 +58,7 @@ new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
 
 //for change size video in hero
 let timelineSectionHero = new TimelineMax()
-    .fromTo(['#hero-video'], 1, {}, {width: '600px', ease: Linear.easeNone})
+    .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
 
 new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100" })
     .setPin("#section-hero")
