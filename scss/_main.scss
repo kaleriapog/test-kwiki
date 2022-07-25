@@ -199,3 +199,12 @@ main {
     }
   }
 }
+
+// inversion
+.section-inversion-dark {
+  background-color: $color-black;
+
+  .title-regular, h2 {
+    color: $color-white;
+  }
+}

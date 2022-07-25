@@ -305,12 +305,8 @@
 }
 
 .section-enabled {
-  background-color: $color-black;
   padding-top: 220px;
-
-  .title-regular, h2 {
-    color: $color-white;
-  }
+  transition: background-color 0.5s ease-in-out;
 
   &__images {
     display: flex;

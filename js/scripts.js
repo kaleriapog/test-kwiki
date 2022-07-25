@@ -64,7 +64,7 @@ let timelineSectionHero = new TimelineMax()
 new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100" })
     .setPin("#section-hero")
     .setTween(timelineSectionHero)
-    .addIndicators({name: `section hero`})
+    // .addIndicators({name: `section hero`})
     .addTo(controller);
 
 // fixed width video in hero when resize
@@ -83,7 +83,7 @@ let timelineSectionAbout = new TimelineMax()
 new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#slider-about")
     .setTween(timelineSectionAbout)
-    .addIndicators({name: `section about`})
+    // .addIndicators({name: `section about`})
     .addTo(controller);
 
     // for slide
@@ -149,7 +149,7 @@ let timelineCheckingAccount = new TimelineMax()
 new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "100%" })
     .setPin("#section-checking-account")
     .setTween(timelineCheckingAccount)
-    .addIndicators({name: `section-checking-account`})
+    // .addIndicators({name: `section-checking-account`})
     .addTo(controller);
 
 // new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "onLeave", duration: "25%" })
@@ -267,7 +267,7 @@ new ScrollMagic.Scene({ triggerElement: ".header-white-trigger", triggerHook: "o
     // .addIndicators({name: `header`})
     .addTo(controller);
 
-//for section gallery sell
+// start section gallery sell
 const arrGalleryItemsSell = document.querySelectorAll('.section-gallery-sell .gallery-item');
 let wipeAnimationSell = new TimelineMax();
 
@@ -284,7 +284,9 @@ new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "
     // .addIndicators({name: `gallery-sell-items`})
     .addTo(controller);
 
-//for section-enabled
+// end section gallery sell
+
+// start section-enabled
 let timelineEnabled = new TimelineMax();
 
 timelineEnabled
@@ -296,7 +298,13 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4",
     // .addIndicators({name: `section-enabled`})
     .addTo(controller);
 
-//for block mask
+// background color dark
+new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4" })
+    .setClassToggle(".section-enabled", "section-inversion-dark")
+    // .addIndicators({name: `section-enabled`})
+    .addTo(controller);
+
+    //for block mask
 let timelineEnabledMask = new TimelineMax();
 
 timelineEnabledMask
@@ -324,11 +332,10 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
         } if(e.progress >= 0.3) {
             document.querySelector('.section-enabled__links').style.zIndex = '1'
         }
-        // console.log(e.progress.toFixed(3));
     })
-    .addIndicators({name: `section-enabled-mask`})
+    // .addIndicators({name: `section-enabled-mask`})
     .addTo(controller);
-
+// end section-enabled
 
 
 
