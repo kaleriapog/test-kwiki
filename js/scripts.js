@@ -60,6 +60,8 @@ new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
 // for change size video in hero
 let timelineSectionHero = new TimelineMax()
     .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
+    .fromTo(['#hero-text'], 1, {}, {top: '70vh', ease: Linear.easeNone}, '<')
+
 
 new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100" })
     .setPin("#section-hero")
@@ -101,7 +103,7 @@ let splideAboutSlider = new Splide( '.slider-about', {
 splideAboutSlider.mount();
 // end section about
 
-// start
+// start section video in picture
 let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
     .on("enter", () => {
         document.getElementById('video-in-picture').play()
@@ -132,7 +134,7 @@ let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-pict
             sectionVideoInPicture.classList.add('background-dark')
             backgroundVideoPicture.classList.add('visible')
         } if(e.progress === 1) {
-            let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '100%', triggerHook: 1})
+            let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '30%', triggerHook: 1})
                 .setTween("#items-list-dark-interactive", { transform: 'translateY(-70px)'})
                 // .addIndicators({name: "items-dark-interactive"})
                 .addTo(controller)
