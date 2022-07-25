@@ -60,7 +60,7 @@ new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
 // for change size video in hero
 let timelineSectionHero = new TimelineMax()
     .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
-    .fromTo(['#hero-text'], 1, {}, {top: '70vh', ease: Linear.easeNone}, '<')
+    .fromTo(['#hero-text'], 1, {}, {top: '74vh', ease: Linear.easeNone}, '<')
 
 
 new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100" })
@@ -222,7 +222,7 @@ let timelineSectionTagline = new TimelineMax()
 timelineSectionTagline
     .fromTo(['#tagline-video-wrapp'], 1, {}, {top: 0, ease: Linear.easeNone})
     .fromTo(['#tagline'], 1, {}, {opacity: 0, ease: Linear.easeNone}, '<')
-    .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', ease: Linear.easeNone})
+    .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', height: '100vh', ease: Linear.easeNone})
 
 new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "100%" })
     // .setClassToggle(".header", "header-dark")
@@ -292,8 +292,8 @@ new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "
 let timelineEnabled = new TimelineMax();
 
 timelineEnabled
-    .fromTo(`.enabled-image-0`, 1, {}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"})
-    .fromTo(`.enabled-image-2`, 1, {}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"}, '<')
+    .fromTo(`.enabled-image-0`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"})
+    .fromTo(`.enabled-image-2`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"}, '<')
 
 new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4", duration: "200%" })
     .setTween(timelineEnabled)
@@ -339,7 +339,7 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
     .addTo(controller);
 // end section-enabled
 
-
+console.log(window.outerHeight)
 
 // const arrGallerySellItems = document.querySelectorAll('.section-gallery-sell .gallery-sell__items .block-items');
 // let wipeAnimationSell = new TimelineMax();

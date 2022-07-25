@@ -6,6 +6,7 @@ $mediaWidthLaptop: 1024px;
 $mediaWidthMobileHorizontalSmall: 560px;
 $mediaWidthMobileHorizontal: 700px;
 $heroVideoHeight: 770px;
+$mediaHeight-900: 900px;
 
 @mixin media-tablet {
   @media (max-width: $mediaWidthTablet) {
@@ -51,6 +52,12 @@ $heroVideoHeight: 770px;
 
 @mixin media-custom-for-hero-video {
   @media (max-height: $heroVideoHeight) {
+    @content;
+  }
+}
+
+@mixin media-max-height-900 {
+  @media (max-height: $mediaHeight-900) {
     @content;
   }
 }

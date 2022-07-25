@@ -34,6 +34,10 @@
 .section-about {
   padding-bottom: 60px;
 
+  @include media-max-height-900 {
+    padding-top: 60px;
+  }
+
   &__slider {
     width: 100%;
     overflow: hidden;
@@ -186,7 +190,7 @@
   @while $index >= 0 {
     .gallery-first-item-#{$index} .gallery-item__image-inner {
       margin-left: 24px * $index;
-      margin-top: -24px * $index;
+      margin-top: -52px * $index;
     }
     $index: $index - 1;
   }
@@ -212,6 +216,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      //margin-top: -70px;
     }
 
     &-image {
@@ -224,8 +229,13 @@
         opacity: 0;
       }
 
+      &__title {
+        margin-top: 85px;
+      }
+
       &__text {
         max-width: 285px;
+        margin-top: -70px;
 
         .button-normal {
           margin-top: 48px;
@@ -235,9 +245,9 @@
       &__items {
         //margin-top: 10vh;
 
-        .block-items__item {
-          padding: 0 0 55px;
-        }
+        //.block-items__item:not(:last-child) {
+        //  padding: 0 0 55px;
+        //}
       }
     }
 
@@ -274,10 +284,11 @@
     height: 100vh;
 
     .tagline-video {
-      max-width: 41%;
+      max-width: 30%;
       width: 100%;
       height: auto;
       padding-top: $height-header;
+      object-fit: cover;
     }
   }
 }
@@ -287,6 +298,16 @@
     &__text {
       overflow: hidden;
     }
+  }
+
+  .gallery-item__image-inner {
+    max-width: 525px;
+  }
+
+  .gallery-item__text-inner {
+    padding-left: 65px;
+    margin: 0;
+    max-width: 415px;
   }
 
   .gallery-sell-item-1 .gallery-item__image-inner {
@@ -305,6 +326,16 @@
 .section-enabled {
   padding-top: 220px;
   transition: background-color 0.5s ease-in-out;
+
+  &__description {
+    max-width: 730px;
+    text-align: center;
+
+    p {
+      max-width: 400px;
+      margin: auto;
+    }
+  }
 
   &__images {
     display: flex;

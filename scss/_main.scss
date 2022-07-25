@@ -40,7 +40,7 @@ main {
 //style for button-normal
 .button-normal {
   background-color: $button-normal-color;
-  padding: 12px 24px;
+  padding: 12px 28px;
   border-radius: 32px;
   @extend %font-button-normal;
 }
@@ -110,11 +110,12 @@ main {
   &__item {
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 37px 0;
   }
 
   &__title {
     @extend %icon-title;
+    padding-bottom: 7px;
   }
 }
 
@@ -178,14 +179,14 @@ main {
     }
 
     &__image-inner {
-      max-width: 525px;
+      max-width: 565px;
       width: 100%;
     }
 
     &__text {
       max-width: 48%;
       width: 100%;
-      padding-left: 40px;
+      //padding-left: 40px;
 
       .button {
         margin-top: 48px;
@@ -195,7 +196,7 @@ main {
     &__text-inner {
       max-width: 400px;
       width: 100%;
-      margin-left: auto;
+      margin: auto;
     }
   }
 }
