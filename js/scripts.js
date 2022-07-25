@@ -5,14 +5,15 @@ const navigationBlock = document.querySelector('.header__navigation')
 let controller = new ScrollMagic.Controller()
 const heroVideo = document.getElementById('hero-video')
 const sectionHero = document.querySelector('.section-hero')
-const arrSliderAboutItems = document.querySelectorAll('.about-slider-item')
-const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-interactive')
+// const arrSliderAboutItems = document.querySelectorAll('.about-slider-item')
+// const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-interactive')
 const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
 const backgroundVideoPicture = document.querySelector('.background-video-picture')
 const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
-const arrGalleryTrigger = document.querySelectorAll('.gallery-first-trigger')
+// const arrGalleryTrigger = document.querySelectorAll('.gallery-first-trigger')
 const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
-const arrGallerySellTrigger = document.querySelectorAll('.gallery-sell-trigger')
+// const arrGallerySellTrigger = document.querySelectorAll('.gallery-sell-trigger')
+
 // for open menu mobile
 if(navIconOpen) {
     navIconOpen.addEventListener('click', () => {
@@ -75,15 +76,29 @@ window.addEventListener(`resize`, event => {
 //for section about
 let timelineSectionAbout = new TimelineMax()
     .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
-    .fromTo(['#slider-about-track'], 1, {}, {y: '-20vh', ease: Linear.easeNone}, '<')
-    .fromTo(['#about-slider-list'], 1, {}, {transform: 'translateX(-800px)', ease: Linear.easeNone})
-    .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-30vh)', ease: Linear.easeNone})
+    .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
+    .fromTo(['#slider-about-track'], 1, {}, {x: '-800px', ease: Linear.easeNone})
+    .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-68px)', ease: Linear.easeNone})
 
 new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#slider-about")
     .setTween(timelineSectionAbout)
     .addIndicators({name: `section about`})
     .addTo(controller);
+
+//for slide
+let splideAboutSlider = new Splide( '.slider-about', {
+    type   : 'loop',
+    focus  : 'center',
+    gap: 20,
+    autoWidth: true,
+    arrows: false,
+    pagination: false,
+    clones: 2,
+    drag: false,
+} );
+
+splideAboutSlider.mount();
 
 let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
     .on("enter", () => {
@@ -293,6 +308,7 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
     })
     .addIndicators({name: `section-enabled-mask`})
     .addTo(controller);
+
 
 
 

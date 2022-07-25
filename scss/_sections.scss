@@ -34,10 +34,10 @@
   }
 
   &__slider-track {
-    margin-left: -800px;
+    //margin-left: -1795px;
 
     @include media-mobile {
-      margin-left: -1400px;
+      //margin-left: -1400px;
     }
 
     .about-slider-list {
@@ -54,8 +54,9 @@
   }
 
   &__text-narrow {
-    max-width: 490px;
+    max-width: 695px;
     width: 100%;
+    padding-left: 205px;
   }
 }
 
