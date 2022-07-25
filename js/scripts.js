@@ -47,15 +47,18 @@ heroVideo.addEventListener('ended', (event) => {
 })
 
 // not scroll when the screen refreshes and the video is not fully intersecting with the view port
-new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
-    // .addIndicators({name: "trigger"})
-    .on("progress", function (e) {
-        if(e.progress < 0.01) {
-            document.body.classList.add('no-scroll')
-        }
-    })
-    .addTo(controller)
-    .reverse(false)
+//play video
+heroVideo.addEventListener('playing', () => {
+    new ScrollMagic.Scene({triggerElement: "#main", duration: '1', triggerHook: 0})
+        // .addIndicators({name: "trigger"})
+        .on("progress", function (e) {
+            if(e.progress < 0.01) {
+                document.body.classList.add('no-scroll')
+            }
+        })
+        .addTo(controller)
+        .reverse(false)
+})
 
 // for change size video in hero
 let timelineSectionHero = new TimelineMax()
@@ -338,18 +341,7 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
     .addTo(controller);
 // end section-enabled
 
-//play video
-document.body.addEventListener('click touchstart', () => {
-    const videoElement = document.getElementById('hero-video');
-    if (videoElement.playing) {
-        // video is already playing so do nothing
-    }
-    else {
-        // video is not playing
-        // so play video now
-        videoElement.play();
-    }
-})
+
 
 // const arrGallerySellItems = document.querySelectorAll('.section-gallery-sell .gallery-sell__items .block-items');
 // let wipeAnimationSell = new TimelineMax();
