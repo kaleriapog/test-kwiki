@@ -285,12 +285,12 @@ let wipeAnimationSell = new TimelineMax();
 
 for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
     wipeAnimationSell
-        .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {transform: i === arrGalleryItemsSell.length - 1 ? 'translateY(0)' : 'translateY(150%)'}, {transform: 'translateY(0)', ease: Expo.easeOut})
-        .fromTo(`.gallery-sell-item-${i} .gallery-item__image`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: Linear.easeNone})
-        .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-120%)', ease: Linear.easeNone}, '<')
+        .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {transform: i === arrGalleryItemsSell.length - 1 ? 'translateY(0)' : 'translateY(105%)'}, {transform: 'translateY(0)'}, '-=0.4')
+        .fromTo(`.gallery-sell-item-${i} .gallery-item__image`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: "slow(0.3, 0.4)"})
+        .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-105%)'}, '<')
 }
 
-new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "100%" })
+new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "150%" })
     .setPin("#section-gallery-sell")
     .setTween(wipeAnimationSell)
     // .addIndicators({name: `gallery-sell-items`})
