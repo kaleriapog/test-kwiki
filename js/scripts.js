@@ -13,6 +13,11 @@ const checkingAccountDescription = document.querySelector('.checking-account-des
 // const arrGalleryTrigger = document.querySelectorAll('.gallery-first-trigger')
 const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
 // const arrGallerySellTrigger = document.querySelectorAll('.gallery-sell-trigger')
+const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
+
+// all section
+const sectionAudio = document.querySelector('.section-audio')
+const sectionFundingEvery = document.querySelector('.section-funding-every')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -82,7 +87,7 @@ window.addEventListener(`resize`, event => {
 let timelineSectionAbout = new TimelineMax()
     .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
     .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
-    .fromTo(['#slider-about-track'], 1, {}, {x: '-800px', ease: Linear.easeNone})
+    .fromTo(['#slider-about-track'], 1, {}, {x: '-1350px', ease: Linear.easeNone})
     .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-68px)', ease: Linear.easeNone})
 
 new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "100%" })
@@ -206,7 +211,7 @@ let timelineSectionPhoneScroll = new TimelineMax()
         let lastItem =  arrPhoneScrollInteractive.length - 1
 
         timelineSectionPhoneScroll
-            .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
             .fromTo(`#phone-scroll-interactive-${i}`, 1, {}, {opacity: (i === lastItem ) ? 1 : 0, ease: Linear.easeNone}, (i === lastItem ) ? '<' : '-=0')
     })
 
@@ -219,7 +224,7 @@ new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "
     // .addIndicators({name: `section-phone-scroll`})
     .addTo(controller);
 
-//for section-tagline
+// start section-tagline
 let timelineSectionTagline = new TimelineMax()
 
 timelineSectionTagline
@@ -254,6 +259,8 @@ new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLea
     .setTween(timelineHeaderDark)
     // .addIndicators({name: `header`})
     .addTo(controller);
+
+// end section-tagline
 
 // header white
 let timelineHeaderWhite = new TimelineMax()
@@ -340,6 +347,69 @@ new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "
     // .addIndicators({name: `section-enabled-mask`})
     .addTo(controller);
 // end section-enabled
+
+// start section-audio
+if (sectionAudio) {
+    //for play video in section-audio
+    new ScrollMagic.Scene({ triggerElement: "#block-audio-video",  triggerHook: "0.5" })
+        .on("progress", (e) => {
+            if(e.progress > 0) {
+                document.getElementById('block-audio-video').play()
+            }
+        })
+        // .addIndicators({name: `section Audio`})
+        .addTo(controller)
+        .reverse(true);
+
+    new ScrollMagic.Scene({ triggerElement: "#main-items-block-audio",  triggerHook: "0.4" })
+        .on("enter", () => {
+            document.getElementById('block-audio-video').pause()
+        })
+        .setTween("#main-items-list-audio", { transform: 'translateY(0)', opacity: 1})
+        // .addIndicators({name: `section Audio`})
+        .addTo(controller)
+        .reverse(true);
+}
+// end section-audio
+
+// start section-funding-every
+if(sectionFundingEvery) {
+    // background color dark
+    new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0.4" })
+        .setClassToggle(".section-funding-every", "section-inversion-dark")
+        // .addIndicators({name: `section-enabled`})
+        .addTo(controller);
+
+
+        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "200%"})
+            .setPin("#section-funding-every")
+            .addIndicators({name: `section-FundingEvery`})
+            .setTween(".section-funding-every__items", { y: '-100%'})
+            // .on('onLeave', () => {
+            //     new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "0.5", duration: "200%"})
+            //         .addIndicators({name: `section-FundingEvery-item`})
+            //         .addTo(controller);
+            //
+            // })
+            .addTo(controller);
+
+
+    // let timelineFundingEvery = new TimelineMax()
+    //
+    // arrFundingEveryItems.forEach((item, idx) => {
+    //     timelineFundingEvery
+    //     .fromTo(`#funding-every-item-${idx}`, 1, {y: idx === 0 ? '-100px' : '0'}, {y: '-120vh', ease: Linear.easeNone})
+    //     .fromTo(`#funding-every-item-${idx+1}`, 1, {opacity:  idx === 0 ? '0.1' : '0'}, {y: '0', opacity: '1', ease: Linear.easeNone}, '<')
+    //
+    // })
+    //
+    // new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "onLeave", duration: "200%" })
+    //     .setTween(timelineFundingEvery)
+    //     .setPin("#section-funding-every")
+    //     .addIndicators({name: `section-FundingEvery`})
+    //     .addTo(controller);
+}
+// end section-funding-every
 
 
 

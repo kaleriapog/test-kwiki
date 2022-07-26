@@ -119,7 +119,47 @@ main {
   }
 }
 
-//colors
+// main items
+.main-items {
+  padding: 0 0 200px;
+  position: relative;
+
+  &__list {
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+    text-align: center;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 33.3333%;
+    width: 100%;
+  }
+
+  .items-icon {
+    margin: 0 0 26px 0;
+  }
+
+  &__item-title {
+    @extend %icon-title-small;
+    padding-bottom: 8px;
+  }
+
+  &__item-text {
+    color: $color-items-text;
+  }
+}
+
+// colors
 .orange {
   color: $color-orange;
 }
@@ -207,5 +247,19 @@ main {
 
   .title-regular, h2 {
     color: $color-white;
+  }
+
+  .items-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .block-items {
+    &__text {
+      color: $color-items-text
+    }
+
+    &__title {
+      color: $color-white
+    }
   }
 }
