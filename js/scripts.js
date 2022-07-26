@@ -183,24 +183,25 @@ new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHoo
 
 // end section checking account
 
-//gallery first
+// start gallery first
 const arrGalleryItemsFirst = document.querySelectorAll('.section-gallery-first .gallery-item');
 let wipeAnimationFirst = new TimelineMax();
 
 for (let i = arrGalleryItemsFirst.length - 1; i >= 0; i--) {
     wipeAnimationFirst
-        // .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, 1, {transform: i === arrGalleryItemsFirst.length - 1 ? 'translateY(0)' : 'translateY(0)'}, {transform: 'translateY(20px)', ease: Expo.easeOut})
-        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, 1, {visibility: i === arrGalleryItemsFirst.length - 1 ? 'visible' : 'hidden'}, {visibility: 'visible'})
-        .fromTo(`.gallery-first-item-${i} .gallery-item__image`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-100vh)', ease: Linear.easeNone})
-        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, 1, {}, {transform: 'translateY(-40px)'}, '<')
-        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, 1, {}, {visibility: i === 0 ? 'visible' : 'hidden'})
+        .fromTo(`.gallery-first-item-${i} .gallery-item__image`, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: Linear.easeNone})
+        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {opacity: i === arrGalleryItemsFirst.length - 1 ? '1' : '0'}, {visibility: '1'}, '<')
+        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
+        .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
 }
 
-new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "100%" })
+new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "70%" })
     .setPin("#section-gallery-first")
     .setTween(wipeAnimationFirst)
     // .addIndicators({name: `gallery First`})
     .addTo(controller);
+
+// end gallery first
 
 //for section phone-scroll
 let timelineSectionPhoneScroll = new TimelineMax()
@@ -289,7 +290,7 @@ for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
         .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-120%)', ease: Linear.easeNone}, '<')
 }
 
-new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "150%" })
+new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#section-gallery-sell")
     .setTween(wipeAnimationSell)
     // .addIndicators({name: `gallery-sell-items`})
