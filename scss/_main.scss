@@ -2,6 +2,7 @@
 body {
   @extend %font-main-text;
   background-color: $color-background-main;
+  scroll-behavior: smooth;
 }
 
 //main
