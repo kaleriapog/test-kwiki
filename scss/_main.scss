@@ -193,7 +193,7 @@ main {
   background-color: $color-purple;
 }
 
-//gallery
+// gallery
 .main-gallery {
   .gallery {
     height: 100vh;
@@ -263,4 +263,11 @@ main {
       color: $color-white
     }
   }
+}
+
+// fixed swiper transition
+.swiper-wrapper {
+  -webkit-transition-timing-function : linear;
+  -o-transition-timing-function : linear;
+  transition-timing-function : linear;
 }

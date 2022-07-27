@@ -388,21 +388,38 @@
 }
 
 .section-static {
-  padding-top: 200px;
+  padding: 200px 0 200px;
 
   &__inner {
     display: flex;
     justify-content: space-between;
+
+    .title-regular {
+      max-width: 390px;
+      width: 100%;
+    }
+    .subtitle {
+      max-width: 305px;
+      width: 100%;
+    }
   }
 
   .block-static-left {
-    max-width: 50%;
+    max-width: 490px;
     width: 100%;
+
+    &__image {
+      padding-top: 140px;
+    }
   }
 
-  .block-static-left {
-    max-width: 48%;
+  .block-static-right {
+    max-width: 390px;
     width: 100%;
+
+    &__image {
+      padding: 25px 0 70px;
+    }
   }
 
   .block-items__item {
@@ -442,8 +459,99 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+  }
+}
 
-    .block-items__item {
+.section-reliable {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    gap: 50px;
+  }
+
+  &__slider {
+    max-width: 490px;
+    width: 100%;
+    max-height: 600px;
+
+    .reliable-sliders {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      background-color: $color-background-slider;
+    }
+  }
+
+  &__text {
+    max-width: 590px;
+    padding-right: 15px;
+    width: 100%;
+  }
+
+  .subtitle {
+    max-width: 410px;
+    width: 100%;
+  }
+
+  &__items {
+    padding: 120px 50px 0 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    .reliable-item {
+      max-width: 125px;
+      width: 100%;
+      color: $color-black;
+
+      &-title {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: -1px;
+        padding-bottom: 8px;
+      }
+
+      &-text {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.333;
+      }
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  .reliable-slider {
+    height: 67vh;
+    margin: inherit;
+
+    &__slide-inner {
+      max-width: 145px;
+      max-height: 145px;
+      width: 100%;
+      border-radius: 50%;
+      padding: 40px;
+      background-color: $background-icon-slider;
+    }
+
+    .swiper-slide {
+      height: 145px;
+    }
+
+    &__flag {
+      max-width: 64px;
+      width: 100%;
     }
   }
 }

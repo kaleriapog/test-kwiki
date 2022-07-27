@@ -18,6 +18,7 @@ const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .
 // all section
 const sectionAudio = document.querySelector('.section-audio')
 const sectionFundingEvery = document.querySelector('.section-funding-every')
+const sectionReliable = document.querySelector('.section-reliable')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -382,16 +383,10 @@ if(sectionFundingEvery) {
         .addTo(controller);
 
 
-        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "200%"})
+        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "100%"})
             .setPin("#section-funding-every")
             .addIndicators({name: `section-FundingEvery`})
-            .setTween(".section-funding-every__items", { y: '-100%'})
-            // .on('onLeave', () => {
-            //     new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "0.5", duration: "200%"})
-            //         .addIndicators({name: `section-FundingEvery-item`})
-            //         .addTo(controller);
-            //
-            // })
+            .setTween(".section-funding-every__items", { y: '-50%'})
             .addTo(controller);
 
 
@@ -412,69 +407,47 @@ if(sectionFundingEvery) {
 }
 // end section-funding-every
 
+// start section-reliable
+if(sectionReliable) {
+    // for slide section-reliable
+    const reliableSliderLeft = new Swiper('.reliable-slider-left', {
+        loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        autoplay: {
+            delay: 1,
+        },
+        speed: 4000,
+        breakpoints: {
+            320: {
+                direction: 'horizontal',
+                spaceBetween: 15,
+            },
+            1024: {
+                direction: 'vertical',
+            },
+        },
+    });
 
+    const reliableSliderRight = new Swiper('.reliable-slider-right', {
+        loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        autoplay: {
+            delay: 1,
+            reverseDirection: true,
+        },
+        speed: 4000,
+        breakpoints: {
+            320: {
+                direction: 'horizontal',
+            },
+            1024: {
+                direction: 'vertical',
+            },
+        },
+    });
 
-// const arrGallerySellItems = document.querySelectorAll('.section-gallery-sell .gallery-sell__items .block-items');
-// let wipeAnimationSell = new TimelineMax();
-//
-// for (let i = arrGallerySellTrigger.length - 1; i >= 0; i--) {
-//     wipeAnimationSell
-//         .fromTo(`#gallery-sell-trigger-${i}`, 1, {y: 0}, {y: i === 0 ? '0' : '-100vh', ease: Linear.easeNone})
-//         .call(function (idx) {
-//             const nextTextEl = document.getElementById(`gallery-sell-items-trigger-${idx}`);
-//             arrGallerySellItems.forEach(function (item) {
-//                 item.removeAttribute('style')
-//             });
-//             nextTextEl.setAttribute('style', 'opacity: 1;');
-//         }, [i], '<')
-//         .to(`#gallery-sell-items-trigger-${i} .block-sell-items-list`, 1, {y: '-100%', ease: Linear.easeNone,})
-// }
-//
-// new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "100%" })
-//     .setPin("#section-gallery-sell")
-//     .setTween(wipeAnimationSell)
-//     .addIndicators({name: `gallery-sell-items`})
-//     .addTo(controller);
-
-
-
-
-// let sectionCheckingDescription = new ScrollMagic.Scene({triggerElement: "#checking-account-description-trigger", duration: '50', triggerHook: 0.45})
-//     .setTween("#checking-account-description-interactive", { opacity: '1', transform: 'translateY(0)'})
-//     .addIndicators({name: "checking-account-description-trigger"})
-//     .addTo(controller)
-//     .reverse(true)
-
-// checking-account-description-interactive
-
-// let heroLottie = LottieInteractivity.create({
-//     player:'#video-logo',
-//     mode:"chain",
-//     actions: [
-//         {
-//             state: 'autoplay'
-//         }
-//     ]
-// })
-
-// let heroLottie = lottie.loadAnimation({
-//     container: document.getElementById('hero-video'),
-//     renderer: 'svg',
-//     loop: false,
-//     autoplay: true,
-//     path: '../video/hero-5s60f-24c-46s.json'
-// });
-
-// heroLottie.addEventListener("data_ready", function() {
-//     document.body.classList.remove('no-scroll')
-//     document.querySelector('#hero-video svg').setAttribute("preserveAspectRatio","xMaxYMax slice");
-// })
-//
-// heroLottie.addEventListener("complete", function() {
-//     document.body.classList.remove('no-scroll')
-// })
-
-
-
-
+}
+// end section-reliable
 
