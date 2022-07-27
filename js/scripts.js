@@ -72,11 +72,10 @@ heroVideo.addEventListener('playing', () => {
 
 // for change size video in hero
 let timelineSectionHero = new TimelineMax()
-    .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
-    .fromTo(['#hero-text'], 1, {}, {top: '74vh', ease: Linear.easeNone}, '<')
+    .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Expo.easeOut})
+    .fromTo(['#hero-text'], 1, {}, {top: '75vh', ease: Linear.easeNone}, '<')
 
-
-new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100" })
+new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100%" })
     .setPin("#section-hero")
     .setTween(timelineSectionHero)
     // .addIndicators({name: `section hero`})
