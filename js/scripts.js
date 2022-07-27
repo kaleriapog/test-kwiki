@@ -14,6 +14,9 @@ const checkingAccountDescription = document.querySelector('.checking-account-des
 const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
 // const arrGallerySellTrigger = document.querySelectorAll('.gallery-sell-trigger')
 const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
+const smarterLeftItem = document.querySelectorAll('.section-smarter__left .block-items__item')
+const smarterRightItem = document.querySelectorAll('.section-smarter__right .block-items__item')
+
 
 // all section
 const sectionAudio = document.querySelector('.section-audio')
@@ -456,22 +459,30 @@ if(sectionReliable) {
 if(sectionSmarter) {
     let timelineSectionSmarter = new TimelineMax();
 
-    new ScrollMagic.Scene({ triggerElement: "#section-smarter-interactive",  triggerHook: "onLeave", duration: "50%" })
+    new ScrollMagic.Scene({ triggerElement: "#section-smarter-interactive",  triggerHook: "onLeave", duration: "100%" })
         // .setTween(timelineSectionSmarter)
         .setPin("#section-smarter-interactive")
         .on('progress', (e) => {
-            if(e.progress > 0 && e.progress < 0.3) {
-                document.getElementById('smarter-left-item-0').classList.add('smarter-item-start-interactive')
-                document.getElementById('smarter-right-item-0').classList.add('smarter-item-start-interactive')
-            }  if(e.progress > 0.3 && e.progress < 0.6) {
-                document.getElementById('smarter-left-item-1').classList.add('smarter-item-start-interactive')
-                document.getElementById('smarter-right-item-1').classList.add('smarter-item-start-interactive')
-            }  if(e.progress > 0.6 && e.progress < 0.9) {
-                document.getElementById('smarter-left-item-2').classList.add('smarter-item-start-interactive')
-                document.getElementById('smarter-right-item-2').classList.add('smarter-item-start-interactive')
-            }
+            let sumSmarterRightItem = smarterRightItem.length
+            let sumSmarterLeftItem = smarterLeftItem.length
+            let interval = 1 / (sumSmarterRightItem > sumSmarterLeftItem ? sumSmarterRightItem : sumSmarterLeftItem)
+            let currentInterval = 0;
+            let arrBigSmarterItem = sumSmarterRightItem > sumSmarterLeftItem ? smarterRightItem : smarterLeftItem
+
+            arrBigSmarterItem.forEach((item, idx) => {
+                if(e.progress > currentInterval && e.progress < currentInterval + interval) {
+                    if(document.getElementById(`smarter-left-item-${idx}`)) {
+                        document.getElementById(`smarter-left-item-${idx}`).classList.add('smarter-item-start-interactive')
+                    }
+                    if(document.getElementById(`smarter-right-item-${idx}`)) {
+                        document.getElementById(`smarter-right-item-${idx}`).classList.add('smarter-item-start-interactive')
+                    }
+                }
+                currentInterval = currentInterval + interval
+
+            })
         })
-        // .addIndicators({name: ` Section Smarter`})
+        .addIndicators({name: ` Section Smarter`})
         .addTo(controller);
 }
 // end section-smarter
