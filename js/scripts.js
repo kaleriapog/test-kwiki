@@ -19,6 +19,7 @@ const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .
 const sectionAudio = document.querySelector('.section-audio')
 const sectionFundingEvery = document.querySelector('.section-funding-every')
 const sectionReliable = document.querySelector('.section-reliable')
+const sectionSmarter = document.querySelector('.section-smarter')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -385,7 +386,7 @@ if(sectionFundingEvery) {
 
         new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "100%"})
             .setPin("#section-funding-every")
-            .addIndicators({name: `section-FundingEvery`})
+            // .addIndicators({name: `section-FundingEvery`})
             .setTween(".section-funding-every__items", { y: '-50%'})
             .addTo(controller);
 
@@ -450,4 +451,28 @@ if(sectionReliable) {
 
 }
 // end section-reliable
+
+// start section-smarter
+if(sectionSmarter) {
+    let timelineSectionSmarter = new TimelineMax();
+
+    new ScrollMagic.Scene({ triggerElement: "#section-smarter-interactive",  triggerHook: "onLeave", duration: "50%" })
+        // .setTween(timelineSectionSmarter)
+        .setPin("#section-smarter-interactive")
+        .on('progress', (e) => {
+            if(e.progress > 0 && e.progress < 0.3) {
+                document.getElementById('smarter-left-item-0').classList.add('smarter-item-start-interactive')
+                document.getElementById('smarter-right-item-0').classList.add('smarter-item-start-interactive')
+            }  if(e.progress > 0.3 && e.progress < 0.6) {
+                document.getElementById('smarter-left-item-1').classList.add('smarter-item-start-interactive')
+                document.getElementById('smarter-right-item-1').classList.add('smarter-item-start-interactive')
+            }  if(e.progress > 0.6 && e.progress < 0.9) {
+                document.getElementById('smarter-left-item-2').classList.add('smarter-item-start-interactive')
+                document.getElementById('smarter-right-item-2').classList.add('smarter-item-start-interactive')
+            }
+        })
+        // .addIndicators({name: ` Section Smarter`})
+        .addTo(controller);
+}
+// end section-smarter
 

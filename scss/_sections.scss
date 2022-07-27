@@ -555,3 +555,35 @@
     }
   }
 }
+
+.section-smarter {
+  &__headline {
+    padding-bottom: 100px;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    height: 100vh;
+
+    .smarter-image {
+      max-width: 310px;
+    }
+  }
+
+  .block-items {
+    &__item {
+      transform: translateY(50px);
+      opacity: 0;
+      transition: transform 0.5s linear,
+      opacity 0.2s linear;
+    }
+  }
+
+  .smarter-item-start-interactive {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
