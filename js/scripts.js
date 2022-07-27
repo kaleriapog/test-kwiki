@@ -482,7 +482,7 @@ if(sectionSmarter) {
 
             })
         })
-        .addIndicators({name: ` Section Smarter`})
+        // .addIndicators({name: ` Section Smarter`})
         .addTo(controller);
 }
 // end section-smarter

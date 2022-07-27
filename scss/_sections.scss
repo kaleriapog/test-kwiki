@@ -567,9 +567,11 @@
     align-items: center;
     gap: 50px;
     height: 100vh;
+    padding: 0 25px;
 
-    .smarter-image {
+    .smarter-image,  .smarter-image img {
       max-width: 310px;
+      max-height: 70vh;
     }
   }
 
