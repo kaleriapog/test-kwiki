@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./swiper-bundle.min.css">
+    <link rel="stylesheet" href="./splide.min.css">
     <title>Kwiki</title>
 </head>
 <body class="body">
@@ -540,14 +541,14 @@
         </div>
     </section>
     <section id="section-funding-every" class="section-funding-every">
-        <div class="size-wrapp">
+        <div class="size-wrapp-normal">
             <div class="section-funding-every__inner">
                 <div class="section-funding-every__headline">
                     <h2 class="title-regular">Funding tools for every dream</h2>
                     <p>Reach your goals faster with more ways to rise funds, a generous transaction limit and ultra-fast seltlement</p>
                 </div>
                 <div class="section-funding-every__items">
-                    <ul class="block-items__list">
+                    <ul id="funding-every-items-list" class="block-items__list">
                         <li id="funding-every-item-0" class="block-items__item">
                             <div class="items-icon">
                                 <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
@@ -562,20 +563,11 @@
                                 <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
                             </div>
                             <div class="block-items__text">
-                                <h3 class="block-items__title">Free payout anytime</h3>
-                                <span>Earning available next day</span>
+                                <h3 class="block-items__title">Hasslo-free processing</h3>
+                                <span>Even ...</span>
                             </div>
                         </li>
                         <li id="funding-every-item-2" class="block-items__item">
-                            <div class="items-icon">
-                                <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
-                            </div>
-                            <div class="block-items__text">
-                                <h3 class="block-items__title">Free payout anytime</h3>
-                                <span>Earning available next day</span>
-                            </div>
-                        </li>
-                        <li id="funding-every-item-3" class="block-items__item">
                             <div class="items-icon">
                                 <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
                             </div>
@@ -759,7 +751,7 @@
         <div class="size-wrapp">
             <div class="size-wrapp-small">
                 <div class="section-smarter__headline">
-                    <h2 class="title-regular">A smarter wallet for your fans</h2>
+                    <h2 class="title-small">A smarter wallet for your fans</h2>
                     <p class="subtitle">And a powerful tool to efforlessly increase your conversions</p>
                 </div>
             </div>
@@ -815,18 +807,323 @@
             <div id="slider-smartly-track" class="section-smartly__slider-track splide__track">
                 <ul id="about-smartly-list" class="smartly-slider-list splide__list">
                     <li class="smartly-slider-item splide__slide">
-                        <img src="./images/about-slider/photo-2.jpg" alt="photo">
+                        <img src="./images/section-smartly/photo-1.jpg" alt="photo">
                     </li>
                     <li class="smartly-slider-item splide__slide">
-                        <img src="./images/about-slider/photo-3.jpg" alt="photo">
+                        <img src="./images/section-smartly/photo-2.jpg" alt="photo">
                     </li>
                     <li class="smartly-slider-item splide__slide">
-                        <img src="./images/about-slider/photo-4.jpg" alt="photo">
+                        <img src="./images/section-smartly/photo-3.jpg" alt="photo">
                     </li>
                     <li class="smartly-slider-item splide__slide">
-                        <img src="./images/about-slider/photo-1.jpg" alt="photo">
+                        <img src="./images/section-smartly/photo-4.jpg" alt="photo">
+                    </li>
+                    <li class="smartly-slider-item splide__slide">
+                        <img src="./images/section-smartly/photo-5.jpg" alt="photo">
                     </li>
                 </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section-endless">
+        <div class="size-wrapp">
+            <div class="section-endless__inner">
+                <h2 class="title-regular">One account,<br>
+                    <span id="title-regular-mark-1" class="title-regular-mark color-pink">endless posting options</span>
+                    <span id="title-regular-mark-2" class="title-regular-mark color-light-blue">multiple profile options</span>
+                </h2>
+                <div class="section-endless__description">
+                    <div class="section-endless__images">
+                        <div class="section-endless__image-inner">
+                            <img src="./images/section-endless/section-endless-1.png" alt="photo">
+                        </div>
+                        <div class="section-endless__image-inner">
+                            <img src="./images/section-endless/section-endless-2.png" alt="photo">
+                        </div>
+                    </div>
+                    <div class="section-endless__items">
+                        <ul class="block-items__list endless-list">
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Assign post to different profiles by content type</h3>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Group your post by access level with flexible options for each</h3>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Offer multi-month promotional subscription bundles</h3>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="block-items__list endless-list">
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Onboard only once</h3>
+                                    <span>Time saving simple setup</span>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Switch easily between profiles</h3>
+                                    <span>Hand-free content management</span>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-endless/arrow.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">Freepayments for all profiles</h3>
+                                    <span>Hand-free content management</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-static">
+        <div class="size-wrapp-normal">
+            <div class="section-static__inner">
+                <div class="block-static-left">
+                    <h2 class="title-regular">Dedicated features for custom content</h2>
+                    <p class="subtitle"> You’ll have more ways to monetize and engage with each with Fan individually, whether it’s Cameo shoutout or a Custom video</p>
+                    <div class="block-static-left__image">
+                        <img src="./images/section-static/dedicated-1.jpg" alt="photo">
+                    </div>
+                </div>
+                <div class="block-static-right">
+                    <div class="block-static-right__image">
+                        <img src="./images/section-static/dedicated-2.jpg" alt="photo">
+                    </div>
+                    <ul class="block-items__list">
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Custom Cameos</h3>
+                                <span>Sponsored shoutouts have never been easier</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Custom Videos</h3>
+                                <span>Personalised content with premium add-on options</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Flexible Pricing</h3>
+                                <span>Sell content from $4,99 to $9,999 per video</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-master">
+        <div class="size-wrapp">
+            <div class="size-wrapp-small">
+                <div class="section-smarter__headline">
+                    <h2 class="title-regular">Master your sales with advanced analytics</h2>
+                    <p class="subtitle">Make smarter decisions backed data</p>
+                </div>
+            </div>
+            <div class="section-master__inner">
+                <div class="section-master__left"></div>
+                <div class="section-master__center">
+                    <div class="master-image">
+                        <img src="./images/section-master/iphone-12-mini.png" alt="iphone 12 mini">
+                    </div>
+                </div>
+                <div class="section-master__right">
+                    <ul class="block-items__list">
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Detailed <br>conversion metrics</h3>
+                                <span>Foe every start category</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-legitimizing">
+        <div class="size-wrapp-normal">
+            <div class="section-legitimizing__inner">
+                <div class="section-legitimizing__image">
+                    <div class="section-legitimizing__image-inner">
+                        <img src="images/section-legitimizing/iphone-12-mini.png" alt="photo">
+                    </div>
+                    <div class="image-blur">
+                        <img src="images/section-legitimizing/phone-blur.png" alt="photo">
+                    </div>
+                </div>
+                <div class="section-legitimizing__text">
+                    <div class="section-legitimizing__headline">
+                        <h2 class="title-small">Legitimizing your income just got easier</h2>
+                        <p>We help you keep International sales effortlessly compilant with automated calculation, collection and remittance of all required transaction taxes</p>
+                    </div>
+                    <div class="section-legitimizing__items">
+                        <ul class="block-items__list">
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-legitimizing/us.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">US Sales Tax</h3>
+                                    <span>All 11,000 lorem ipsum</span>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-legitimizing/uk.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">UK & EU VAT</h3>
+                                    <span>Smart invcicing collection & lorem ipsum</span>
+                                </div>
+                            </li>
+                            <li class="block-items__item">
+                                <div class="items-icon">
+                                    <img class="icon-img" src="./images/section-legitimizing/aus.svg" alt="icon">
+                                </div>
+                                <div class="block-items__text">
+                                    <h3 class="block-items__title">AUS GST</h3>
+                                    <span>Smart in lorem ipsum collection & remittance</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section-proof" class="section-proof">
+        <div class="size-wrapp-normal">
+            <div class="section-proof__inner">
+                <div class="section-proof__text">
+                    <h2 class="title-regular">Proof of income for creators</h2>
+                    <p>WYou get complete peace of mind with an automatically generated year-end 1099 for your annual US Income Tax filling</p>
+                    <ul class="block-items__list">
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Always stay compliant</h3>
+                                <span>Automated year-end repeating to the IRS</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Easy access to your 1099</h3>
+                                <span>By file download posted delivery</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="section-proof__image">
+                    <div class="section-proof__image-inner">
+                        <div id="proof-photo-window" class="proof-photo-window">
+                            <div id="proof-photo-interactive" class="proof-photo-window__image-photo">
+                                <img src="./images/section-proof/photo-in-phone.png" alt="photo">
+                            </div>
+                        </div>
+                        <div class="section-proof__image-phone">
+                            <img src="./images/section-proof/phone.png" alt="photo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-faq">
+        <div class="size-wrapp">
+            <div class="section-faq__inner">
+                <h2 class="title-regular">FAQ</h2>
+                <div class="container">
+                    <div class="accordion">
+                        <dl>
+                            <dt>
+                                <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordion-title js-accordion-trigger">First Accordion heading</a>
+                            </dt>
+                            <dd class="accordion-content accordion-item is-collapsed" id="accordion1" aria-hidden="true">
+                                <p>Aliquam dapibus, ante quis fringilla feugiat, mauris risus condimentum massa, at elementum libero quam ac ligula. Pellentesque at rhoncus dolor. Duis porttitor nibh ut lobortis aliquam. Nullam eu dolor venenatis mauris placerat tristique eget id dolor. Quisque blandit adipiscing erat vitae dapibus. Nulla aliquam magna nec elementum tincidunt.</p>
+                            </dd>
+                            <dt>
+                                <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordion-title js-accordion-trigger">
+                                    Second Accordion heading</a>
+                            </dt>
+                            <dd class="accordion-content accordion-item is-collapsed" id="accordion2" aria-hidden="true">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                            </dd>
+                            <dt>
+                                <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordion-title js-accordion-trigger">
+                                    Third Accordion heading
+                                </a>
+                            </dt>
+                            <dd class="accordion-content accordion-item is-collapsed" id="accordion3" aria-hidden="true">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu interdum diam. Donec interdum porttitor risus non bibendum. Maecenas sollicitudin eros in quam imperdiet placerat. Cras justo purus, rhoncus nec lobortis ut, iaculis vel ipsum. Donec dignissim arcu nec elit faucibus condimentum. Donec facilisis consectetur enim sit amet varius. Pellentesque justo dui, sodales quis luctus a, iaculis eget mauris. </p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="faq__accordion">
+                    <ul class="accordion-list">
+                        <li class="accordion-list-item">
+                            <div class="accordion-arrow icon-arrow-simple"></div>
+                            <h3 class="accordion-title">Who can use Kwiki?</h3>
+                            <div class="accordion-text">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                            </div>
+                        </li>
+                        <li class="accordion-list-item">
+                            <div class="accordion-arrow icon-arrow-simple"></div>
+                            <h3 class="accordion-title">How do I become a Creator?</h3>
+                            <div class="accordion-text">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                            </div>
+                        </li>
+                        <li class="accordion-list-item">
+                            <div class="accordion-arrow icon-arrow-simple"></div>
+                            <h3 class="accordion-title">Can I become a Creator from my country?</h3>
+                            <div class="accordion-text">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                            </div>
+                        </li>
+                        <li class="accordion-list-item">
+                            <div class="accordion-arrow icon-arrow-simple"></div>
+                            <h3 class="accordion-title">Do you have an app for IOS or Android?</h3>
+                            <div class="accordion-text">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="section-faq__not-find-answer">
+                    <p>You didn't find the answer to your question?</p>
+                    <a href="#" class="button-normal button">
+                        <span>Contact us</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -836,9 +1133,7 @@
 <script src="./js/ScrollMagic.js"></script>
 <script src="./js/debug.addIndicators.min.js"></script>
 <script src="./js/splide.min.js"></script>
-<!--<script src="./js/splide-extension-auto-scroll.min.js"></script>-->
 <script src="./js/swiper-bundle.min.js"></script>
-
 <!--<script src="./js/TweenLite.min.js"></script>-->
 <script src="./js/animation.gsap.js"></script>
 <!--<script src="./js/lottie.min.js"></script>-->

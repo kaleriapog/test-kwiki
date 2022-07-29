@@ -1,8 +1,11 @@
 //main style
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @extend %font-main-text;
   background-color: $color-background-main;
-  scroll-behavior: smooth;
 }
 
 //main
@@ -169,6 +172,14 @@ main {
   color: $color-purple;
 }
 
+.color-pink {
+  color: $color-pink;
+}
+
+.color-light-blue {
+color: $color-light-blue;
+}
+
 .bg-orange {
   background-color: $color-orange;
 }
@@ -270,4 +281,8 @@ main {
   -webkit-transition-timing-function : linear;
   -o-transition-timing-function : linear;
   transition-timing-function : linear;
+}
+
+body .splide__track {
+  overflow: visible;
 }

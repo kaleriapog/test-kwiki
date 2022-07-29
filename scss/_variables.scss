@@ -7,6 +7,7 @@ $mediaWidthMobileHorizontalSmall: 560px;
 $mediaWidthMobileHorizontal: 700px;
 $heroVideoHeight: 770px;
 $mediaHeight-900: 900px;
+$mediaHeight-800: 800px;
 
 @mixin media-tablet {
   @media (max-width: $mediaWidthTablet) {
@@ -62,6 +63,12 @@ $mediaHeight-900: 900px;
   }
 }
 
+@mixin media-max-height-800 {
+  @media (max-height: $mediaHeight-800) {
+    @content;
+  }
+}
+
 //color
 $color-background-main: rgb(253,252,253);
 $color-background-slider: rgba(157, 165, 241, 0.06);
@@ -81,6 +88,8 @@ $color-yellow: #F3CE0C;
 $color-pink: #FF0169;
 $color-fuchsia: #D300C5;
 $color-blue: #504CFF;
+$color-light-blue: #384BFA;
+$color-border: #eee;
 
 // size
 $height-header: 75px;

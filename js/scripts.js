@@ -5,17 +5,14 @@ const navigationBlock = document.querySelector('.header__navigation')
 let controller = new ScrollMagic.Controller()
 const heroVideo = document.getElementById('hero-video')
 const sectionHero = document.querySelector('.section-hero')
-// const arrSliderAboutItems = document.querySelectorAll('.about-slider-item')
-// const aboutTextNarrowInteractive = document.querySelector('.about-text-narrow-interactive')
 const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
 const backgroundVideoPicture = document.querySelector('.background-video-picture')
 const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
-// const arrGalleryTrigger = document.querySelectorAll('.gallery-first-trigger')
 const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
-// const arrGallerySellTrigger = document.querySelectorAll('.gallery-sell-trigger')
 const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
 const smarterLeftItem = document.querySelectorAll('.section-smarter__left .block-items__item')
 const smarterRightItem = document.querySelectorAll('.section-smarter__right .block-items__item')
+const accordion = document.querySelector('.accordion-list')
 
 
 // all section
@@ -23,6 +20,11 @@ const sectionAudio = document.querySelector('.section-audio')
 const sectionFundingEvery = document.querySelector('.section-funding-every')
 const sectionReliable = document.querySelector('.section-reliable')
 const sectionSmarter = document.querySelector('.section-smarter')
+const sectionSmartly = document.querySelector('.section-smartly')
+const sectionCheckingAccount = document.querySelector('.section-checking-account')
+const videoInPicture = document.querySelector('.video-in-picture')
+const sectionProof = document.querySelector('.section-proof')
+const sectionFaq = document.querySelector('.section-faq')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -72,10 +74,10 @@ heroVideo.addEventListener('playing', () => {
 
 // for change size video in hero
 let timelineSectionHero = new TimelineMax()
-    .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Expo.easeOut})
-    .fromTo(['#hero-text'], 1, {}, {top: '75vh', ease: Linear.easeNone}, '<')
+    .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
+    .fromTo(['#hero-text'], 1, {}, {opacity: '1', top: '75vh', ease: Linear.easeNone}, '<')
 
-new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "100%" })
+new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "1500px" })
     .setPin("#section-hero")
     .setTween(timelineSectionHero)
     // .addIndicators({name: `section hero`})
@@ -92,79 +94,120 @@ let timelineSectionAbout = new TimelineMax()
     .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
     .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
     .fromTo(['#slider-about-track'], 1, {}, {x: '-1350px', ease: Linear.easeNone})
-    .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-68px)', ease: Linear.easeNone})
+    .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-68px)', ease: Back.easeOut.config(1.7)}, '-=0.5')
 
-new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "100%" })
-    .setPin("#slider-about")
+new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "2000px" })
+    // .setPin("#slider-about")
     .setTween(timelineSectionAbout)
     // .addIndicators({name: `section about`})
     .addTo(controller);
 
     // for slide
-let splideAboutSlider = new Splide( '.slider-about', {
-    type   : 'loop',
-    focus  : 'center',
-    gap: 20,
-    autoWidth: true,
-    arrows: false,
-    pagination: false,
-    clones: 2,
-    drag: false,
-} );
+    let splideAboutSlider = new Splide( '.slider-about', {
+        type: 'loop',
+        focus: 'center',
+        gap: 20,
+        autoWidth: true,
+        arrows: false,
+        pagination: false,
+        clones: 2,
+        drag: false,
+    });
 
-splideAboutSlider.mount();
+    splideAboutSlider.mount();
 // end section about
 
 // start section video in picture
-let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
-    .on("enter", () => {
-        document.getElementById('video-in-picture').play()
-    })
-    // .addIndicators({name: "video start"})
-    .addTo(controller)
-    .reverse(true);
+if(videoInPicture) {
 
-let pauseVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 0})
-    .on("enter", () => {
-        document.getElementById('video-in-picture').pause()
-    })
-    // .addIndicators({name: "video start"})
-    .addTo(controller)
-    .reverse(true);
+    let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
+        .on("enter", () => {
+            document.getElementById('video-in-picture').play()
+        })
+        .on("leave", () => {
+            document.getElementById('video-in-picture').pause()
+        })
+        // .addIndicators({name: "video start"})
+        .addTo(controller)
+        .reverse(true);
 
-let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '70%', triggerHook: 'onLeave'})
-    .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '630px'}) // the tween durtion can be omitted and defaults to 1
-    // .addIndicators({name: "video stop and small"})
-    .setPin("#video-in-picture-interactive")
-    .addTo(controller)
-    .reverse(true)
-    .on("progress", function (e) {
-        if(e.progress <= 0) {
-            sectionVideoInPicture.classList.remove('background-dark')
-            backgroundVideoPicture.classList.remove('visible')
-        } else {
-            sectionVideoInPicture.classList.add('background-dark')
-            backgroundVideoPicture.classList.add('visible')
-        } if(e.progress === 1) {
-            let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '30%', triggerHook: 1})
-                .setTween("#items-list-dark-interactive", { transform: 'translateY(-70px)'})
-                // .addIndicators({name: "items-dark-interactive"})
-                .addTo(controller)
-                .reverse(true)
-        }
-    });
+    let pauseVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 0})
+        .on("enter", () => {
+            document.getElementById('video-in-picture').pause()
+        })
+        .on("leave", () => {
+            document.getElementById('video-in-picture').play()
+        })
+        // .addIndicators({name: "video start"})
+        .addTo(controller)
+        .reverse(true);
+
+    let timelineVideoInPictureSmall = new TimelineMax()
+        .fromTo(['.background-video-picture'], 1, {}, {visibility: 'visible', ease: Linear.easeNone})
+        .fromTo(['.section-video-in-picture'], 1, {}, { backgroundColor: '#000', color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
+        .fromTo(['.background-video-picture'], 1, {transform: 'scale(1)'}, {transform: 'scale(0.7)', ease: Linear.easeNone})
+        .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: 'scale(0.5)', ease: Linear.easeNone})
+        .fromTo(['#items-list-dark-interactive'], 1, {}, {transform: 'translateY(calc(-70px - 25vh)', ease: Linear.easeNone})
+        .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: 'scale(0.5) translateY(-25vh)', ease: Linear.easeNone})
+        .fromTo(['#items-dark-interactive'], 1, {}, {padding: '0', ease: Linear.easeNone}, '<')
+
+    new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '3000px', triggerHook: 'onLeave'})
+        // .addIndicators({name: "video stop and small"})
+        .setPin("#video-in-picture-interactive")
+        .setTween(timelineVideoInPictureSmall)
+        .addTo(controller)
+        .reverse(true)
+
+    // let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '1000px', triggerHook: 'onLeave'})
+    //     .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '630px'}) // the tween durtion can be omitted and defaults to 1
+    //     // .addIndicators({name: "video stop and small"})
+    //     .setPin("#video-in-picture-interactive")
+    //     .addTo(controller)
+    //     .reverse(true)
+    //     .on("progress", function (e) {
+    //         if(e.progress <= 0) {
+    //             sectionVideoInPicture.classList.remove('background-dark')
+    //             backgroundVideoPicture.classList.remove('visible')
+    //         } else {
+    //             sectionVideoInPicture.classList.add('background-dark')
+    //             backgroundVideoPicture.classList.add('visible')
+    //         } if(e.progress === 1) {
+    //             let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '100px', triggerHook: 1})
+    //                 .setTween("#items-list-dark-interactive", { transform: 'translateY(-70px)'})
+    //                 // .addIndicators({name: "items-dark-interactive"})
+    //                 .addTo(controller)
+    //                 .reverse(true)
+    //         }
+    //     });
+}
+// end section video in picture
 
 // start section checking account
-let timelineCheckingAccount = new TimelineMax()
-    .fromTo(['#checking-account-title-interactive'], 1, {opacity: 0.3}, {opacity: 1, ease: Linear.easeNone})
-    .fromTo(['#checking-account-title-interactive'], 1, {y: '50px'}, {y: '0', ease: Linear.easeNone})
-    .fromTo(['.checking-account-description-interactive'], 1, {opacity: 1, transform: 'translateY(100vh)'}, {opacity: 1, transform: 'translateY(0)', ease: Linear.easeNone}, '<')
+if(sectionCheckingAccount) {
+    let timelineCheckingAccount = new TimelineMax()
+        .fromTo(['#checking-account-title-interactive'], 1, {y: '50px'}, {y: '0', ease: Linear.easeNone})
+        .fromTo(['.checking-account-description-interactive'], 1, {opacity: 1, transform: 'translateY(100vh)'}, {opacity: 1, transform: 'translateY(0)', ease: Linear.easeNone}, '<')
 
-new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "100%" })
-    .setPin("#section-checking-account")
-    .setTween(timelineCheckingAccount)
-    // .addIndicators({name: `section-checking-account`})
-    .addTo(controller);
+    new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "1000px" })
+        .setPin("#section-checking-account")
+        .setTween(timelineCheckingAccount)
+        // .addIndicators({name: `section-checking-account`})
+        .addTo(controller);
+
+    new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "1", duration: "500px" })
+        // .addIndicators({name: `checking-account-title-interactive`})
+        .setTween("#checking-account-title-interactive", {opacity: 1})
+        .addTo(controller);
+
+    new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "0.1", duration: "200px" })
+        // .addIndicators({name: `section-checking-account-inner`})
+        .setTween("#checking-account-title-interactive", {opacity: 0})
+        .addTo(controller);
+
+    new ScrollMagic.Scene({ triggerElement: "#checking-account-description-interactive",  triggerHook: "0.1", duration: "200px" })
+        // .addIndicators({name: `checking-account-description-interactive`})
+        .setTween("#checking-account-description-interactive", {opacity: 0})
+        .addTo(controller);
 
 // new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "onLeave", duration: "25%" })
 //     .setPin("#section-checking-account")
@@ -184,7 +227,7 @@ new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHoo
     // })
     // // .addIndicators({name: "Checking Account"})
     // .reverse(true)
-
+}
 // end section checking account
 
 // start gallery first
@@ -199,7 +242,7 @@ for (let i = arrGalleryItemsFirst.length - 1; i >= 0; i--) {
         .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
 }
 
-new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "70%" })
+new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "1000px" })
     .setPin("#section-gallery-first")
     .setTween(wipeAnimationFirst)
     // .addIndicators({name: `gallery First`})
@@ -221,9 +264,9 @@ let timelineSectionPhoneScroll = new TimelineMax()
     })
 
 timelineSectionPhoneScroll
-    .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.65)', ease: Linear.easeNone}, '<')
+    .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.55)', ease: Linear.easeNone}, '<')
 
-new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "100%" })
+new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "2000px" })
     .setPin("#section-phone-scroll")
     .setTween(timelineSectionPhoneScroll)
     // .addIndicators({name: `section-phone-scroll`})
@@ -237,7 +280,7 @@ timelineSectionTagline
     .fromTo(['#tagline'], 1, {}, {opacity: 0, ease: Linear.easeNone}, '<')
     .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', height: '100vh', ease: Linear.easeNone})
 
-new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "100%" })
+new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "1500px" })
     // .setClassToggle(".header", "header-dark")
     .setPin("#section-tagline")
     .setTween(timelineSectionTagline)
@@ -294,7 +337,7 @@ for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
         .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-105%)'}, '<')
 }
 
-new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "150%" })
+new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "3500px" })
     .setPin("#section-gallery-sell")
     .setTween(wipeAnimationSell)
     // .addIndicators({name: `gallery-sell-items`})
@@ -306,10 +349,10 @@ new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "
 let timelineEnabled = new TimelineMax();
 
 timelineEnabled
-    .fromTo(`.enabled-image-0`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"})
-    .fromTo(`.enabled-image-2`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: "slow(0.3, 0.4)"}, '<')
+    .fromTo(`.enabled-image-0`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: Linear.easeNone})
+    .fromTo(`.enabled-image-2`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: Linear.easeNone}, '<')
 
-new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4", duration: "200%" })
+new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4", duration: "2000px" })
     .setTween(timelineEnabled)
     // .addIndicators({name: `section-enabled`})
     .addTo(controller);
@@ -380,17 +423,30 @@ if (sectionAudio) {
 // start section-funding-every
 if(sectionFundingEvery) {
     // background color dark
-    new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0.4" })
-        .setClassToggle(".section-funding-every", "section-inversion-dark")
+    let timelineSectionFundingEvery = new TimelineMax();
+
+    timelineSectionFundingEvery
+        .fromTo(`.section-funding-every`, 1, {}, {backgroundColor: '#000', ease: Linear.easeNone})
+        .fromTo(`.section-funding-every .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+
+    new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0.4", duration: "50px"})
+        // .setClassToggle(".section-funding-every", "section-inversion-dark")
         // .addIndicators({name: `section-enabled`})
+        .setTween(timelineSectionFundingEvery)
         .addTo(controller);
 
+    let timelineSectionFundingEveryContent = new TimelineMax();
 
-        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "100%"})
-            .setPin("#section-funding-every")
-            // .addIndicators({name: `section-FundingEvery`})
-            .setTween(".section-funding-every__items", { y: '-50%'})
-            .addTo(controller);
+    timelineSectionFundingEveryContent
+        .fromTo(`.section-funding-every__items`, 1, {}, {opacity: '1', ease: Linear.easeNone})
+        .fromTo(`.section-funding-every .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+        .fromTo(`#funding-every-items-list`, 1, {}, {transform: 'translateY(calc(-100% + 110px))', ease: Linear.easeNone})
+
+    new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "1000px"})
+        .setPin("#section-funding-every")
+        // .addIndicators({name: `section-FundingEvery`})
+        .setTween(timelineSectionFundingEveryContent)
+        .addTo(controller);
 
 
     // let timelineFundingEvery = new TimelineMax()
@@ -486,3 +542,122 @@ if(sectionSmarter) {
 }
 // end section-smarter
 
+// start section-smartly
+if(sectionSmartly) {
+    // for slider
+    let splideSectionSmartly = new Splide( '.slider-smartly', {
+        type: 'loop',
+        focus: 'center',
+        gap: 20,
+        autoWidth: true,
+        arrows: false,
+        pagination: false,
+        clones: 2,
+        drag: false,
+    } );
+
+    splideSectionSmartly.mount();
+
+    new ScrollMagic.Scene({ triggerElement: "#slider-smartly",  triggerHook: "0.1", duration: "2000px" })
+        .setTween("#slider-smartly-track", {transform: 'translateX(-173%)'})
+        // .addIndicators({name: `section about`})
+        .setPin("#slider-smartly")
+        .addTo(controller);
+}
+// end section-smartly
+
+// start section-proof
+if(sectionProof) {
+    new ScrollMagic.Scene({ triggerElement: "#proof-photo-window",  triggerHook: "0.98", duration: "2000px" })
+        .setTween("#proof-photo-interactive", {transform: 'translateX(-20%)'})
+        // .addIndicators({name: `section proof`})
+        .addTo(controller);
+}
+// end section proof
+
+// start section faq
+if(sectionFaq) {
+
+    if(accordion) {
+        const items = accordion.querySelectorAll('.accordion-list-item')
+
+        function toggleAccordion() {
+            let thisItem = this.closest('.accordion-list-item');
+
+            items.forEach(item => {
+                if (thisItem === item) {
+                    thisItem.classList.toggle('open-accordion-item');
+                    return;
+                }
+
+                item.classList.remove('open-accordion-item');
+
+            });
+        }
+
+        items.forEach(question => question.addEventListener('click', toggleAccordion))
+    }
+
+    //uses classList, setAttribute, and querySelectorAll
+//if you want this to work in IE8/9 youll need to polyfill these
+    (function() {
+        let d = document,
+            accordionToggles = d.querySelectorAll('.js-accordion-trigger'),
+            setAria,
+            setAccordionAria,
+            switchAccordion,
+            touchSupported = ('ontouchstart' in window),
+            pointerSupported = ('pointerdown' in window);
+
+        skipClickDelay = function(e){
+            e.preventDefault();
+            e.target.click();
+        }
+
+        setAriaAttr = function(el, ariaType, newProperty){
+            el.setAttribute(ariaType, newProperty);
+        };
+        setAccordionAria = function(el1, el2, expanded){
+            switch(expanded) {
+                case "true":
+                    setAriaAttr(el1, 'aria-expanded', 'true');
+                    setAriaAttr(el2, 'aria-hidden', 'false');
+                    break;
+                case "false":
+                    setAriaAttr(el1, 'aria-expanded', 'false');
+                    setAriaAttr(el2, 'aria-hidden', 'true');
+                    break;
+                default:
+                    break;
+            }
+        };
+//function
+        switchAccordion = function(e) {
+            console.log("triggered");
+            e.preventDefault();
+            let thisAnswer = e.target.parentNode.nextElementSibling;
+            let thisQuestion = e.target;
+            if(thisAnswer.classList.contains('is-collapsed')) {
+                setAccordionAria(thisQuestion, thisAnswer, 'true');
+            } else {
+                setAccordionAria(thisQuestion, thisAnswer, 'false');
+            }
+            thisQuestion.classList.toggle('is-collapsed');
+            thisQuestion.classList.toggle('is-expanded');
+            thisAnswer.classList.toggle('is-collapsed');
+            thisAnswer.classList.toggle('is-expanded');
+
+            // thisAnswer.classList.toggle('animateIn');
+        };
+        for (let i = 0, len = accordionToggles.length; i < len; i++) {
+            if(touchSupported) {
+                accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+            }
+            if(pointerSupported){
+                accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+            }
+            accordionToggles[i].addEventListener('click', switchAccordion, false);
+        }
+    })();
+}
+// end section faq
