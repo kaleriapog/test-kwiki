@@ -14,8 +14,8 @@ const smarterLeftItem = document.querySelectorAll('.section-smarter__left .block
 const smarterRightItem = document.querySelectorAll('.section-smarter__right .block-items__item')
 const accordion = document.querySelector('.accordion-list')
 
-
 // all section
+const sectionAbout = document.querySelector('.section-about')
 const sectionAudio = document.querySelector('.section-audio')
 const sectionFundingEvery = document.querySelector('.section-funding-every')
 const sectionReliable = document.querySelector('.section-reliable')
@@ -25,6 +25,9 @@ const sectionCheckingAccount = document.querySelector('.section-checking-account
 const videoInPicture = document.querySelector('.video-in-picture')
 const sectionProof = document.querySelector('.section-proof')
 const sectionFaq = document.querySelector('.section-faq')
+const sectionEndless = document.querySelector('.section-endless')
+const sectionMaster = document.querySelector('.section-master')
+const sectionLegitimizing = document.querySelector('.section-legitimizing')
 
 // for open menu mobile
 if(navIconOpen) {
@@ -77,7 +80,7 @@ let timelineSectionHero = new TimelineMax()
     .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
     .fromTo(['#hero-text'], 1, {}, {opacity: '1', top: '75vh', ease: Linear.easeNone}, '<')
 
-new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "1500px" })
+new ScrollMagic.Scene({ triggerElement: "#section-hero",  triggerHook: "onLeave", duration: "800px" })
     .setPin("#section-hero")
     .setTween(timelineSectionHero)
     // .addIndicators({name: `section hero`})
@@ -90,31 +93,34 @@ window.addEventListener(`resize`, event => {
 }, false);
 
 // start section about
-let timelineSectionAbout = new TimelineMax()
-    .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
-    .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
-    .fromTo(['#slider-about-track'], 1, {}, {x: '-1350px', ease: Linear.easeNone})
-    .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(30vh)'}, {transform: 'translateY(-68px)', ease: Back.easeOut.config(1.7)}, '-=0.5')
+if(sectionAbout) {
+    let timelineSectionAbout = new TimelineMax()
+        .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
+        .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
+        .fromTo(['#slider-about-track'], 1, {}, {x: '-1350px', ease: Linear.easeNone})
+        .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
 
-new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "onLeave", duration: "2000px" })
-    // .setPin("#slider-about")
-    .setTween(timelineSectionAbout)
-    // .addIndicators({name: `section about`})
-    .addTo(controller);
+    new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "0.8", duration: "1500px" })
+        // .setPin("#slider-about")
+        .setTween(timelineSectionAbout)
+        // .addIndicators({name: `section about`})
+        .addTo(controller);
 
-    // for slide
-    let splideAboutSlider = new Splide( '.slider-about', {
-        type: 'loop',
-        focus: 'center',
-        gap: 20,
-        autoWidth: true,
-        arrows: false,
-        pagination: false,
-        clones: 2,
-        drag: false,
-    });
+        // for slide
+        let splideAboutSlider = new Splide( '.slider-about', {
+            type: 'loop',
+            focus: 'center',
+            gap: 20,
+            autoWidth: true,
+            arrows: false,
+            pagination: false,
+            clones: 2,
+            drag: false,
+        });
 
-    splideAboutSlider.mount();
+        splideAboutSlider.mount();
+
+}
 // end section about
 
 // start section video in picture
@@ -151,7 +157,7 @@ if(videoInPicture) {
         .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: 'scale(0.5) translateY(-25vh)', ease: Linear.easeNone})
         .fromTo(['#items-dark-interactive'], 1, {}, {padding: '0', ease: Linear.easeNone}, '<')
 
-    new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '3000px', triggerHook: 'onLeave'})
+    new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '4000px', triggerHook: 'onLeave'})
         // .addIndicators({name: "video stop and small"})
         .setPin("#video-in-picture-interactive")
         .setTween(timelineVideoInPictureSmall)
@@ -199,10 +205,10 @@ if(sectionCheckingAccount) {
         .setTween("#checking-account-title-interactive", {opacity: 1})
         .addTo(controller);
 
-    new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "0.1", duration: "200px" })
-        // .addIndicators({name: `section-checking-account-inner`})
-        .setTween("#checking-account-title-interactive", {opacity: 0})
-        .addTo(controller);
+    // new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "0.1", duration: "200px" })
+    //     // .addIndicators({name: `section-checking-account-inner`})
+    //     .setTween("#checking-account-title-interactive", {opacity: 0})
+    //     .addTo(controller);
 
     new ScrollMagic.Scene({ triggerElement: "#checking-account-description-interactive",  triggerHook: "0.1", duration: "200px" })
         // .addIndicators({name: `checking-account-description-interactive`})
@@ -558,16 +564,48 @@ if(sectionSmartly) {
 
     splideSectionSmartly.mount();
 
-    new ScrollMagic.Scene({ triggerElement: "#slider-smartly",  triggerHook: "0.1", duration: "2000px" })
+    new ScrollMagic.Scene({ triggerElement: "#section-smartly",  triggerHook: "0.9", duration: "2000px" })
         .setTween("#slider-smartly-track", {transform: 'translateX(-173%)'})
-        // .addIndicators({name: `section about`})
-        .setPin("#slider-smartly")
+        // .setPin("#slider-smartly")
         .addTo(controller);
 }
 // end section-smartly
 
+// start section-endless
+if(sectionEndless) {
+    let timelineSectionEndless = new TimelineMax();
+
+    timelineSectionEndless
+        .fromTo(`#title-regular-mark-0`, 1, {}, {opacity: '0', ease: Linear.easeNone})
+        .fromTo(`#title-regular-mark-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
+        .fromTo(`#endless-image-0`, 1, {}, {opacity: '0', ease: Linear.easeNone})
+        .fromTo(`#endless-item-0`, 1, {}, {opacity: '0', ease: Linear.easeNone}, '<')
+        .fromTo(`#endless-image-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
+        .fromTo(`#endless-item-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone}, '<')
+
+    new ScrollMagic.Scene({ triggerElement: "#section-endless",  triggerHook: "onLeave", duration: "2000px"})
+        .setPin("#section-endless")
+        // .addIndicators({name: `section-endless`})
+        .setTween(timelineSectionEndless)
+        .addTo(controller);
+}
+// end section-endless
+
 // start section-proof
 if(sectionProof) {
+    // background color dark
+    let timelineSectionProof = new TimelineMax();
+
+    timelineSectionProof
+        .fromTo(`.section-proof`, 1, {}, {backgroundColor: '#000', ease: Linear.easeNone})
+        .fromTo(`.section-proof .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+        .fromTo(`.section-proof .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+
+    new ScrollMagic.Scene({ triggerElement: "#section-proof",  triggerHook: "0.6", duration: "50px"})
+        // .addIndicators({name: `section-enabled`})
+        .setTween(timelineSectionProof)
+        .addTo(controller);
+
     new ScrollMagic.Scene({ triggerElement: "#proof-photo-window",  triggerHook: "0.98", duration: "2000px" })
         .setTween("#proof-photo-interactive", {transform: 'translateX(-20%)'})
         // .addIndicators({name: `section proof`})
@@ -577,7 +615,6 @@ if(sectionProof) {
 
 // start section faq
 if(sectionFaq) {
-
     if(accordion) {
         const items = accordion.querySelectorAll('.accordion-list-item')
 
@@ -597,67 +634,46 @@ if(sectionFaq) {
 
         items.forEach(question => question.addEventListener('click', toggleAccordion))
     }
-
-    //uses classList, setAttribute, and querySelectorAll
-//if you want this to work in IE8/9 youll need to polyfill these
-    (function() {
-        let d = document,
-            accordionToggles = d.querySelectorAll('.js-accordion-trigger'),
-            setAria,
-            setAccordionAria,
-            switchAccordion,
-            touchSupported = ('ontouchstart' in window),
-            pointerSupported = ('pointerdown' in window);
-
-        skipClickDelay = function(e){
-            e.preventDefault();
-            e.target.click();
-        }
-
-        setAriaAttr = function(el, ariaType, newProperty){
-            el.setAttribute(ariaType, newProperty);
-        };
-        setAccordionAria = function(el1, el2, expanded){
-            switch(expanded) {
-                case "true":
-                    setAriaAttr(el1, 'aria-expanded', 'true');
-                    setAriaAttr(el2, 'aria-hidden', 'false');
-                    break;
-                case "false":
-                    setAriaAttr(el1, 'aria-expanded', 'false');
-                    setAriaAttr(el2, 'aria-hidden', 'true');
-                    break;
-                default:
-                    break;
-            }
-        };
-//function
-        switchAccordion = function(e) {
-            console.log("triggered");
-            e.preventDefault();
-            let thisAnswer = e.target.parentNode.nextElementSibling;
-            let thisQuestion = e.target;
-            if(thisAnswer.classList.contains('is-collapsed')) {
-                setAccordionAria(thisQuestion, thisAnswer, 'true');
-            } else {
-                setAccordionAria(thisQuestion, thisAnswer, 'false');
-            }
-            thisQuestion.classList.toggle('is-collapsed');
-            thisQuestion.classList.toggle('is-expanded');
-            thisAnswer.classList.toggle('is-collapsed');
-            thisAnswer.classList.toggle('is-expanded');
-
-            // thisAnswer.classList.toggle('animateIn');
-        };
-        for (let i = 0, len = accordionToggles.length; i < len; i++) {
-            if(touchSupported) {
-                accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
-            }
-            if(pointerSupported){
-                accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
-            }
-            accordionToggles[i].addEventListener('click', switchAccordion, false);
-        }
-    })();
 }
 // end section faq
+
+// start section master
+if(sectionMaster) {
+
+    // background color dark
+    let timelineSectionFundingEvery = new TimelineMax();
+
+    timelineSectionFundingEvery
+        .fromTo(`.section-master`, 1, {}, {backgroundColor: '#000', ease: Linear.easeNone})
+        .fromTo(`.section-master .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+        .fromTo(`.section-master .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
+
+    new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.6", duration: "50px"})
+        // .addIndicators({name: `section-enabled`})
+        .setTween(timelineSectionFundingEvery)
+        .addTo(controller);
+
+    new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.3", duration: "300px"})
+        .setTween(`#master-items`, {y: '0', ease: Linear.easeNone})
+        .addTo(controller);
+}
+// end section master
+
+// start section legitimizing
+if(sectionLegitimizing) {
+
+    // background color dark
+    let timelineSectionLegitimizing = new TimelineMax();
+
+    timelineSectionLegitimizing
+        .fromTo(`#image-blur`, 1, {}, {opacity: '0', ease: Linear.easeNone})
+        .fromTo(`#legitimizing-headline`, 1, {opacity: '1'}, {opacity: '0', ease: Linear.easeNone}, '<')
+        .fromTo(`#legitimizing-items`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
+
+    new ScrollMagic.Scene({ triggerElement: "#section-legitimizing",  triggerHook: "onLeave", duration: "1500px"})
+        // .addIndicators({name: `section-legitimizing`})
+        .setTween(timelineSectionLegitimizing)
+        .setPin("#section-legitimizing")
+        .addTo(controller);
+}
+// end section legitimizing
