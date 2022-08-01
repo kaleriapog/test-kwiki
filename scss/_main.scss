@@ -49,6 +49,11 @@ main {
   @extend %font-button-normal;
 }
 
+.button-white {
+  background-color: $color-white;
+  color: $color-main;
+}
+
 //background
 .background-dark {
   background-color: $color-black;
@@ -58,6 +63,10 @@ main {
 //style for title
 .title-small {
   @extend %title-small;
+}
+
+.title-big {
+  @extend %title-big;
 }
 
 .text-big {

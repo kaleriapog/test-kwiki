@@ -1,0 +1,74 @@
+.footer {
+  background-color: $color-black;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 72px 0 62px;
+
+    .logo {
+      margin-right: 45px;
+    }
+
+    .button-normal {
+      padding: 12px 35px;
+      border: 1px solid $color-icon;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .button-white {
+      border: none;
+      margin-right: 2px;
+    }
+  }
+
+  &__left, &__social, &__app, &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__left {
+    align-items: end;
+  }
+
+  &__app {
+    margin-right: 32px;
+  }
+
+  &__social-item {
+    margin-right: 40px;
+  }
+
+  &__app-item a {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-icon-dark;
+    border-radius: 50%;
+    margin-left: 8px;
+
+    img {
+      max-width: 20px;
+      max-height: 20px;
+      object-fit: contain;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.26);
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 1.71;
+  }
+
+  &__privacy-link {
+    margin-left: 38px;
+  }
+}

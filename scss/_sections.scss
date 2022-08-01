@@ -11,7 +11,7 @@
 
   .hero-video {
     height: 100vh;
-    width: 100vw;
+    width: calc(100vw + 15px);
     //height: calc(100vh - 75px);
     object-fit: cover;
   }
@@ -434,7 +434,8 @@
 }
 
 .section-funding-every {
-  transition: background-color 0.5s ease-in-out;
+  //transition: background-color 0.5s ease-in-out;
+  overflow: hidden;
 
   &__inner {
     display: flex;
@@ -588,10 +589,6 @@
 }
 
 .section-smarter {
-  &__headline {
-    padding-bottom: 100px;
-  }
-
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -603,6 +600,7 @@
     .smarter-image,  .smarter-image img {
       max-width: 310px;
       max-height: 70vh;
+      object-fit: contain;
     }
   }
 
@@ -623,7 +621,6 @@
 
 .section-smartly {
  text-align: center;
-  padding-bottom: 200px;
 
   .title-regular {
     font-size: 32px;
@@ -643,9 +640,7 @@
 }
 
 .section-endless {
-  height: 100vh;
-  padding-top: 20.5vh;
-  overflow: hidden;
+  padding-top: 180px;
 
   .title-regular {
     padding-bottom: 85px;
@@ -713,6 +708,10 @@
 .section-master {
   padding: 20.5vh 0;
   transition: background-color 0.5s ease-in-out;
+
+  &__headline {
+    padding-bottom: 100px;
+  }
 
   &__inner {
     margin-left: auto;
@@ -786,7 +785,7 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 7px;
   }
 }
 
@@ -819,6 +818,10 @@
     bottom: 2%;
     border-radius: 15%;
     overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
 
     &__image-photo {
       min-width: 130%;
@@ -926,5 +929,13 @@
       max-width: 50%;
       @extend %text-big;
     }
+  }
+}
+
+.section-feeling {
+  padding: 138px 0;
+
+  .title-regular, h2 {
+    color: $color-white;
   }
 }
