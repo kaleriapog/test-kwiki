@@ -27,12 +27,6 @@ $mediaHeight-800: 800px;
     }
 }
 
-//@mixin media-mobile-horizontal {
-//  @media (max-height: $mediaWidthMobileHorizontal) and (max-width: $mediaWidthMobile) {
-//    @content;
-//  }
-//}
-
 @mixin media-laptop {
   @media (max-width: $mediaWidthLaptop) {
     @content;
@@ -70,7 +64,6 @@ $mediaHeight-800: 800px;
 }
 
 //color
-//$color-background-main: rgb(253,252,253);
 $color-background-slider: rgba(157, 165, 241, 0.06);
 $color-white: #fff;
 $color-black: #000;

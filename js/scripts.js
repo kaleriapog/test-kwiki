@@ -10,11 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrItemsMenuHeader = document.querySelectorAll('.header .header__navigation li')
     const navigationBlock = document.querySelector('.header__navigation')
     const heroVideo = document.getElementById('hero-video')
-    // const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
-    // const backgroundVideoPicture = document.querySelector('.background-video-picture')
-    // const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
-    const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
-    // const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
     const smarterLeftItem = document.querySelectorAll('.section-smarter__left .block-items__item')
     const smarterRightItem = document.querySelectorAll('.section-smarter__right .block-items__item')
     const accordion = document.querySelector('.accordion-list')
@@ -36,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionProof = document.querySelector('.section-proof')
     const sectionFaq = document.querySelector('.section-faq')
     const sectionEndless = document.querySelector('.section-endless')
+    const sectionEnabled = document.querySelector('.section-enabled')
     const sectionMaster = document.querySelector('.section-master')
     const sectionLegitimizing = document.querySelector('.section-legitimizing')
 
@@ -47,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mediaMobilelandscape = window.outerHeight < 500
     const mediaMobileSmall = window.outerWidth < 350
     const mediaHeightDesktopSmall = window.outerHeight < 800
-    const mediaHeightDesktopDig = window.outerHeight > 1000
     const mediaDesktopBig = window.outerWidth > 1550
 
     // for open menu mobile
@@ -80,23 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if(sectionHero) {
         // play video im hero
         setTimeout(() => {
-            // heroVideo.play();
-            // let mediaSectionHero = document.getElementById('block-audio-video')
             const playPromise = heroVideo.play()
             if (playPromise !== null){
 
                 playPromise.catch(() => { heroVideo.play()})
             }
         }, 300)
+
         //not scroll when video play
         heroVideo.addEventListener('ended', (event) => {
-            document.querySelector('.poster').style.opacity = 1
             document.body.classList.remove('no-scroll')
-            // let v = heroVideo.currentSrc;
-            // heroVideo.src='';
-            // heroVideo.src=v;
         })
-
 
         // not scroll when the screen refreshes and the video is not fully intersecting with the view port
         //play video
@@ -116,19 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let timelineSectionHero = new TimelineMax()
             if(mediaLaptop) {
                 timelineSectionHero
-                    .fromTo(['.poster'], 1, {}, {transform: 'scale(0.3)', ease: Linear.easeNone})
                     .fromTo(['#hero-video'], 1, {}, {transform: 'scale(0.3)', ease: Linear.easeNone}, '<')
             } else {
             timelineSectionHero
-                .fromTo(['.poster'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone})
                 .fromTo(['#hero-video'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone}, '<')
                 .fromTo(['#hero-video'], 1, {}, {width: '600px', height: mediaLaptop ? '620px' : '340px', ease: Linear.easeNone})
             }
 
         timelineSectionHero
-            // .fromTo(['.poster'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone})
-            // .fromTo(['#hero-video'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone}, '<')
-            // .fromTo(['#hero-video'], 1, {}, {width: '600px', height: mediaLaptop ? '620px' : '340px', ease: Linear.easeNone})
             .fromTo(['#hero-text'], 1, {}, {opacity: '1', top: mediaLaptop ? '62vh' :  '75vh', ease: Linear.easeNone}, '<')
 
         if(mediaLaptop) {
@@ -136,10 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .fromTo(['#section-hero'], 1, {}, {top: '-15vh', ease: Linear.easeNone}, '<')
         }
 
-        new ScrollMagic.Scene({triggerElement: "#section-hero", triggerHook: "onLeave", duration: "800px"})
+        new ScrollMagic.Scene({triggerElement: "#section-hero", triggerHook: "onLeave", duration: mediaDesktop ? '1500' : "800"})
             .setPin("#section-hero")
             .setTween(timelineSectionHero)
-            // .addIndicators({name: `section hero`})
             .addTo(controller);
 
         // fixed width video in hero when resize
@@ -152,42 +135,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // start section about
     if(sectionAbout && !mediaMobilelandscape) {
+
         let timelineSectionAbout = new TimelineMax()
-           .fromTo(['#slider-about-track'], 1, {}, {transform: mediaTablet ? 'scale(0.8) translateY(48px)' : 'scale(0.593)', ease: Linear.easeNone})
-                // .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
+            .fromTo(['#slider-about-track'], 1, {}, {transform: mediaTablet ? 'scale(0.8) translateY(48px)' : 'scale(0.593)', ease: Linear.easeNone})
             .fromTo(['#slider-about-track'], 1, {}, {x: mediaMobile ? '-660px' : mediaTablet ? '-460px' : '-1350px', ease: Linear.easeNone})
-            .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
+
+        if(mediaDesktop) {
+            timelineSectionAbout
+            .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=1')
+        }
 
         // for second slider in mobile
         if(mediaTablet) {
             let timelineSectionAboutMobileBottom  = new TimelineMax()
                 .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {transform: 'scale(0.8) translateY(-48px)', ease: Linear.easeNone})
-                // .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
                 .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {x: mediaMobile ? '660px' : '460px', ease: Linear.easeNone})
-                .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
+                .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Linear.easeNone}, '-=0.8')
 
-            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500px' })
-                // .addIndicators({name: `section about bottom`})
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500' })
                 .setTween(timelineSectionAboutMobileBottom)
                 .addTo(controller);
 
-            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500px' })
-                // .setPin("#slider-about")
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500' })
                 .setTween(timelineSectionAbout)
-                // .setPin("#slider-about")
-                // .addIndicators({name: `section about`})
                 .addTo(controller);
 
-            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: 'onLeave', duration: '1000px' })
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: 'onLeave', duration: '1000' })
                 .setPin("#section-about")
-                // .addIndicators({name: `section about`})
                 .addTo(controller);
         }
 
         if(window.outerWidth >= 1024) {
-            new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: '0.8', duration:  mediaTablet ? '100%' : '1500px' })
+            new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: '0.8', duration:  mediaTablet ? '100%' : '1500' })
                 .setTween(timelineSectionAbout)
-                // .addIndicators({name: `section about`})
                 .addTo(controller);
         }
 
@@ -195,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
        let splideAboutSlider = new Splide( '.slider-about', {
                 type: 'loop',
                 focus: 'center',
-                // gap: mediaMobile ? 8 : 20,
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
@@ -206,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
        let splideAboutSliderBottomMobile = new Splide( '#slider-about-mobile-bottom', {
             type: 'loop',
             focus: 'center',
-            // gap: 8,
             autoWidth: true,
             arrows: false,
             pagination: false,
@@ -236,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .on("leave", () => {
                 document.getElementById('video-in-picture').pause()
             })
-            // .addIndicators({name: "video start"})
             .addTo(controller)
             .reverse(true);
 
@@ -245,14 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('video-in-picture').pause()
             })
             .on("leave", () => {
-                // document.getElementById('video-in-picture').play()
                 let mediaVideoInPicture = document.getElementById('video-in-picture')
                 const playPromise = mediaVideoInPicture.play();
                 if (playPromise !== null){
                     playPromise.catch(() => { mediaVideoInPicture.play(); })
                 }
             })
-            // .addIndicators({name: "video start"})
             .addTo(controller)
             .reverse(true);
 
@@ -265,8 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(['#items-list-dark-interactive'], 1, {transform: mediaLaptop ? '0' : 'translateY(-100px)'}, {transform: mediaDesktopBig ? 'translateY(-140px)' :  mediaLaptop ? '0' : 'translateY(calc(-50px - 25vh)', ease: Linear.easeNone}, '<')
             .fromTo(['#items-list-dark-interactive'], 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '2800px', triggerHook: mediaLaptop ? '0.35' : 'onLeave'})
-            // .addIndicators({name: "video stop and small"})
+        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: mediaDesktop ? '4000' : '2800', triggerHook: mediaLaptop ? '0.35' : 'onLeave'})
             .setPin("#video-in-picture-interactive")
             .setTween(timelineVideoInPictureSmall)
             .addTo(controller)
@@ -277,33 +251,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(['.section-video-in-picture'], 1, {}, {backgroundColor: '#000', color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
             .fromTo(['#video-in-picture-title-interactive'], 1, {}, {color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
 
-        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: mediaMobile ? '50px' : mediaLaptop ? '100px' : '300px', triggerHook: mediaHeightDesktopSmall ? '0.6' : mediaLaptop ? '0.45' : 'onLeave'})
+        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: mediaMobile ? '50' : mediaLaptop ? '100' : '300', triggerHook: mediaHeightDesktopSmall ? '0.6' : mediaLaptop ? '0.45' : 'onLeave'})
             // .addIndicators({name: "video stop and small"})
             .setTween(timelineVideoInPictureBackground)
             .addTo(controller)
             .reverse(true)
-
-        // let videoInPictureSmall = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '1000px', triggerHook: 'onLeave'})
-        //     .setTween("#video-in-picture-inner-interactive", { height: '385px', width: '630px'}) // the tween durtion can be omitted and defaults to 1
-        //     // .addIndicators({name: "video stop and small"})
-        //     .setPin("#video-in-picture-interactive")
-        //     .addTo(controller)
-        //     .reverse(true)
-        //     .on("progress", function (e) {
-        //         if(e.progress <= 0) {
-        //             sectionVideoInPicture.classList.remove('background-dark')
-        //             backgroundVideoPicture.classList.remove('visible')
-        //         } else {
-        //             sectionVideoInPicture.classList.add('background-dark')
-        //             backgroundVideoPicture.classList.add('visible')
-        //         } if(e.progress === 1) {
-        //             let itemsDarkInteractive = new ScrollMagic.Scene({triggerElement: "#items-dark-interactive", duration: '100px', triggerHook: 1})
-        //                 .setTween("#items-list-dark-interactive", { transform: 'translateY(-70px)'})
-        //                 // .addIndicators({name: "items-dark-interactive"})
-        //                 .addTo(controller)
-        //                 .reverse(true)
-        //         }
-        //     });
     }
     // end section video in picture
 
@@ -312,50 +264,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let timelineCheckingAccount = new TimelineMax()
             .fromTo(['#checking-account-title-interactive'], 1, {y: '50px'}, {y: '0', ease: Linear.easeNone})
             .fromTo(['.checking-account-description-interactive'], 1, {opacity: 1, transform: 'translateY(100vh)'}, {opacity: 1, transform: 'translateY(0)', ease: Linear.easeNone}, '<')
-            // .fromTo(['.section-checking-account-inner'], 1,{}, {transform: 'translateY(-100%)', ease: Linear.easeNone})
 
-
-        new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "1000px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "1000" })
             .setPin("#section-checking-account")
             .setTween(timelineCheckingAccount)
-            // .addIndicators({name: `section-checking-account`})
             .addTo(controller);
 
-        new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "1", duration: "500px" })
-            // .addIndicators({name: `checking-account-title-interactive`})
+        new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "1", duration: "500" })
             .setTween( new TimelineMax()
                 .fromTo(['#checking-account-title-interactive'], 1, {opacity: '0'}, {opacity: 1, ease: Linear.easeNone})
             )
             .addTo(controller);
 
-        // new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "0.1", duration: "200px" })
-        //     // .addIndicators({name: `section-checking-account-inner`})
-        //     .setTween("#checking-account-title-interactive", {opacity: 0})
-        //     .addTo(controller);
-
-        new ScrollMagic.Scene({ triggerElement: "#checking-account-description-interactive",  triggerHook: "0.1", duration: "200px" })
-            // .addIndicators({name: `checking-account-description-interactive`})
+        new ScrollMagic.Scene({ triggerElement: "#checking-account-description-interactive",  triggerHook: "0.1", duration: "200" })
             .setTween("#checking-account-description-interactive", {opacity: 0})
             .addTo(controller);
-
-    // new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "onLeave", duration: "25%" })
-    //     .setPin("#section-checking-account")
-    //     .addTo(controller);
-
-    // let sectionCheckingAccount = new ScrollMagic.Scene({triggerElement: "#section-checking-account", duration: '100%', triggerHook: 'onLeave'})
-        // .setTween("#checking-account-title-interactive", { opacity: '1', transform: 'translateY(0)'})
-        // // .addIndicators({name: "section-checking-account"})
-        // .setPin("#section-checking-account")
-        // .addTo(controller)
-        // .on("progress", function (e) {
-        //     if(e.progress >= 0.8) {
-        //         checkingAccountDescription.classList.remove('checking-account-description-hide')
-        //     } else if(e.progress <= 0.8) {
-        //         checkingAccountDescription.classList.add('checking-account-description-hide')
-        //     }
-        // })
-        // // .addIndicators({name: "Checking Account"})
-        // .reverse(true)
     }
     // end section checking account
 
@@ -372,18 +295,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
         }
 
-        new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "1000px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-gallery-first",  triggerHook: "onLeave", duration: "1000" })
             .setPin("#section-gallery-first")
             .setTween(wipeAnimationFirst)
             .on('progress', (e) => {
                 if(e.progress >= 1) {
-                    new ScrollMagic.Scene({ triggerElement: ".gallery-first-item-0", triggerHook: "onLeave", duration: "500px"
+                    new ScrollMagic.Scene({ triggerElement: ".gallery-first-item-0", triggerHook: "onLeave", duration: "500"
                     })
                         .setTween(`.gallery-first-item-0 .gallery-item__text`, {opacity: '0'})
                         .addTo(controller);
                 }
             })
-            // .addIndicators({name: `gallery First`})
             .addTo(controller);
     }
     // end gallery first
@@ -396,17 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(['#block-phone-scroll-image'], 1, {}, {y: mediaLaptop ? '0' : window.outerHeight >= 890 ? '96px' : '130px', ease: Linear.easeNone})
             .fromTo(['#phone-scroll-interactive-0'], 1, {}, {y: mediaLaptop ? '0' : '-10vh', ease: Linear.easeNone}, '<')
             .fromTo(['#phone-scroll-interactive-1'], 1, {}, {y: mediaLaptop ? '0' : '-10vh', ease: Linear.easeNone}, '<')
-
-            // arrPhoneScrollInteractive.forEach((item, i) => {
-            //     let lastItem =  arrPhoneScrollInteractive.length - 1
-            //
-            //     timelineSectionPhoneScroll
-            //         .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
-            //         .fromTo(`#phone-scroll-interactive-${i}`, 1, {}, {opacity: (i === lastItem ) ? 1 : 0, ease: Linear.easeNone}, (i === lastItem ) ? '<' : '-=0')
-            // })
-
-
-            // .fromTo(`#phone-scroll-interactive-0`, 1, {opacity: 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
             .fromTo(`#phone-scroll-interactive-0`, 1, {opacity: 1}, {opacity: 0, zIndex: '0', ease: Linear.easeNone})
             .fromTo(`#phone-scroll-interactive-1-title`, 1, {opacity: 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
             .fromTo(`#phone-scroll-content-text`, 1, {opacity: 0, y: '200px'}, {opacity: 1, y: 0, ease: Linear.easeNone})
@@ -424,16 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineSectionPhoneScroll
             .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: mediaLaptop ? 'scale(0.89)' : window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.55)', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "2000px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "2000" })
             .setPin("#section-phone-scroll")
             .setTween(timelineSectionPhoneScroll)
-            // .addIndicators({name: `section-phone-scroll`})
             .addTo(controller);
 
         if(mediaLaptop) {
-            new ScrollMagic.Scene({ triggerElement: "#phone-scroll-items-mobile",  triggerHook: "0.95", duration: "300px" })
+            new ScrollMagic.Scene({ triggerElement: "#phone-scroll-items-mobile",  triggerHook: "0.95", duration: "300" })
                 .setTween("#phone-scroll-items-mobile", {opacity: 1})
-                // .addIndicators({name: `section-phone-scroll`})
                 .addTo(controller);
         }
     }
@@ -454,17 +363,14 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(['#tagline'], 1, {}, {opacity: 0, ease: Linear.easeNone}, '<')
             .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', height: mediaMobilelandscape ? '100vh' : mediaLaptop ? '50vh' : mediaMobile ? '255px' : '100vh', ease: Linear.easeNone})
 
-        new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "1500px" })
-            // .setClassToggle(".header", "header-dark")
+        new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "1500" })
             .setPin("#section-tagline")
             .setTween(timelineSectionTagline)
-            // .addIndicators({name: `section-tagline`})
             .addTo(controller);
 
             //for play video in section-tagline
         new ScrollMagic.Scene({ triggerElement: "#tagline-video",  triggerHook: "onLeave" })
             .on("enter", () => {
-                // document.getElementById('tagline-video').play()
                 const taglineVideo = document.getElementById('tagline-video')
                 const playPromiseTagline = taglineVideo.play()
                 if (playPromiseTagline !== null) {
@@ -487,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "20" })
             .setTween(timelineHeaderDark)
-            // .addIndicators({name: `header`})
             .addTo(controller);
     }
     // end section-tagline
@@ -508,13 +413,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .setTween(timelineHeaderWhite)
         .on("enter leave", function (e) {
         })
-        // .addIndicators({name: `header`})
         .addTo(controller);
 
     // start section gallery sell
     if(sectionGallerySell && !mediaMobilelandscape) {
-
-        // const arrGalleryItemsSell = document.querySelectorAll('.section-gallery-sell .gallery-item');
         let wipeAnimationSell = new TimelineMax();
 
         wipeAnimationSell
@@ -524,32 +426,19 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.gallery-sell-item-2 .gallery-item__image`, {}, {transform: 'translateY(-70vh)', ease: Linear.easeNone})
             .fromTo(`.gallery-sell-item-3 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
             .fromTo(`.gallery-sell-item-3 .gallery-item__text-inner`, {}, {opacity: '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
-
             .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {opacity: '0'}, {opacity: '1'})
             .fromTo(`.gallery-sell-item-1 .gallery-item__image`, {}, {transform: 'translateY(-70vh)', ease: Linear.easeNone})
             .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
             .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {}, {opacity: '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
-
             .fromTo(`.gallery-sell-item-0 .gallery-item__text-inner`, {opacity: '0'}, {opacity: '1'})
             .fromTo(`.gallery-sell-item-0 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'})
 
-
-        // for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
-        //
-        //     // wipeAnimationSell
-        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__image`, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: Linear.easeNone})
-        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {opacity: i === arrGalleryItemsSell.length - 1 ? '1' : '0'}, {visibility: '1'}, '<')
-        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
-        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
-        //     }
-
-        new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "3500px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "3500" })
             .setPin("#section-gallery-sell")
             .setTween(wipeAnimationSell)
-            // .addIndicators({name: `gallery-sell-items`})
             .on('progress', (e) => {
                 if(e.progress >= 1) {
-                    new ScrollMagic.Scene({ triggerElement: ".gallery-sell-item-0", triggerHook: "onLeave", duration: "500px"
+                    new ScrollMagic.Scene({ triggerElement: ".gallery-sell-item-0", triggerHook: "onLeave", duration: "500"
                     })
                         .setTween(`.gallery-sell-item-0 .gallery-item__text`, {opacity: '0'})
                         .addTo(controller);
@@ -560,65 +449,83 @@ document.addEventListener('DOMContentLoaded', () => {
     // end section gallery sell
 
     // start section-enabled
-    let timelineEnabled = new TimelineMax();
+    if(sectionEnabled) {
 
-    timelineEnabled
-        .fromTo(`.enabled-image-0`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: Linear.easeNone})
-        .fromTo(`.enabled-image-2`, 1, {transform: 'translateY(20vh)'}, {transform: 'translateY(-20vh)', ease: Linear.easeNone}, '<')
+        let timelineEnabled = new TimelineMax();
 
-    new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4", duration: "2000px" })
-        .setTween(timelineEnabled)
-        // .addIndicators({name: `section-enabled`})
-        .addTo(controller);
+        timelineEnabled
+            .fromTo(`.enabled-image-0`, 1, {transform: 'translateY(20vh)'}, {
+                transform: 'translateY(-20vh)',
+                ease: Linear.easeNone
+            })
+            .fromTo(`.enabled-image-2`, 1, {transform: 'translateY(20vh)'}, {
+                transform: 'translateY(-20vh)',
+                ease: Linear.easeNone
+            }, '<')
 
-    // background color dark
-    new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0" })
-        .setClassToggle(".section-enabled", "section-inversion-dark")
-        // .addIndicators({name: `section-enabled`})
-        .addTo(controller);
+        new ScrollMagic.Scene({triggerElement: "#section-enabled", triggerHook: "0.4", duration: "2000"})
+            .setTween(timelineEnabled)
+            .addTo(controller);
+
+        // background color dark
+        new ScrollMagic.Scene({triggerElement: "#section-enabled", triggerHook: "0"})
+            .setClassToggle(".section-enabled", "section-inversion-dark")
+            .addTo(controller);
 
         //for block mask
-    let timelineEnabledMask = new TimelineMax();
+        let timelineEnabledMask = new TimelineMax();
 
-    if(mediaMobile) {
+        if (mediaMobile) {
+            timelineEnabledMask
+                .fromTo(`.mask-inner`, 1, {}, {transform: 'scale(2.2)', ease: Linear.easeNone})
+        }
+
         timelineEnabledMask
-            .fromTo(`.mask-inner`, 1, {}, {transform: 'scale(2.2)', ease: Linear.easeNone})
+            .fromTo(`.mask-inner`, 1, {}, {maxWidth: '1100px', opacity: '0', ease: Linear.easeNone}, '<')
+            .fromTo(`#enabled-link-left-top`, 1, {x: '-100vh', y: '-100vh'}, {
+                x: '0',
+                y: '0',
+                ease: Expo.easeOuteaseOut
+            })
+            .fromTo(`#enabled-link-left-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-top`, 1, {y: '-100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-right-top`, 1, {x: '100vh', y: '-100vh'}, {
+                x: '0',
+                y: '0',
+                ease: Expo.easeOuteaseOut
+            }, '<')
+            .fromTo(`#enabled-link-right-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-left-bottom`, 1, {x: '-100vh', y: '100vh'}, {
+                x: '0',
+                y: '0',
+                ease: Expo.easeOuteaseOut
+            }, '<')
+            .fromTo(`#enabled-link-left-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-bottom`, 1, {y: '100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-right-bottom`, 1, {x: '100vh', y: '100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut}, '<')
+            .fromTo(`#enabled-link-right-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
+
+        new ScrollMagic.Scene({triggerElement: "#section-enabled-mask", triggerHook: "onLeave", duration: "200%"})
+            .setPin("#section-enabled-mask")
+            .setTween(timelineEnabledMask)
+            .on("progress", function (e) {
+                if (e.progress <= 0.333) {
+                    document.querySelector('.section-enabled__links').style.zIndex = '-1'
+                }
+                if (e.progress >= 0.3) {
+                    document.querySelector('.section-enabled__links').style.zIndex = '1'
+                }
+            })
+            .addTo(controller);
     }
-
-    timelineEnabledMask
-        .fromTo(`.mask-inner`, 1, {}, {maxWidth: '1100px', opacity: '0', ease: Linear.easeNone}, '<')
-        .fromTo(`#enabled-link-left-top`, 1, {x: '-100vh', y: '-100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut})
-        .fromTo(`#enabled-link-left-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-top`, 1, {y: '-100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-right-top`, 1, {x: '100vh', y: '-100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-right-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-left-bottom`, 1, {x: '-100vh', y: '100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-left-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-bottom`, 1, {y: '100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-right-bottom`, 1, {x: '100vh', y: '100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut}, '<')
-        .fromTo(`#enabled-link-right-bottom`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
-
-    new ScrollMagic.Scene({ triggerElement: "#section-enabled-mask",  triggerHook: "onLeave", duration: "200%" })
-        // .setClassToggle(".section-enabled__links", "links-visible")
-        .setPin("#section-enabled-mask")
-        .setTween(timelineEnabledMask)
-        .on("progress", function (e) {
-            if(e.progress <= 0.333) {
-                document.querySelector('.section-enabled__links').style.zIndex = '-1'
-            } if(e.progress >= 0.3) {
-                document.querySelector('.section-enabled__links').style.zIndex = '1'
-            }
-        })
-        // .addIndicators({name: `section-enabled-mask`})
-        .addTo(controller);
     // end section-enabled
 
     // start section-audio
     if (sectionAudio && !mediaMobilelandscape) {
 
-        new ScrollMagic.Scene({ triggerElement: ".section-audio__text",  triggerHook: "0.8", duration: "500px" })
+        new ScrollMagic.Scene({ triggerElement: ".section-audio__text",  triggerHook: "0.8", duration: "500" })
             .setTween(".section-audio__text", {opacity: '1'})
             .addTo(controller);
 
@@ -626,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
         new ScrollMagic.Scene({ triggerElement: "#block-audio-video",  triggerHook: "0.5" })
             .on("progress", (e) => {
                 if(e.progress > 0) {
-                    // document.getElementById('block-audio-video').play()
                     let mediaSectionAudio = document.getElementById('block-audio-video')
                     const playPromise = mediaSectionAudio.play()
                     if (playPromise !== null){
@@ -634,7 +540,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             })
-            // .addIndicators({name: `section Audio`})
             .addTo(controller)
             .reverse(true);
 
@@ -643,7 +548,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('block-audio-video').pause()
             })
             .setTween("#main-items-list-audio", { transform: 'translateY(0)', opacity: 1})
-            // .addIndicators({name: `section Audio`})
             .addTo(controller)
             .reverse(true);
     }
@@ -660,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-funding-every__items`, 1, {}, {opacity: '1', ease: Linear.easeNone})
             .fromTo(`.section-funding-every .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0", duration: "300px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0", duration: "300"})
             .setTween(timelineSectionFundingEvery)
             .addTo(controller);
 
@@ -669,13 +573,11 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineSectionFundingEveryContent
             .fromTo(`#funding-every-items-list`, 1, {transform: 'translateY(110px)'}, {transform: 'translateY(calc(-100% + 110px))', ease: Linear.easeNone})
 
-        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "1000px"})
+        new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "1000"})
             .setPin("#section-funding-every")
-            // .addIndicators({name: `section-FundingEvery`})
             .setTween(timelineSectionFundingEveryContent)
             .on("progress", function (e) {
-                // (e.type === "enter" ? "inside" : "outside")
-                if(e.progress >=1) {
+                if(e.progress >= 1) {
                     // background color white
                     let timelineSectionFundingEveryWhite = new TimelineMax();
 
@@ -685,9 +587,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         .fromTo(`.section-funding-every`, 1, {}, {backgroundColor: '#fdfcfd', ease: Linear.easeNone})
                         .fromTo(`.section-funding-every .title-regular`, 1, {}, {color: '#000', ease: Linear.easeNone}, '<')
 
-                    new ScrollMagic.Scene({ triggerElement: ".section-funding-every__items",  triggerHook: "0.1", duration: "300px"})
+                    new ScrollMagic.Scene({ triggerElement: ".section-funding-every__items",  triggerHook: "0.1", duration: "300"})
                         .setTween(timelineSectionFundingEveryWhite)
-                        // .addIndicators({name: `section-FundingEvery-bg`})
                         .addTo(controller);
                 }
             })
@@ -746,15 +647,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .fromTo(`#section-smarter-headline-interactive`, 1, {y: '100px'}, {y: '0', ease: Linear.easeNone})
         .fromTo(`#section-smarter-interactive`, 1, {y: '150px'}, {y: '0', ease: Linear.easeNone})
 
-        new ScrollMagic.Scene({ triggerElement: "#section-smarter",  triggerHook: "0.8", duration: "500px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-smarter",  triggerHook: "0.8", duration: "500" })
             .setTween(timelineSectionSmarterTitleAndImage)
-            // .addIndicators({name: ` Section Smarter`})
             .addTo(controller);
 
         let timelineSectionSmarter = new TimelineMax();
 
         new ScrollMagic.Scene({ triggerElement: "#section-smarter-interactive",  triggerHook: "onLeave", duration: "100%" })
-            // .setTween(timelineSectionSmarter)
             .setPin("#section-smarter-interactive")
             .on('progress', (e) => {
                 let sumSmarterRightItem = smarterRightItem.length
@@ -783,7 +682,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 })
             })
-            // .addIndicators({name: ` Section Smarter`})
             .addTo(controller);
     }
     // end section-smarter
@@ -804,9 +702,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         splideSectionSmartly.mount();
 
-        new ScrollMagic.Scene({ triggerElement: "#section-smartly",  triggerHook: "0.9", duration: "2000px" })
+        new ScrollMagic.Scene({ triggerElement: "#section-smartly",  triggerHook: "0.9", duration: "2000" })
             .setTween("#slider-smartly-track", {transform: 'translateX(-173%)'})
-            // .setPin("#slider-smartly")
             .addTo(controller);
     }
     // end section-smartly
@@ -823,9 +720,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`#endless-image-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
             .fromTo(`#endless-item-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-endless",  triggerHook: "0.2", duration: "2000px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-endless",  triggerHook: "0.2", duration: "2000"})
             .setPin("#section-endless")
-            // .addIndicators({name: `section-endless`})
             .setTween(timelineSectionEndless)
             .addTo(controller);
     }
@@ -841,14 +737,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-proof .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
             .fromTo(`.section-proof .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-proof",  triggerHook: "0", duration: "100px"})
-            // .addIndicators({name: `section-enabled`})
+        new ScrollMagic.Scene({ triggerElement: "#section-proof",  triggerHook: "0", duration: "100"})
             .setTween(timelineSectionProof)
             .addTo(controller);
 
-        new ScrollMagic.Scene({ triggerElement: "#proof-photo-window",  triggerHook: "0.98", duration: "2000px" })
+        new ScrollMagic.Scene({ triggerElement: "#proof-photo-window",  triggerHook: "0.98", duration: "2000" })
             .setTween("#proof-photo-interactive", {transform: 'translateX(-20%)'})
-            // .addIndicators({name: `section proof`})
             .addTo(controller);
     }
     // end section proof
@@ -879,7 +773,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // start section master
     if(sectionMaster) {
-
         // background color dark
         let timelineSectionFundingEvery = new TimelineMax();
 
@@ -888,12 +781,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-master .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
             .fromTo(`.section-master .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.05", duration: "50px"})
-            // .addIndicators({name: `section-enabled`})
+        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.05", duration: "50"})
             .setTween(timelineSectionFundingEvery)
             .addTo(controller);
 
-        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.3", duration: "300px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.3", duration: "300"})
             .setTween(`#master-items`, {y: '0', ease: Linear.easeNone})
             .addTo(controller);
     }
@@ -901,7 +793,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // start section legitimizing
     if(sectionLegitimizing) {
-
         // background color dark
         let timelineSectionLegitimizing = new TimelineMax();
 
@@ -910,8 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`#legitimizing-headline`, 1, {opacity: '1'}, {opacity: '0', ease: Linear.easeNone}, '<')
             .fromTo(`#legitimizing-items`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
 
-        new ScrollMagic.Scene({ triggerElement: "#section-legitimizing",  triggerHook: "onLeave", duration: "1500px"})
-            // .addIndicators({name: `section-legitimizing`})
+        new ScrollMagic.Scene({ triggerElement: "#section-legitimizing",  triggerHook: "onLeave", duration: "1500"})
             .setTween(timelineSectionLegitimizing)
             .setPin("#section-legitimizing")
             .addTo(controller);
@@ -923,11 +813,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mql.addListener(function(m) {
         if(m.matches) {
-            console.log('p')
             location.reload()
         }
         else {
-            console.log('h')
             location.reload()
         }
     });
