@@ -5,7 +5,11 @@ html {
 
 body {
   @extend %font-main-text;
-  background-color: $color-background-main;
+  //background-color: $color-background-main;
+
+  //@include media-laptop {
+  //  background-color: $color-white;
+  //}
 }
 
 //main
@@ -16,22 +20,22 @@ main {
 
 //style for main size wrapper
 .size-wrapp {
-  max-width: 1230px;
-  padding: 0 15px;
+  max-width: 1232px;
+  padding: 0 16px;
   width: 100%;
   margin: auto;
 }
 
 .size-wrapp-normal {
-  max-width: 1030px;
-  padding: 0 15px;
+  max-width: 1032px;
+  padding: 0 16px;
   width: 100%;
   margin: auto;
 }
 
 .size-wrapp-small {
-  max-width: 620px;
-  padding: 0 15px;
+  max-width: 622px;
+  padding: 0 16px;
   width: 100%;
   text-align: center;
   margin: auto;
@@ -43,7 +47,7 @@ main {
 
 //style for button-normal
 .button-normal {
-  background-color: $button-normal-color;
+  background-color: $color-black;
   padding: 12px 28px;
   border-radius: 32px;
   @extend %font-button-normal;
@@ -86,6 +90,10 @@ main {
   .button-normal {
     margin-top: 48px;
   }
+
+  @include media-mobile-horizontal {
+    padding-bottom: 30px;
+  }
 }
 
 //icons
@@ -100,6 +108,24 @@ main {
   border-radius: 50%;
   margin: 0 32px 0 0;
 
+  @include media-mobile {
+    width: 56px;
+    height: 56px;
+    margin: 0 25px 0 0;
+  }
+
+  @include media-mobile-small {
+    width: 40px;
+    height: 40px;
+    margin: 0 15px 0 0;
+  }
+
+  @include media-mobile-horizontal {
+    width: 30px;
+    height: 30px;
+    margin: 0 15px 0 0;
+  }
+
   &.items-icon-dark {
     background-color: $background-icon-dark;
     margin: 0 -20px 26px;
@@ -109,6 +135,21 @@ main {
     display: block;
     width: 40px;
     height: 40px;
+
+    @include media-mobile {
+      width: 28px;
+      height: 28px;
+    }
+
+    @include media-mobile-horizontal {
+      width: 18px;
+      height: 18px;
+    }
+
+    @include media-mobile-small {
+      width: 18px;
+      height: 18px;
+    }
   }
 }
 
@@ -117,18 +158,35 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  //transition: .5s;
   opacity: 0;
 
   &__item {
     display: flex;
     align-items: center;
     padding: 37px 0;
+
+    @include media-mobile {
+      padding: 24px 0;
+    }
+
+    @include media-mobile-small {
+      padding: 10px 0;
+      font-size: 12px;
+    }
+
+    @include media-mobile-horizontal {
+      padding: 10px;
+      font-size: 12px;
+    }
   }
 
   &__title {
     @extend %icon-title;
     padding-bottom: 7px;
+
+    @include media-mobile-small {
+      padding: 0;
+    }
   }
 }
 
@@ -137,11 +195,25 @@ main {
   padding: 0 0 200px;
   position: relative;
 
+  @include media-mobile {
+    padding: 0;
+  }
+
+  @include media-mobile-horizontal {
+    padding: 0 0 50px;
+  }
+
   &__list {
     display: flex;
     align-items: self-start;
     justify-content: space-between;
     text-align: center;
+
+    @include media-mobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     span {
       display: block;
@@ -156,6 +228,11 @@ main {
     padding: 0 20px;
     max-width: 33.3333%;
     width: 100%;
+
+    @include media-mobile {
+      max-width: 100%;
+      padding-bottom: 55px;
+    }
   }
 
   .items-icon {
@@ -217,6 +294,18 @@ color: $color-light-blue;
 .main-gallery {
   .gallery {
     height: 100vh;
+
+    @include media-laptop {
+      height: 58vh;
+    }
+
+    @include media-tablet{
+      height: 100vh;
+    }
+
+    @include media-mobile-horizontal {
+      height: auto;
+    }
   }
 
   .gallery-list {
@@ -225,6 +314,10 @@ color: $color-light-blue;
     height: 100%;
     display: flex;
     align-items: center;
+
+    @include media-mobile-horizontal {
+      flex-direction: column;
+    }
   }
 
   .gallery-item {
@@ -234,9 +327,35 @@ color: $color-light-blue;
     align-items: center;
     width: 100%;
 
+    @include media-laptop {
+      flex-direction: column;
+      align-items: self-start;
+    }
+
+    @include media-mobile-horizontal {
+      position: static;
+      padding-bottom: 20px;
+    }
+
     &__image {
       max-width: 50%;
       width: 100%;
+
+      @include media-laptop {
+        width: calc(100vw - 16px);
+        max-width: max-content;
+        padding-bottom: 34px;
+        margin: auto;
+      }
+
+      @include media-mobile {
+        margin-left: -16px;
+      }
+
+      @include media-mobile-horizontal {
+        width: 50%;
+        margin: 0 auto;
+      }
     }
 
     &__image-inner {
@@ -247,8 +366,10 @@ color: $color-light-blue;
     &__text {
       max-width: 48%;
       width: 100%;
-      //padding-left: 40px;
 
+      @include media-laptop {
+        max-width: 100%;
+      }
       .button {
         margin-top: 48px;
       }

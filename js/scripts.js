@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const arrItemsMenuHeader = document.querySelectorAll('.header .header__navigation li')
     const navigationBlock = document.querySelector('.header__navigation')
     const heroVideo = document.getElementById('hero-video')
-    const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
-    const backgroundVideoPicture = document.querySelector('.background-video-picture')
-    const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
+    // const sectionVideoInPicture = document.querySelector('.section-video-in-picture')
+    // const backgroundVideoPicture = document.querySelector('.background-video-picture')
+    // const checkingAccountDescription = document.querySelector('.checking-account-description-interactive')
     const arrPhoneScrollInteractive = document.querySelectorAll('.phone-scroll-interactive')
-    const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
+    // const arrFundingEveryItems = document.querySelectorAll('.section-funding-every .block-items__item')
     const smarterLeftItem = document.querySelectorAll('.section-smarter__left .block-items__item')
     const smarterRightItem = document.querySelectorAll('.section-smarter__right .block-items__item')
     const accordion = document.querySelector('.accordion-list')
@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionHero = document.querySelector('.section-hero')
     const sectionAbout = document.querySelector('.section-about')
     const sectionGalleryFirst = document.querySelector('.section-gallery-first')
+    const sectionGallerySell = document.querySelector('.section-gallery-sell')
     const sectionAudio = document.querySelector('.section-audio')
+    const sectionPhoneScroll = document.querySelector('.section-phone-scroll')
     const sectionFundingEvery = document.querySelector('.section-funding-every')
     const sectionReliable = document.querySelector('.section-reliable')
+    const sectionTagline = document.querySelector('.section-tagline')
     const sectionSmarter = document.querySelector('.section-smarter')
     const sectionSmartly = document.querySelector('.section-smartly')
     const sectionCheckingAccount = document.querySelector('.section-checking-account')
@@ -35,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionEndless = document.querySelector('.section-endless')
     const sectionMaster = document.querySelector('.section-master')
     const sectionLegitimizing = document.querySelector('.section-legitimizing')
+
+    // media
+    const mediaDesktop = window.outerWidth > 1024
+    const mediaLaptop = window.outerWidth <= 1024
+    const mediaTablet = window.outerWidth < 992
+    const mediaMobile = window.outerWidth < 767
+    const mediaMobilelandscape = window.outerHeight < 500
+    const mediaMobileSmall = window.outerWidth < 350
+    const mediaHeightDesktopSmall = window.outerHeight < 800
+    const mediaHeightDesktopDig = window.outerHeight > 1000
+    const mediaDesktopBig = window.outerWidth > 1550
 
     // for open menu mobile
     if(navIconOpen) {
@@ -53,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // close menu mobile for click on item navigation
-    if (window.matchMedia("(max-width: 1024px)")) {
+    if (mediaTablet) {
         arrItemsMenuHeader.forEach((itemMenu) => {
             itemMenu.addEventListener('click', () => {
                 navigationBlock.classList.remove('open-menu-mobile')
@@ -66,12 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if(sectionHero) {
         // play video im hero
         setTimeout(() => {
-            heroVideo.play();
-        }, 1000)
+            // heroVideo.play();
+            // let mediaSectionHero = document.getElementById('block-audio-video')
+            const playPromise = heroVideo.play()
+            if (playPromise !== null){
+
+                playPromise.catch(() => { heroVideo.play()})
+            }
+        }, 300)
         //not scroll when video play
         heroVideo.addEventListener('ended', (event) => {
+            document.querySelector('.poster').style.opacity = 1
             document.body.classList.remove('no-scroll')
+            // let v = heroVideo.currentSrc;
+            // heroVideo.src='';
+            // heroVideo.src=v;
         })
+
 
         // not scroll when the screen refreshes and the video is not fully intersecting with the view port
         //play video
@@ -89,8 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // for change size video in hero
         let timelineSectionHero = new TimelineMax()
-            .fromTo(['#hero-video'], 1, {}, {width: '600px', height: '340px', ease: Linear.easeNone})
-            .fromTo(['#hero-text'], 1, {}, {opacity: '1', top: '75vh', ease: Linear.easeNone}, '<')
+            if(mediaLaptop) {
+                timelineSectionHero
+                    .fromTo(['.poster'], 1, {}, {transform: 'scale(0.3)', ease: Linear.easeNone})
+                    .fromTo(['#hero-video'], 1, {}, {transform: 'scale(0.3)', ease: Linear.easeNone}, '<')
+            } else {
+            timelineSectionHero
+                .fromTo(['.poster'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone})
+                .fromTo(['#hero-video'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone}, '<')
+                .fromTo(['#hero-video'], 1, {}, {width: '600px', height: mediaLaptop ? '620px' : '340px', ease: Linear.easeNone})
+            }
+
+        timelineSectionHero
+            // .fromTo(['.poster'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone})
+            // .fromTo(['#hero-video'], 1, {}, {width: mediaMobile ? '375px' : '600px', height: mediaLaptop ? '250px' : '340px', ease: Linear.easeNone}, '<')
+            // .fromTo(['#hero-video'], 1, {}, {width: '600px', height: mediaLaptop ? '620px' : '340px', ease: Linear.easeNone})
+            .fromTo(['#hero-text'], 1, {}, {opacity: '1', top: mediaLaptop ? '62vh' :  '75vh', ease: Linear.easeNone}, '<')
+
+        if(mediaLaptop) {
+            timelineSectionHero
+                .fromTo(['#section-hero'], 1, {}, {top: '-15vh', ease: Linear.easeNone}, '<')
+        }
 
         new ScrollMagic.Scene({triggerElement: "#section-hero", triggerHook: "onLeave", duration: "800px"})
             .setPin("#section-hero")
@@ -104,27 +148,54 @@ document.addEventListener('DOMContentLoaded', () => {
             sectionHero.style.width = `${screenWidth}px`
         }, false);
     }
-    //end hero
+    // end hero
 
     // start section about
-    if(sectionAbout) {
+    if(sectionAbout && !mediaMobilelandscape) {
         let timelineSectionAbout = new TimelineMax()
-            .fromTo(['#slider-about-track'], 1, {}, {transform: 'scale(0.593)', ease: Linear.easeNone})
-            .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
-            .fromTo(['#slider-about-track'], 1, {}, {x: '-1350px', ease: Linear.easeNone})
-            .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
+           .fromTo(['#slider-about-track'], 1, {}, {transform: mediaTablet ? 'scale(0.8) translateY(48px)' : 'scale(0.593)', ease: Linear.easeNone})
+                // .fromTo(['#slider-about-track'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
+            .fromTo(['#slider-about-track'], 1, {}, {x: mediaMobile ? '-660px' : mediaTablet ? '-460px' : '-1350px', ease: Linear.easeNone})
+            .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
 
-        new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: "0.8", duration: "1500px" })
-            // .setPin("#slider-about")
-            .setTween(timelineSectionAbout)
-            // .addIndicators({name: `section about`})
-            .addTo(controller);
+        // for second slider in mobile
+        if(mediaTablet) {
+            let timelineSectionAboutMobileBottom  = new TimelineMax()
+                .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {transform: 'scale(0.8) translateY(-48px)', ease: Linear.easeNone})
+                // .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {y: '-20px', ease: Linear.easeNone}, '<')
+                .fromTo(['#slider-about-track-mobile-bottom'], 1, {}, {x: mediaMobile ? '660px' : '460px', ease: Linear.easeNone})
+                .fromTo(['#about-text-narrow-interactive'], 1, {transform: 'translateY(130px)', opacity: '0'}, {transform: mediaTablet ? 'translateY(24px)' : 'translateY(-68px)', opacity: '1', ease: Back.easeOut.config(1.7)}, '-=0.8')
 
-            // for slide
-            let splideAboutSlider = new Splide( '.slider-about', {
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500px' })
+                // .addIndicators({name: `section about bottom`})
+                .setTween(timelineSectionAboutMobileBottom)
+                .addTo(controller);
+
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: '0.5', duration: '1500px' })
+                // .setPin("#slider-about")
+                .setTween(timelineSectionAbout)
+                // .setPin("#slider-about")
+                // .addIndicators({name: `section about`})
+                .addTo(controller);
+
+            new ScrollMagic.Scene({ triggerElement: "#section-about",  triggerHook: 'onLeave', duration: '1000px' })
+                .setPin("#section-about")
+                // .addIndicators({name: `section about`})
+                .addTo(controller);
+        }
+
+        if(window.outerWidth >= 1024) {
+            new ScrollMagic.Scene({ triggerElement: "#slider-about",  triggerHook: '0.8', duration:  mediaTablet ? '100%' : '1500px' })
+                .setTween(timelineSectionAbout)
+                // .addIndicators({name: `section about`})
+                .addTo(controller);
+        }
+
+       // for slide
+       let splideAboutSlider = new Splide( '.slider-about', {
                 type: 'loop',
                 focus: 'center',
-                gap: 20,
+                // gap: mediaMobile ? 8 : 20,
                 autoWidth: true,
                 arrows: false,
                 pagination: false,
@@ -132,17 +203,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 drag: false,
             });
 
-            splideAboutSlider.mount();
+       let splideAboutSliderBottomMobile = new Splide( '#slider-about-mobile-bottom', {
+            type: 'loop',
+            focus: 'center',
+            // gap: 8,
+            autoWidth: true,
+            arrows: false,
+            pagination: false,
+            clones: 2,
+            drag: false,
+        });
+
+       splideAboutSlider.mount();
+
+       splideAboutSliderBottomMobile.mount();
 
     }
     // end section about
 
     // start section video in picture
-    if(videoInPicture) {
+    if(videoInPicture && !mediaMobilelandscape) {
 
         let playVideoInPicture = new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", triggerHook: 1})
             .on("enter", () => {
-                document.getElementById('video-in-picture').play()
+                const videoInPicture = document.getElementById('video-in-picture')
+                const playPromise = videoInPicture.play()
+                if (playPromise !== null){
+
+                    playPromise.catch(() => { videoInPicture.play()})
+                }
             })
             .on("leave", () => {
                 document.getElementById('video-in-picture').pause()
@@ -156,25 +245,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('video-in-picture').pause()
             })
             .on("leave", () => {
-                document.getElementById('video-in-picture').play()
+                // document.getElementById('video-in-picture').play()
+                let mediaVideoInPicture = document.getElementById('video-in-picture')
+                const playPromise = mediaVideoInPicture.play();
+                if (playPromise !== null){
+                    playPromise.catch(() => { mediaVideoInPicture.play(); })
+                }
             })
             // .addIndicators({name: "video start"})
             .addTo(controller)
             .reverse(true);
 
         let timelineVideoInPictureSmall = new TimelineMax()
-            .fromTo(['.background-video-picture'], 1, {}, {visibility: 'visible', ease: Linear.easeNone})
-            .fromTo(['.section-video-in-picture'], 1, {}, { backgroundColor: '#000', color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
+            .fromTo(['.background-video-picture'], 1, {}, {opacity: '1', ease: Linear.easeNone})
+            .fromTo(['.section-video-in-picture'], 1, {}, {backgroundColor: '#000', color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
             .fromTo(['.background-video-picture'], 1, {transform: 'scale(1)'}, {transform: 'scale(0.7)', ease: Linear.easeNone})
-            .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: 'scale(0.5)', ease: Linear.easeNone})
-            .fromTo(['#items-list-dark-interactive'], 1, {}, {transform: 'translateY(calc(-70px - 25vh)', ease: Linear.easeNone})
-            .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: 'scale(0.5) translateY(-25vh)', ease: Linear.easeNone})
-            .fromTo(['#items-dark-interactive'], 1, {}, {padding: '0', ease: Linear.easeNone}, '<')
+            .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: mediaDesktopBig ? 'scale(0.4)' : mediaLaptop ? 'scale(0.71)' : 'scale(0.5)', ease: Linear.easeNone})
+            .fromTo(['#video-in-picture-inner-interactive'], 1, {}, {transform: mediaDesktopBig ? 'scale(0.4)' : mediaLaptop ? 'scale(0.71)' : mediaHeightDesktopSmall ? 'scale(0.5) translateY(-350px)' : 'scale(0.5) translateY(-25vh)', ease: Linear.easeNone})
+            .fromTo(['#items-list-dark-interactive'], 1, {transform: mediaLaptop ? '0' : 'translateY(-100px)'}, {transform: mediaDesktopBig ? 'translateY(-140px)' :  mediaLaptop ? '0' : 'translateY(calc(-50px - 25vh)', ease: Linear.easeNone}, '<')
+            .fromTo(['#items-list-dark-interactive'], 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '3500px', triggerHook: 'onLeave'})
+        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: '2800px', triggerHook: mediaLaptop ? '0.35' : 'onLeave'})
             // .addIndicators({name: "video stop and small"})
             .setPin("#video-in-picture-interactive")
             .setTween(timelineVideoInPictureSmall)
+            .addTo(controller)
+            .reverse(true)
+
+        // background color
+        let timelineVideoInPictureBackground = new TimelineMax()
+            .fromTo(['.section-video-in-picture'], 1, {}, {backgroundColor: '#000', color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
+            .fromTo(['#video-in-picture-title-interactive'], 1, {}, {color: '#fff', ease: 'custom(M0,0 C0,0 0.007,0.267 0.034,0.39 0.054,0.487 0.047,0.515 0.078,0.608 0.1,0.677 0.113,0.713 0.148,0.776 0.173,0.822 0.217,0.882 0.254,0.92 0.283,0.95 0.318,0.98 0.36,0.988 0.43,1 0.448,1 0.5,1 0.566,1 0.6,1 0.66,1 0.791,1 1,1 1,1)'}, '<')
+
+        new ScrollMagic.Scene({triggerElement: "#video-in-picture-interactive", duration: mediaMobile ? '50px' : mediaLaptop ? '100px' : '300px', triggerHook: mediaHeightDesktopSmall ? '0.6' : mediaLaptop ? '0.45' : 'onLeave'})
+            // .addIndicators({name: "video stop and small"})
+            .setTween(timelineVideoInPictureBackground)
             .addTo(controller)
             .reverse(true)
 
@@ -203,10 +308,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // end section video in picture
 
     // start section checking account
-    if(sectionCheckingAccount) {
+    if(sectionCheckingAccount && !mediaMobilelandscape) {
         let timelineCheckingAccount = new TimelineMax()
             .fromTo(['#checking-account-title-interactive'], 1, {y: '50px'}, {y: '0', ease: Linear.easeNone})
             .fromTo(['.checking-account-description-interactive'], 1, {opacity: 1, transform: 'translateY(100vh)'}, {opacity: 1, transform: 'translateY(0)', ease: Linear.easeNone}, '<')
+            // .fromTo(['.section-checking-account-inner'], 1,{}, {transform: 'translateY(-100%)', ease: Linear.easeNone})
+
 
         new ScrollMagic.Scene({ triggerElement: "#section-checking-account",  triggerHook: "0", duration: "1000px" })
             .setPin("#section-checking-account")
@@ -216,7 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "1", duration: "500px" })
             // .addIndicators({name: `checking-account-title-interactive`})
-            .setTween("#checking-account-title-interactive", {opacity: 1})
+            .setTween( new TimelineMax()
+                .fromTo(['#checking-account-title-interactive'], 1, {opacity: '0'}, {opacity: 1, ease: Linear.easeNone})
+            )
             .addTo(controller);
 
         // new ScrollMagic.Scene({ triggerElement: "#checking-account-title-interactive",  triggerHook: "0.1", duration: "200px" })
@@ -251,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // end section checking account
 
     // start gallery first
-    if(sectionGalleryFirst) {
+    if(sectionGalleryFirst && !mediaMobilelandscape) {
         const arrGalleryItemsFirst = document.querySelectorAll('.section-gallery-first .gallery-item');
         let wipeAnimationFirst = new TimelineMax();
 
@@ -259,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wipeAnimationFirst
                 .fromTo(`.gallery-first-item-${i} .gallery-item__image`, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: Linear.easeNone})
                 .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {opacity: i === arrGalleryItemsFirst.length - 1 ? '1' : '0'}, {visibility: '1'}, '<')
-                .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
+                .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {transform: mediaMobile ? 'translateY(-30px)' : 'translateY(-40px)'}, '<')
                 .fromTo(`.gallery-first-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
         }
 
@@ -279,64 +388,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // end gallery first
 
-    //for section phone-scroll
-    let timelineSectionPhoneScroll = new TimelineMax()
-        .fromTo(['#block-phone-scroll-image'], 1, {}, {y: window.outerHeight >= 890 ?'96px' : '130px', ease: Linear.easeNone})
-        .fromTo(['#phone-scroll-interactive-0'], 1, {}, {y: '-10vh', ease: Linear.easeNone}, '<')
-
-        arrPhoneScrollInteractive.forEach((item, i) => {
-            let lastItem =  arrPhoneScrollInteractive.length - 1
+    // start section phone-scroll
+    if(sectionPhoneScroll && !mediaMobilelandscape) {
+        let timelineSectionPhoneScroll = new TimelineMax();
 
             timelineSectionPhoneScroll
-                .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
-                .fromTo(`#phone-scroll-interactive-${i}`, 1, {}, {opacity: (i === lastItem ) ? 1 : 0, ease: Linear.easeNone}, (i === lastItem ) ? '<' : '-=0')
-        })
+            .fromTo(['#block-phone-scroll-image'], 1, {}, {y: mediaLaptop ? '0' : window.outerHeight >= 890 ? '96px' : '130px', ease: Linear.easeNone})
+            .fromTo(['#phone-scroll-interactive-0'], 1, {}, {y: mediaLaptop ? '0' : '-10vh', ease: Linear.easeNone}, '<')
+            .fromTo(['#phone-scroll-interactive-1'], 1, {}, {y: mediaLaptop ? '0' : '-10vh', ease: Linear.easeNone}, '<')
 
-    timelineSectionPhoneScroll
-        .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.55)', ease: Linear.easeNone}, '<')
+            // arrPhoneScrollInteractive.forEach((item, i) => {
+            //     let lastItem =  arrPhoneScrollInteractive.length - 1
+            //
+            //     timelineSectionPhoneScroll
+            //         .fromTo(`#phone-scroll-interactive-${i}`, 1, {opacity: i === 0 ? 1 : 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
+            //         .fromTo(`#phone-scroll-interactive-${i}`, 1, {}, {opacity: (i === lastItem ) ? 1 : 0, ease: Linear.easeNone}, (i === lastItem ) ? '<' : '-=0')
+            // })
 
-    new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "2000px" })
-        .setPin("#section-phone-scroll")
-        .setTween(timelineSectionPhoneScroll)
-        // .addIndicators({name: `section-phone-scroll`})
-        .addTo(controller);
+
+            // .fromTo(`#phone-scroll-interactive-0`, 1, {opacity: 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-interactive-0`, 1, {opacity: 1}, {opacity: 0, zIndex: '0', ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-interactive-1-title`, 1, {opacity: 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-content-text`, 1, {opacity: 0, y: '200px'}, {opacity: 1, y: 0, ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-content-button`, 1, {opacity: 0, y: '200px'}, {opacity: 1, y: 0, ease: Linear.easeNone})
+
+        if(mediaLaptop) {
+            timelineSectionPhoneScroll
+                .fromTo(['#block-phone-scroll-image'], 1, {}, {y:'-75px', ease: Linear.easeNone})
+        }
+        timelineSectionPhoneScroll
+
+            .fromTo(`#phone-scroll-interactive-1`, 1, {}, {opacity: mediaLaptop ? '1' : 0, zIndex: '0', ease: Linear.easeNone})
+            .fromTo(`#phone-scroll-interactive-2`, 1, {opacity: 0}, {opacity: 1, zIndex: '1', ease: Linear.easeNone})
+
+        timelineSectionPhoneScroll
+            .fromTo(['#block-phone-scroll-image'], 1, {}, {transform: mediaLaptop ? 'scale(0.89)' : window.outerHeight >= 890 ? 'scale(0.75)' : 'scale(0.55)', ease: Linear.easeNone}, '<')
+
+        new ScrollMagic.Scene({ triggerElement: "#section-phone-scroll",  triggerHook: "onLeave", duration: "2000px" })
+            .setPin("#section-phone-scroll")
+            .setTween(timelineSectionPhoneScroll)
+            // .addIndicators({name: `section-phone-scroll`})
+            .addTo(controller);
+
+        if(mediaLaptop) {
+            new ScrollMagic.Scene({ triggerElement: "#phone-scroll-items-mobile",  triggerHook: "0.95", duration: "300px" })
+                .setTween("#phone-scroll-items-mobile", {opacity: 1})
+                // .addIndicators({name: `section-phone-scroll`})
+                .addTo(controller);
+        }
+    }
+    // end section phone-scroll
 
     // start section-tagline
-    let timelineSectionTagline = new TimelineMax()
+    if(sectionTagline) {
 
-    timelineSectionTagline
-        .fromTo(['#tagline-video-wrapp'], 1, {}, {top: 0, ease: Linear.easeNone})
-        .fromTo(['#tagline'], 1, {}, {opacity: 0, ease: Linear.easeNone}, '<')
-        .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', height: '100vh', ease: Linear.easeNone})
+        let timelineSectionTagline = new TimelineMax()
 
-    new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "1500px" })
-        // .setClassToggle(".header", "header-dark")
-        .setPin("#section-tagline")
-        .setTween(timelineSectionTagline)
-        // .addIndicators({name: `section-tagline`})
-        .addTo(controller);
+        if(mediaMobile) {
+            timelineSectionTagline
+                .fromTo(['#tagline'], 1, {}, {x: mediaMobileSmall ? '-47%' : '-37%', ease: Linear.easeNone})
+        }
 
-        //for play video in section-tagline
-    new ScrollMagic.Scene({ triggerElement: "#tagline-video",  triggerHook: "onLeave" })
-        .on("enter", () => {
-            document.getElementById('tagline-video').play()
-        })
-        .addTo(controller);
+        timelineSectionTagline
+            .fromTo(['#tagline-video-wrapp'], 1, {}, {top: 0, ease: Linear.easeNone})
+            .fromTo(['#tagline'], 1, {}, {opacity: 0, ease: Linear.easeNone}, '<')
+            .fromTo(['#tagline-video'], 1, {}, {maxWidth: '100%', height: mediaMobilelandscape ? '100vh' : mediaLaptop ? '50vh' : mediaMobile ? '255px' : '100vh', ease: Linear.easeNone})
 
-        // header dark in section-tagline
-    let timelineHeaderDark = new TimelineMax()
+        new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "1500px" })
+            // .setClassToggle(".header", "header-dark")
+            .setPin("#section-tagline")
+            .setTween(timelineSectionTagline)
+            // .addIndicators({name: `section-tagline`})
+            .addTo(controller);
 
-    timelineHeaderDark
-        .fromTo([".logo"], 1, {}, { opacity: '0', ease: Linear.easeNone})
-        .fromTo([".logo-white-interactive"], 1, {}, { opacity: '1', ease: Linear.easeNone}, '<')
-        .fromTo([".header"], 1, {}, { backgroundColor: '#000', ease: Linear.easeNone}, '<')
-        .fromTo([".header .button"], 1, {}, { backgroundColor: '#fff', color: '#000', ease: Linear.easeNone}, '<')
+            //for play video in section-tagline
+        new ScrollMagic.Scene({ triggerElement: "#tagline-video",  triggerHook: "onLeave" })
+            .on("enter", () => {
+                // document.getElementById('tagline-video').play()
+                const taglineVideo = document.getElementById('tagline-video')
+                const playPromiseTagline = taglineVideo.play()
+                if (playPromiseTagline !== null) {
+                    playPromiseTagline.catch(() => {taglineVideo.play()})
+                }
+            })
+            .addTo(controller);
 
-    new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "20" })
-        .setTween(timelineHeaderDark)
-        // .addIndicators({name: `header`})
-        .addTo(controller);
+            // header dark in section-tagline
+        let timelineHeaderDark = new TimelineMax()
 
+        timelineHeaderDark
+            .fromTo([".logo"], 1, {}, { opacity: '0', ease: Linear.easeNone})
+            .fromTo([".logo-mobile"], 1, {}, { opacity: '0', ease: Linear.easeNone}, '<')
+            .fromTo([".logo-white-interactive"], 1, {}, { opacity: '1', ease: Linear.easeNone}, '<')
+            .fromTo([".logo-mobile-white-interactive"], 1, {}, { opacity: '1', ease: Linear.easeNone}, '<')
+            .fromTo([".header"], 1, {}, { backgroundColor: '#000', ease: Linear.easeNone}, '<')
+            .fromTo([".header .button"], 1, {}, { backgroundColor: '#fff', color: '#000', ease: Linear.easeNone}, '<')
+            .fromTo([".header .nav-icon-open__item"], 1, {}, { borderColor: '#fff', ease: Linear.easeNone}, '<')
+
+        new ScrollMagic.Scene({ triggerElement: "#section-tagline",  triggerHook: "onLeave", duration: "20" })
+            .setTween(timelineHeaderDark)
+            // .addIndicators({name: `header`})
+            .addTo(controller);
+    }
     // end section-tagline
 
     // header white
@@ -344,9 +497,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     timelineHeaderWhite
         .fromTo([".logo"], 1, {}, { opacity: '1', ease: Linear.easeNone})
+        .fromTo([".logo-mobile"], 1, {}, { opacity: '1', ease: Linear.easeNone}, '<')
         .fromTo([".logo-white-interactive"], 1, {}, { opacity: '0', ease: Linear.easeNone}, '<')
+        .fromTo([".logo-mobile-white-interactive"], 1, {}, { opacity: '0', ease: Linear.easeNone}, '<')
         .fromTo([".header"], 1, {}, { backgroundColor: '#fff', ease: Linear.easeNone}, '<')
-        .fromTo([".header .button"], 1, {}, { backgroundColor: '#1D1D1F', color: '#fff', ease: Linear.easeNone}, '<')
+        .fromTo([".header .button"], 1, {}, { backgroundColor: '#000', color: '#fff', ease: Linear.easeNone}, '<')
+        .fromTo([".header .nav-icon-open__item"], 1, {}, { borderColor: '#1D1D1F', ease: Linear.easeNone}, '<')
 
     new ScrollMagic.Scene({ triggerElement: ".header-white-trigger", triggerHook: "onLeave", duration: "20" })
         .setTween(timelineHeaderWhite)
@@ -356,22 +512,51 @@ document.addEventListener('DOMContentLoaded', () => {
         .addTo(controller);
 
     // start section gallery sell
-    const arrGalleryItemsSell = document.querySelectorAll('.section-gallery-sell .gallery-item');
-    let wipeAnimationSell = new TimelineMax();
+    if(sectionGallerySell && !mediaMobilelandscape) {
 
-    for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
+        // const arrGalleryItemsSell = document.querySelectorAll('.section-gallery-sell .gallery-item');
+        let wipeAnimationSell = new TimelineMax();
+
         wipeAnimationSell
-            .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {transform: i === arrGalleryItemsSell.length - 1 ? 'translateY(0)' : 'translateY(105%)'}, {transform: 'translateY(0)'}, '-=0.4')
-            .fromTo(`.gallery-sell-item-${i} .gallery-item__image`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: "slow(0.3, 0.4)"})
-            .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, 1, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-105%)'}, '<')
+            .fromTo('.gallery-sell-title-mark-0', {transform: 'translateY(0)'}, {transform: 'translateY(-100%)', ease: Linear.easeNone})
+            .fromTo('.gallery-sell-title-mark-1', {transform: 'translateY(100%)'}, {transform: 'translateY(0)', ease: Linear.easeNone}, '<')
+            .fromTo(`.gallery-sell-item-3 .gallery-item__image`, {}, {transform: 'translateY(-70vh)', ease: Linear.easeNone}, '<')
+            .fromTo(`.gallery-sell-item-2 .gallery-item__image`, {}, {transform: 'translateY(-70vh)', ease: Linear.easeNone})
+            .fromTo(`.gallery-sell-item-3 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
+            .fromTo(`.gallery-sell-item-3 .gallery-item__text-inner`, {}, {opacity: '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
+
+            .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {opacity: '0'}, {opacity: '1'})
+            .fromTo(`.gallery-sell-item-1 .gallery-item__image`, {}, {transform: 'translateY(-70vh)', ease: Linear.easeNone})
+            .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
+            .fromTo(`.gallery-sell-item-1 .gallery-item__text-inner`, {}, {opacity: '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
+
+            .fromTo(`.gallery-sell-item-0 .gallery-item__text-inner`, {opacity: '0'}, {opacity: '1'})
+            .fromTo(`.gallery-sell-item-0 .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'})
+
+
+        // for (let i = arrGalleryItemsSell.length - 1; i >= 0; i--) {
+        //
+        //     // wipeAnimationSell
+        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__image`, {}, {transform: i === 0 ? 'translateY(0)' : 'translateY(-70vh)', ease: Linear.easeNone})
+        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {opacity: i === arrGalleryItemsSell.length - 1 ? '1' : '0'}, {visibility: '1'}, '<')
+        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {}, {transform: 'translateY(-40px)'}, '<')
+        //     //     .fromTo(`.gallery-sell-item-${i} .gallery-item__text-inner`, {}, {opacity: i === 0 ? '1' : '0', ease: "custom(M0,0 C0,0 0,0.141 0,0.242 0,0.354 0,0.395 0,0.486 0,0.596 0,0.837 0,0.918 0,1.02 0.357,1 0.436,1 0.536,1 0.531,1 0.6,1 0.674,1 0.696,1 0.75,1 0.808,1 0.822,1 0.87,1 0.924,1 1,1 1,1 )"}, '<')
+        //     }
+
+        new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "3500px" })
+            .setPin("#section-gallery-sell")
+            .setTween(wipeAnimationSell)
+            // .addIndicators({name: `gallery-sell-items`})
+            .on('progress', (e) => {
+                if(e.progress >= 1) {
+                    new ScrollMagic.Scene({ triggerElement: ".gallery-sell-item-0", triggerHook: "onLeave", duration: "500px"
+                    })
+                        .setTween(`.gallery-sell-item-0 .gallery-item__text`, {opacity: '0'})
+                        .addTo(controller);
+                }
+            })
+            .addTo(controller);
     }
-
-    new ScrollMagic.Scene({ triggerElement: "#section-gallery-sell",  triggerHook: "onLeave", duration: "3500px" })
-        .setPin("#section-gallery-sell")
-        .setTween(wipeAnimationSell)
-        // .addIndicators({name: `gallery-sell-items`})
-        .addTo(controller);
-
     // end section gallery sell
 
     // start section-enabled
@@ -387,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .addTo(controller);
 
     // background color dark
-    new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0.4" })
+    new ScrollMagic.Scene({ triggerElement: "#section-enabled",  triggerHook: "0" })
         .setClassToggle(".section-enabled", "section-inversion-dark")
         // .addIndicators({name: `section-enabled`})
         .addTo(controller);
@@ -395,8 +580,13 @@ document.addEventListener('DOMContentLoaded', () => {
         //for block mask
     let timelineEnabledMask = new TimelineMax();
 
+    if(mediaMobile) {
+        timelineEnabledMask
+            .fromTo(`.mask-inner`, 1, {}, {transform: 'scale(2.2)', ease: Linear.easeNone})
+    }
+
     timelineEnabledMask
-        .fromTo(`.mask-inner`, 1, {}, {maxWidth: '1100px', opacity: '0', ease: Linear.easeNone})
+        .fromTo(`.mask-inner`, 1, {}, {maxWidth: '1100px', opacity: '0', ease: Linear.easeNone}, '<')
         .fromTo(`#enabled-link-left-top`, 1, {x: '-100vh', y: '-100vh'}, {x: '0', y: '0', ease: Expo.easeOuteaseOut})
         .fromTo(`#enabled-link-left-top`, 1, {opacity: '0'}, {opacity: '1', ease: Expo.easeOuteaseOut}, '<')
         .fromTo(`#enabled-link-top`, 1, {y: '-100vh'}, {y: '0', ease: Expo.easeOuteaseOut}, '<')
@@ -426,12 +616,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // end section-enabled
 
     // start section-audio
-    if (sectionAudio) {
+    if (sectionAudio && !mediaMobilelandscape) {
+
+        new ScrollMagic.Scene({ triggerElement: ".section-audio__text",  triggerHook: "0.8", duration: "500px" })
+            .setTween(".section-audio__text", {opacity: '1'})
+            .addTo(controller);
+
         //for play video in section-audio
         new ScrollMagic.Scene({ triggerElement: "#block-audio-video",  triggerHook: "0.5" })
             .on("progress", (e) => {
                 if(e.progress > 0) {
-                    document.getElementById('block-audio-video').play()
+                    // document.getElementById('block-audio-video').play()
+                    let mediaSectionAudio = document.getElementById('block-audio-video')
+                    const playPromise = mediaSectionAudio.play()
+                    if (playPromise !== null){
+                        playPromise.catch(() => { mediaSectionAudio.play()})
+                    }
                 }
             })
             // .addIndicators({name: `section Audio`})
@@ -460,40 +660,39 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-funding-every__items`, 1, {}, {opacity: '1', ease: Linear.easeNone})
             .fromTo(`.section-funding-every .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0.4", duration: "200px"})
-            // .setClassToggle(".section-funding-every", "section-inversion-dark")
-            // .addIndicators({name: `section-enabled`})
+        new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "0", duration: "300px"})
             .setTween(timelineSectionFundingEvery)
             .addTo(controller);
 
         let timelineSectionFundingEveryContent = new TimelineMax();
 
         timelineSectionFundingEveryContent
-            // .fromTo(`.section-funding-every__items`, 1, {}, {opacity: '1', ease: Linear.easeNone})
-            // .fromTo(`.section-funding-every .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
-            .fromTo(`#funding-every-items-list`, 1, {}, {transform: 'translateY(calc(-100% + 110px))', ease: Linear.easeNone})
+            .fromTo(`#funding-every-items-list`, 1, {transform: 'translateY(110px)'}, {transform: 'translateY(calc(-100% + 110px))', ease: Linear.easeNone})
 
         new ScrollMagic.Scene({triggerElement: "#section-funding-every", triggerHook: "onLeave", duration: "1000px"})
             .setPin("#section-funding-every")
             // .addIndicators({name: `section-FundingEvery`})
             .setTween(timelineSectionFundingEveryContent)
+            .on("progress", function (e) {
+                // (e.type === "enter" ? "inside" : "outside")
+                if(e.progress >=1) {
+                    // background color white
+                    let timelineSectionFundingEveryWhite = new TimelineMax();
+
+                    timelineSectionFundingEveryWhite
+                        .fromTo(`.section-funding-every__items`, 1, {}, {opacity: '0', ease: Linear.easeNone})
+                        .fromTo(`.section-funding-every .block-items__title`, 1, {}, {color: '#000', ease: Linear.easeNone}, '<')
+                        .fromTo(`.section-funding-every`, 1, {}, {backgroundColor: '#fdfcfd', ease: Linear.easeNone})
+                        .fromTo(`.section-funding-every .title-regular`, 1, {}, {color: '#000', ease: Linear.easeNone}, '<')
+
+                    new ScrollMagic.Scene({ triggerElement: ".section-funding-every__items",  triggerHook: "0.1", duration: "300px"})
+                        .setTween(timelineSectionFundingEveryWhite)
+                        // .addIndicators({name: `section-FundingEvery-bg`})
+                        .addTo(controller);
+                }
+            })
             .addTo(controller);
 
-
-        // let timelineFundingEvery = new TimelineMax()
-        //
-        // arrFundingEveryItems.forEach((item, idx) => {
-        //     timelineFundingEvery
-        //     .fromTo(`#funding-every-item-${idx}`, 1, {y: idx === 0 ? '-100px' : '0'}, {y: '-120vh', ease: Linear.easeNone})
-        //     .fromTo(`#funding-every-item-${idx+1}`, 1, {opacity:  idx === 0 ? '0.1' : '0'}, {y: '0', opacity: '1', ease: Linear.easeNone}, '<')
-        //
-        // })
-        //
-        // new ScrollMagic.Scene({ triggerElement: "#section-funding-every",  triggerHook: "onLeave", duration: "200%" })
-        //     .setTween(timelineFundingEvery)
-        //     .setPin("#section-funding-every")
-        //     .addIndicators({name: `section-FundingEvery`})
-        //     .addTo(controller);
     }
     // end section-funding-every
 
@@ -543,6 +742,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // start section-smarter
     if(sectionSmarter) {
+        let timelineSectionSmarterTitleAndImage = new TimelineMax()
+        .fromTo(`#section-smarter-headline-interactive`, 1, {y: '100px'}, {y: '0', ease: Linear.easeNone})
+        .fromTo(`#section-smarter-interactive`, 1, {y: '150px'}, {y: '0', ease: Linear.easeNone})
+
+        new ScrollMagic.Scene({ triggerElement: "#section-smarter",  triggerHook: "0.8", duration: "500px" })
+            .setTween(timelineSectionSmarterTitleAndImage)
+            // .addIndicators({name: ` Section Smarter`})
+            .addTo(controller);
+
         let timelineSectionSmarter = new TimelineMax();
 
         new ScrollMagic.Scene({ triggerElement: "#section-smarter-interactive",  triggerHook: "onLeave", duration: "100%" })
@@ -559,9 +767,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(e.progress > currentInterval && e.progress < currentInterval + interval) {
                         if(document.getElementById(`smarter-left-item-${idx}`)) {
                             document.getElementById(`smarter-left-item-${idx}`).classList.add('smarter-item-start-interactive')
+
+                            if (e.target.controller().info("scrollDirection") === 'REVERSE') {
+                                document.getElementById(`smarter-left-item-${idx}`).classList.remove('smarter-item-start-interactive')
+                            }
                         }
                         if(document.getElementById(`smarter-right-item-${idx}`)) {
                             document.getElementById(`smarter-right-item-${idx}`).classList.add('smarter-item-start-interactive')
+                            if (e.target.controller().info("scrollDirection") === 'REVERSE') {
+                                document.getElementById(`smarter-right-item-${idx}`).classList.remove('smarter-item-start-interactive')
+                            }
                         }
                     }
                     currentInterval = currentInterval + interval
@@ -608,7 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`#endless-image-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone})
             .fromTo(`#endless-item-1`, 1, {opacity: '0'}, {opacity: '1', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-endless",  triggerHook: "onLeave", duration: "2000px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-endless",  triggerHook: "0.2", duration: "2000px"})
             .setPin("#section-endless")
             // .addIndicators({name: `section-endless`})
             .setTween(timelineSectionEndless)
@@ -626,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-proof .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
             .fromTo(`.section-proof .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-proof",  triggerHook: "0.6", duration: "50px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-proof",  triggerHook: "0", duration: "100px"})
             // .addIndicators({name: `section-enabled`})
             .setTween(timelineSectionProof)
             .addTo(controller);
@@ -642,7 +857,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if(sectionFaq) {
         if(accordion) {
             let items = document.querySelectorAll('.accordion-list-item');
-            console.log(items);
 
             function toggleAccordion() {
                 let thisItem = this.closest('.accordion-list-item');
@@ -674,7 +888,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .fromTo(`.section-master .title-regular`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
             .fromTo(`.section-master .block-items__title`, 1, {}, {color: '#fff', ease: Linear.easeNone}, '<')
 
-        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.6", duration: "50px"})
+        new ScrollMagic.Scene({ triggerElement: "#section-master",  triggerHook: "0.05", duration: "50px"})
             // .addIndicators({name: `section-enabled`})
             .setTween(timelineSectionFundingEvery)
             .addTo(controller);
@@ -703,4 +917,18 @@ document.addEventListener('DOMContentLoaded', () => {
             .addTo(controller);
     }
     // end section legitimizing
+
+    // for mobile
+    let mql = window.matchMedia("(orientation: portrait)");
+
+    mql.addListener(function(m) {
+        if(m.matches) {
+            console.log('p')
+            location.reload()
+        }
+        else {
+            console.log('h')
+            location.reload()
+        }
+    });
 })

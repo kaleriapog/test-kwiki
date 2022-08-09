@@ -38,6 +38,7 @@
 
   &__social-item {
     margin-right: 40px;
+    color: $color-items-text;
   }
 
   &__app-item a {
@@ -66,9 +67,11 @@
     font-family: Poppins;
     font-size: 14px;
     line-height: 1.71;
+    color: $color-footer-bottom;
   }
 
   &__privacy-link {
     margin-left: 38px;
+    color: $color-items-text;
   }
 }

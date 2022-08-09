@@ -3,6 +3,14 @@
   font-size: 15px;
   line-height: 1.6;
   color: $color-text;
+
+  @include media-mobile-small {
+    font-size: 14px;
+  }
+
+  @include media-mobile-horizontal {
+    font-size: 12px;
+  }
 }
 %font-button-normal {
   color: $color-white;
@@ -10,7 +18,9 @@
   font-weight: 600;
 
   @include media-mobile {
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
   }
 }
 
@@ -30,6 +40,23 @@
   letter-spacing: -1px;
   margin-bottom: 24px;
   color: $color-black;
+
+  @include media-mobile {
+    font-size: 32px;
+    line-height: 1.375;
+    margin-bottom: 16px;
+  }
+
+  @include media-mobile-small {
+    font-size: 30px;
+    line-height: 1.375;
+    margin-bottom: 14px;
+  }
+
+  @include media-mobile-horizontal {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
 }
 
 %title-small {
@@ -42,7 +69,8 @@
   color: $color-black;
 
   @include media-mobile {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 1.47;
   }
 }
 
@@ -60,6 +88,16 @@
   line-height: 1.333;
   letter-spacing: -1px;
   color: $color-main;
+
+  @include media-mobile {
+    font-size: 18px;
+    line-height: 1.44;
+  }
+
+  @include media-mobile-horizontal {
+    font-size: 18px;
+    text-align: center;
+  }
 }
 
 %icon-title {
@@ -68,6 +106,19 @@
   line-height: 1.333;
   letter-spacing: -1px;
   color: $color-main;
+
+  @include media-mobile {
+    font-size: 18px;
+    //line-height: 1.625;
+  }
+
+  @include media-mobile-small {
+    font-size: 16px;
+  }
+
+  @include media-mobile-horizontal {
+    font-size: 14px;
+  }
 }
 
 %icon-title-small {
@@ -84,6 +135,13 @@
   letter-spacing: -0.02em;
   white-space: nowrap;
   color: $color-white;
+
+  @include media-mobile {
+    font-size: 88px;
+    line-height: 1.28;
+    letter-spacing: -1.7666782140731812px;
+    padding-left: 100px;
+  }
 }
 
 

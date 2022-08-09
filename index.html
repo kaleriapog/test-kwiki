@@ -15,37 +15,42 @@
 <header id="header" class="header">
     <div class="size-wrapp">
         <div class="header__inner">
+            <div class="nav-icon-open">
+                <div class="nav-icon-open__item"></div>
+            </div>
             <a href="#" class="header__logo">
                 <img class="logo" src="./images/logo.svg" alt="logo">
+                <img class="logo-mobile" src="./images/logo-mobile.svg" alt="logo">
                 <img class="logo-white logo-white-interactive" src="./images/logo-white.svg" alt="logo">
+                <img class="logo-mobile-white logo-mobile-white-interactive" src="./images/logo-mobile-white.svg" alt="logo">
             </a>
             <div class="header__navigation">
                 <div class="nav-icon-close"></div>
                 <nav>
                     <ul class="header-navigation-list">
-                        <li><a href="#">Feature 1</a></li>
-                        <li><a href="#">Feature 2</a></li>
-                        <li><a href="#">Feature 3</a></li>
-                        <li><a href="#">Feature 4</a></li>
+                        <li><a href="#">Maximize</a></li>
+                        <li><a href="#">Monetize</a></li>
+                        <li><a href="#">Capitalize</a></li>
+                        <li><a href="#">Customize</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="header__button">
                 <a href="#" class="button-normal button">
-                    <span>Sign in</span>
+                    <span>Sign up</span>
                 </a>
-            </div>
-            <div class="nav-icon-open">
-                <span class="nav-icon-open__item"></span>
             </div>
         </div>
     </div>
 </header>
 <main id="main" class="main">
     <section id="section-hero" class="section-hero">
-        <video class="hero-video" id="hero-video" muted>
+        <video class="hero-video" id="hero-video" muted playsinline>
             <source src="./video/hero-5s.mp4">
         </video>
+        <div class="poster">
+            <img src="./images/hero/poster-hero.png" alt="">
+        </div>
         <div id="hero-text" class="size-wrapp-small section-hero__text">
             <div id="section-about-text" class="section-about__text">
                 <h1 class="title-small">Kwiki is the ultimate monetization tool for Creators of all types</h1>
@@ -75,6 +80,24 @@
                 </ul>
             </div>
         </div>
+        <div id="slider-about-mobile-bottom" class="section-about__slider slider-about splide slider-about-mobile-bottom">
+            <div id="slider-about-track-mobile-bottom" class="section-about__slider-track splide__track slider-about-track-mobile-bottom">
+                <ul id="about-slider-list-mobile-bottom" class="about-slider-list splide__list">
+                    <li class="about-slider-item splide__slide">
+                        <img src="./images/about-slider/photo-4.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item splide__slide">
+                        <img src="./images/about-slider/photo-3.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item splide__slide">
+                        <img src="./images/about-slider/photo-2.jpg" alt="photo">
+                    </li>
+                    <li class="about-slider-item splide__slide">
+                        <img src="./images/about-slider/photo-1.jpg" alt="photo">
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="size-wrapp">
             <div id="about-text-narrow-interactive" class="section-about__text-narrow about-text-narrow-interactive">
                 <p class="text-big">An advanced platform built around industry-first features, designed to disrupt your expectations of what’s possible.</p>
@@ -84,17 +107,21 @@
     <section class="section-video-in-picture">
         <div class="size-wrapp">
             <div class="content-text">
-                <h2 class="title-regular">Accelerated earnings for all creators</h2>
+                <h2 id="video-in-picture-title-interactive" class="title-regular">Accelerated earnings for all creators</h2>
                 <p class="content-text__subtitle">Price content freely and enjoy blazing fast access to all your earnings from Subs, Digital Content, Tips, and more</p>
             </div>
         </div>
         <div id="video-in-picture-interactive" class="section-video-in-picture__video-block video-in-picture-interactive">
             <div id="video-in-picture-inner-interactive" class="section-video-in-picture__video-block-inner">
-                <video id="video-in-picture" class="video-in-picture" muted>
+                <video id="video-in-picture" class="video-in-picture" muted playsinline>
                     <source src="./video/video-in-picture.mp4">
                 </video>
                 <div class="background-video-picture">
                     <div class="background-video-picture-inner">
+<!--                        <picture>-->
+<!--                            <source media="(max-width: 767px)" srcset="./images/video-in-picture/phone-mobile.png">-->
+<!--                            <img src="./images/video-in-picture/phone.png">-->
+<!--                        </picture>-->
                         <img src="./images/video-in-picture/phone.png" alt="picture-phone">
                     </div>
                 </div>
@@ -121,7 +148,7 @@
                         <div class="items-icon items-icon-dark">
                             <img class="icon-img" src="images/video-in-picture/freedom.svg" alt="icon">
                         </div>
-                        <h3 class="main-items__item-title">Flexible pricing</h3>
+                        <h3 class="main-items__item-title">Freedom to withdraw</h3>
                         <span class="main-items__item-text">On-demand anytime, no minimum to сear</span>
                     </li>
                 </ul>
@@ -156,7 +183,7 @@
                                 <ul class="block-items__list">
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/financial-app.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Dedicated financial app</h3>
@@ -165,7 +192,7 @@
                                     </li>
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/credit-cards.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Free Mastercard Offer</h3>
@@ -174,7 +201,7 @@
                                     </li>
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/eligible-countries.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">100+ eligible countries</h3>
@@ -196,7 +223,7 @@
                                 <ul class="block-items__list">
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/fast-and-easy-sign-up.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Fast and easy sign-up</h3>
@@ -205,7 +232,7 @@
                                     </li>
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/onboarding.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Stress-free onboarding</h3>
@@ -214,7 +241,7 @@
                                     </li>
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/income-tax.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Simplify your income tax</h3>
@@ -237,19 +264,19 @@
                         <h2 class="title-regular">Sell it.</h2>
                     </div>
                     <div id="phone-scroll-interactive-1" class="phone-scroll__text phone-scroll-interactive">
-                        <h2 class="title-regular">Spend it.</h2>
+                        <h2 id="phone-scroll-interactive-1-title" class="title-regular">Spend it.</h2>
                         <div class="phone-scroll__description">
-                            <p>You can receive your free payouts sooner and fund all your needs without delay</p>
-                            <a href="#" class="button-normal">
+                            <p id="phone-scroll-content-text">You can receive your free payouts sooner and fund all your needs without delay</p>
+                            <a id="phone-scroll-content-button" href="#" class="button-normal">
                                 <span>Get Started</span>
                             </a>
                         </div>
                     </div>
-                    <div id="phone-scroll-interactive-2" class="phone-scroll__items phone-scroll-interactive">
+                    <div id="phone-scroll-interactive-2" class="phone-scroll__items phone-scroll-interactive phone-scroll-items-interactive">
                         <ul class="block-items__list">
                             <li class="block-items__item">
                                 <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    <img class="icon-img" src="./images/block-phone-scroll/credit-cards.svg" alt="icon">
                                 </div>
                                 <div class="block-items__text">
                                     <h3 class="block-items__title">Free Mastercard Offer</h3>
@@ -258,7 +285,7 @@
                             </li>
                             <li class="block-items__item">
                                 <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    <img class="icon-img" src="./images/block-phone-scroll/multi-currency.svg" alt="icon">
                                 </div>
                                 <div class="block-items__text">
                                     <h3 class="block-items__title">Free multi-currency payment account</h3>
@@ -267,7 +294,7 @@
                             </li>
                             <li class="block-items__item">
                                 <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    <img class="icon-img" src="./images/block-phone-scroll/deposits.svg" alt="icon">
                                 </div>
                                 <div class="block-items__text">
                                     <h3 class="block-items__title">Free automatic daily deposits</h3>
@@ -276,7 +303,7 @@
                             </li>
                             <li class="block-items__item">
                                 <div class="items-icon">
-                                    <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                    <img class="icon-img" src="./images/block-phone-scroll/flag.svg" alt="icon">
                                 </div>
                                 <div class="block-items__text">
                                     <h3 class="block-items__title">Zero Payout Minimum</h3>
@@ -291,13 +318,53 @@
                         <img src="./images/block-phone-scroll/iPhone-12-mini.png" alt="iPhone 12 mini">
                     </div>
                 </div>
+                <div id="phone-scroll-items-mobile" class="phone-scroll__items phone-scroll__items-mobile">
+                    <ul class="block-items__list">
+                        <li class="block-items__item">
+                            <div class="items-icon">
+                                <img class="icon-img" src="./images/block-phone-scroll/credit-cards.svg" alt="icon">
+                            </div>
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Free Mastercard Offer</h3>
+                                <span>Instant access to your earnings</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="items-icon">
+                                <img class="icon-img" src="./images/block-phone-scroll/multi-currency.svg" alt="icon">
+                            </div>
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Free multi-currency payment account</h3>
+                                <span>Funds secured InTier-1 bank</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="items-icon">
+                                <img class="icon-img" src="./images/block-phone-scroll/deposits.svg" alt="icon">
+                            </div>
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Free automatic daily deposits</h3>
+                                <span>Within 72hrs - fastest settlement for all creators</span>
+                            </div>
+                        </li>
+                        <li class="block-items__item">
+                            <div class="items-icon">
+                                <img class="icon-img" src="./images/block-phone-scroll/flag.svg" alt="icon">
+                            </div>
+                            <div class="block-items__text">
+                                <h3 class="block-items__title">Zero Payout Minimum</h3>
+                                <span>No limitting threhold to clear</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
     <section id="section-tagline" class="section-tagline">
         <span id="tagline" class="section-tagline__tagline">Life is short</span>
         <div id="tagline-video-wrapp" class="section-tagline__video">
-            <video id="tagline-video" class="tagline-video" muted>
+            <video id="tagline-video" class="tagline-video" muted playsinline autoplay>
                 <source src="./video/tagline-video.mp4">
             </video>
         </div>
@@ -317,7 +384,7 @@
                                 <ul class="block-items__list">
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/inventory-managment.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Advanced inventory managment</h3>
@@ -326,7 +393,7 @@
                                     </li>
                                     <li class="block-items__item">
                                         <div class="items-icon">
-                                            <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                            <img class="icon-img" src="./images/gallery/promo-tools.svg" alt="icon">
                                         </div>
                                         <div class="block-items__text">
                                             <h3 class="block-items__title">Dedicated promo tools</h3>
@@ -348,7 +415,7 @@
                                 <ul class="block-items__list block-sell-items-list">
                                 <li class="block-items__item">
                                     <div class="items-icon">
-                                        <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        <img class="icon-img" src="./images/gallery/fastest-payout.svg" alt="icon">
                                     </div>
                                     <div class="block-items__text">
                                         <h3 class="block-items__title">Superfast payouts</h3>
@@ -357,7 +424,7 @@
                                 </li>
                                 <li class="block-items__item">
                                     <div class="items-icon">
-                                        <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                                        <img class="icon-img" src="./images/gallery/pin-location-map.svg" alt="icon">
                                     </div>
                                     <div class="block-items__text">
                                         <h3 class="block-items__title">World wide tracking</h3>
@@ -376,13 +443,13 @@
                         </div>
                         <div class="gallery-item__text">
                             <div class="gallery-item__text-inner">
-                                <h2 class="title-regular"><span class="color-purple">Any </span>Merch.</h2>
-                                <div class="phone-scroll__description">
-                                    <p>We offer you flexible options to sell more than just digital content</p>
-                                    <a href="#" class="button-normal button">
-                                        <span>Get Started</span>
-                                    </a>
-                                </div>
+<!--                                <h2 class="title-regular"><span class="color-purple">Any </span>Merch.</h2>-->
+<!--                                <div class="phone-scroll__description">-->
+<!--                                    <p>We offer you flexible options to sell more than just digital content</p>-->
+<!--                                    <a href="#" class="button-normal button">-->
+<!--                                        <span>Get Started</span>-->
+<!--                                    </a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </li>
@@ -394,7 +461,12 @@
                         </div>
                         <div class="gallery-item__text">
                             <div class="gallery-item__text-inner">
-                                <h2 class="title-regular"><span class="orange">Sell </span>Merch.</h2>
+                                <h2 class="title-regular">
+                                    <span class="gallery-sell-title-mark-window">
+                                        <span class="gallery-sell-title-mark-0 orange">Sell </span>
+                                        <span class="gallery-sell-title-mark-1 color-purple">Any </span>
+                                    </span>
+                                    Merch.</h2>
                                 <div class="phone-scroll__description">
                                     <p>We offer you flexible options to sell more than just digital content</p>
                                     <a href="#" class="button-normal button">
@@ -411,7 +483,7 @@
     <section id="section-enabled" class="section-enabled">
         <div class="size-wrapp-normal section-enabled__description">
             <h2 class="title-regular">Enabled for VR and Ultra High - Definition</h2>
-            <p>Technological freedom to explore and create without constraints. Offer your fans a more intense, immersive experience for increased engagement, sales, and retentions</p>
+            <p class="subline">Technological freedom to explore and create without constraints. Offer your fans a more intense, immersive experience for increased engagement, sales, and retentions</p>
         </div>
         <div class="size-wrapp">
             <div class="section-enabled__images">
@@ -443,22 +515,22 @@
                 </div>
                 <div id="enabled-link-right-top" class="enabled-link bg-pink">
                     <a href="#">
-                        <span>3D SBS</span>
+                        <span>3D TB</span>
                     </a>
                 </div>
                 <div id="enabled-link-left-bottom" class="enabled-link bg-fuchsia">
                     <a href="#">
-                        <span>3D SBS</span>
+                        <span>VR 180</span>
                     </a>
                 </div>
                 <div id="enabled-link-bottom" class="enabled-link bg-purple">
                     <a href="#">
-                        <span>3D SBS</span>
+                        <span>VR 360</span>
                     </a>
                 </div>
                 <div id="enabled-link-right-bottom" class="enabled-link bg-blue">
                     <a href="#">
-                        <span>3D SBS</span>
+                        <span>VR 270</span>
                     </a>
                 </div>
             </div>
@@ -470,8 +542,8 @@
             <p>Boost your dynamic range with faster & smarter social monitization of your Audio content including Music, Podcast, Audiobooks & ASVR</p>
         </div>
         <div id="section-audio-interactive" class="section-audio__video">
-            <video id="block-audio-video" class="block-audio-video" muted>
-                <source src="./video/video-in-picture.mp4">
+            <video id="block-audio-video" class="block-audio-video" muted playsinline>
+                <source src="./video/audio.mp4">
             </video>
         </div>
         <div class="size-wrapp">
@@ -479,21 +551,21 @@
                 <ul id="main-items-list-audio" class="main-items__list main-items-list-audio">
                     <li class="main-items__item">
                         <div class="items-icon">
-                            <img class="icon-img" src="images/video-in-picture/dollar.svg" alt="icon">
+                            <img class="icon-img" src="images/section-audio/music.svg" alt="icon">
                         </div>
                         <h3 class="main-items__item-title">Global playlist</h3>
                         <span class="main-items__item-text">For fans to listen to while browsing</span>
                     </li>
                     <li class="main-items__item">
                         <div class="items-icon">
-                            <img class="icon-img" src="images/video-in-picture/fastest-payout.svg" alt="icon">
+                            <img class="icon-img" src="images/section-audio/credit-cards.svg" alt="icon">
                         </div>
                         <h3 class="main-items__item-title">Fastest payout anywhere</h3>
                         <span class="main-items__item-text">With video, description, track names & previews</span>
                     </li>
                     <li class="main-items__item">
                         <div class="items-icon">
-                            <img class="icon-img" src="images/video-in-picture/freedom.svg" alt="icon">
+                            <img class="icon-img" src="images/section-audio/coin.svg" alt="icon">
                         </div>
                         <h3 class="main-items__item-title">Freedom to withdraw</h3>
                         <span class="main-items__item-text">Multi tiers, tips, goal funding, merch, cameos & more</span>
@@ -550,17 +622,17 @@
                 <div class="section-funding-every__items">
                     <ul id="funding-every-items-list" class="block-items__list">
                         <li id="funding-every-item-0" class="block-items__item">
-                            <div class="items-icon">
-                                <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                            <div class="items-icon items-icon-dark">
+                                <img class="icon-img" src="./images/section-funding-every/money-coins-exchange.svg" alt="icon">
                             </div>
                             <div class="block-items__text">
-                                <h3 class="block-items__title">Hasslo-free processing</h3>
-                                <span>Even ...</span>
+                                <h3 class="block-items__title">No chargebacks</h3>
+                                <span>No decened transactions</span>
                             </div>
                         </li>
                         <li id="funding-every-item-1" class="block-items__item">
-                            <div class="items-icon">
-                                <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                            <div class="items-icon items-icon-dark">
+                                <img class="icon-img" src="./images/section-funding-every/frame.svg" alt="icon">
                             </div>
                             <div class="block-items__text">
                                 <h3 class="block-items__title">Hasslo-free processing</h3>
@@ -568,8 +640,8 @@
                             </div>
                         </li>
                         <li id="funding-every-item-2" class="block-items__item">
-                            <div class="items-icon">
-                                <img class="icon-img" src="./images/video-in-picture/freedom.svg" alt="icon">
+                            <div class="items-icon items-icon-dark">
+                                <img class="icon-img" src="./images/section-funding-every/time-coins.svg" alt="icon">
                             </div>
                             <div class="block-items__text">
                                 <h3 class="block-items__title">Free payout anytime</h3>
@@ -590,12 +662,27 @@
                             <ul class="swiper-wrapper">
                                 <li class="swiper-slide">
                                         <div class="reliable-slider__slide-inner">
-                                            <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                            <img class="reliable-slider__flag" src="./images/section-reliable/us.svg" alt="flag">
                                         </div>
                                     </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ca.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/de.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/au.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/at.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
@@ -605,52 +692,37 @@
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ie.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/cz.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ge.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ad.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/gr.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/tr.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/dk.svg" alt="flag">
                                     </div>
                                 </li>
                             </ul>
@@ -659,7 +731,27 @@
                             <ul class="swiper-wrapper">
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/uk.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/jp.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/se.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/il.svg" alt="flag">
+                                    </div>
+                                </li>
+                                <li class="swiper-slide">
+                                    <div class="reliable-slider__slide-inner">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ae.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
@@ -669,57 +761,32 @@
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/is.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ita.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/fl.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/fr.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/pln.svg" alt="flag">
                                     </div>
                                 </li>
                                 <li class="swiper-slide">
                                     <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
-                                    </div>
-                                </li>
-                                <li class="swiper-slide">
-                                    <div class="reliable-slider__slide-inner">
-                                        <img class="reliable-slider__flag" src="./images/section-reliable/ua.svg" alt="flag">
+                                        <img class="reliable-slider__flag" src="./images/section-reliable/ee.svg" alt="flag">
                                     </div>
                                 </li>
                             </ul>
@@ -747,10 +814,10 @@
             </div>
         </div>
     </section>
-    <section class="section-smarter">
+    <section id="section-smarter" class="section-smarter">
         <div class="size-wrapp">
             <div class="size-wrapp-small">
-                <div class="section-smarter__headline">
+                <div id="section-smarter-headline-interactive" class="section-smarter__headline">
                     <h2 class="title-small">A smarter wallet for your fans</h2>
                     <p class="subtitle">And a powerful tool to efforlessly increase your conversions</p>
                 </div>
@@ -829,8 +896,8 @@
         <div class="size-wrapp-normal">
             <div class="section-endless__inner">
                 <h2 class="title-regular">One account,<br>
-                    <span id="title-regular-mark-0" class="title-regular-mark color-pink">endless posting options</span>
-                    <span id="title-regular-mark-1" class="title-regular-mark color-light-blue">multiple profile options</span>
+                    <span id="title-regular-mark-0" class="title-regular-mark color-light-blue">multiple profile options</span>
+                    <span id="title-regular-mark-1" class="title-regular-mark color-pink">endless posting options</span>
                 </h2>
                 <div class="section-endless__description">
                     <div class="section-endless__images">
@@ -1111,12 +1178,12 @@
                         </li>
                     </ul>
                 </div>
-                <div class="section-faq__not-find-answer">
-                    <p class="section-faq__not-find-answer-title">You didn't find the answer to your question?</p>
-                    <a href="#" class="button-normal button">
-                        <span>Contact us</span>
-                    </a>
-                </div>
+<!--                <div class="section-faq__not-find-answer">-->
+<!--                    <p class="section-faq__not-find-answer-title">You didn't find the answer to your question?</p>-->
+<!--                    <a href="#" class="button-normal button">-->
+<!--                        <span>Contact us</span>-->
+<!--                    </a>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
@@ -1178,20 +1245,16 @@
 </main>
 <div class="preloader">
     <div class="preloader__inner">
-        <svg class="pl" viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="pl-grad1" x1="1" y1="0.5" x2="0" y2="0.5">
-                    <stop offset="0%" stop-color="hsl(313,90%,55%)" />
-                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
-                </linearGradient>
-                <linearGradient id="pl-grad2" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="hsl(313,90%,55%)" />
-                    <stop offset="100%" stop-color="hsl(223,90%,55%)" />
-                </linearGradient>
-            </defs>
-            <circle class="pl__ring" cx="100" cy="100" r="82" fill="none" stroke="url(#pl-grad1)" stroke-width="36" stroke-dasharray="0 257 1 257" stroke-dashoffset="0.01" stroke-linecap="round" transform="rotate(-90,100,100)" />
-            <line class="pl__ball" stroke="url(#pl-grad2)" x1="100" y1="18" x2="100.01" y2="182" stroke-width="36" stroke-dasharray="1 165" stroke-linecap="round" />
-        </svg>
+        <div class="preloader-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 </div>
 <script src="js/swiper-bundle.min.js" type="text/javascript"></script>

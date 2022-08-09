@@ -5,9 +5,13 @@
   left: 0;
   right: 0;
   z-index: 30;
-  background-color: $color-background-main;
+  background-color: $color-white;
   transition: background-color 0.5s linear;
   backdrop-filter: saturate(180%) blur(20px);
+
+  @include media-laptop {
+    background-color: $color-white;
+  }
 
   &__inner {
     padding: 16px 0;
@@ -21,22 +25,61 @@
     width: 100%;
     position: relative;
 
+    @include media-tablet {
+      z-index: 20;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @include media-mobile {
+      max-width: 32px;
+    }
+
     img {
       display: block;
     }
 
-    .logo-white {
+    .logo {
+      @include media-mobile {
+        display: none;
+      }
+    }
+
+    .logo-white, {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       opacity: 0;
+
+      @include media-mobile {
+        display: none;
+      }
     }
 
-    @include media-tablet {
-      position: relative;
-      z-index: 20;
+    .logo-mobile {
+      display: none;
+
+      @include media-mobile {
+        display: block;
+      }
+    }
+
+    .logo-mobile-white {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      display: none;
+
+      @include media-mobile {
+        display: block;
+      }
     }
   }
 
@@ -96,30 +139,27 @@
 
       @include media-mobile {
         padding: 8px 20px;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
 
     @include media-tablet {
       position: relative;
       z-index: 20;
-      margin: 0 20px 0 auto;
     }
   }
 
   &.header-dark {
     background-color: rgba(0, 0, 0, 0.72);
-
   }
 }
 
 //style for icon open navigation
 .nav-icon-open {
-  border-bottom: solid 1px $color-main;
-  border-top: solid 1px $color-main;
-  width: 30px;
+  width: 32px;
   height: 25px;
   align-items: center;
+  justify-content: space-between;
   display: none;
 
   @include media-tablet {
@@ -127,7 +167,9 @@
   }
 
   &__item {
-    border-top: solid 1px $color-main;
+    border-top: solid 2px $color-main;
+    border-bottom: solid 2px $color-main;
+    height: 15px;
     display: block;
     width: 100%;
   }
@@ -137,7 +179,7 @@
 .nav-icon-close {
   position: absolute;
   top: 20px;
-  right: 18px;
+  left: 18px;
   width: 30px;
   height: 30px;
   display: none;
